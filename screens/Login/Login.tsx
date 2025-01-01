@@ -12,6 +12,7 @@ import { styles } from './styles';
 import Colors from '@/constants/Colors';
 import { Link, Stack, useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
+import { StatusBar } from 'expo-status-bar';
 
 enum SignInType {
 	PHONE = 'phone',
@@ -58,6 +59,7 @@ const Login = () => {
 			style={{ flex: 1 }}
 			keyboardVerticalOffset={keyboardVerticalOffset}
 		>
+			<StatusBar style="dark" />
 			<Stack.Screen
 				name="login"
 				options={{

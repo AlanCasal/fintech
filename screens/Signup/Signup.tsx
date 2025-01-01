@@ -12,6 +12,7 @@ import { styles } from './styles';
 import Colors from '@/constants/Colors';
 import { Link, Stack, useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
+import { StatusBar } from 'expo-status-bar';
 
 const Signup = () => {
 	const [countryCode, setCountryCode] = useState('+49');
@@ -29,6 +30,7 @@ const Signup = () => {
 			style={{ flex: 1 }}
 			keyboardVerticalOffset={keyboardVerticalOffset}
 		>
+			<StatusBar style="dark" />
 			<Stack.Screen
 				name="signup"
 				options={{
