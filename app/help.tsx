@@ -1,12 +1,6 @@
-import { View, Text } from 'react-native';
 import React from 'react';
+import HelpScreen from '@/screens/Help';
 
-const Help = () => {
-	return (
-		<View>
-			<Text>Help</Text>
-		</View>
-	);
-};
+const Help = () => <HelpScreen />;
 
 export default Help;

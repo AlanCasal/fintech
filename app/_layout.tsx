@@ -38,7 +38,15 @@ const RootLayoutNav = () => {
 	return (
 		<>
 			<StatusBar style="light" />
-			<Stack />
+			<Stack>
+				<Stack.Screen
+					name="help"
+					options={{
+						title: 'Help',
+						presentation: 'modal',
+					}}
+				/>
+			</Stack>
 		</>
 	);
 };
