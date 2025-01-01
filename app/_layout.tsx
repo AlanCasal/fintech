@@ -3,8 +3,8 @@ import { Platform } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import { ClerkProvider } from '@clerk/clerk-expo';
+import { Stack, useRouter } from 'expo-router';
+import { ClerkProvider, useAuth } from '@clerk/clerk-expo';
 import { TokenCache } from '@clerk/clerk-expo/dist/cache';
 import * as SplashScreen from 'expo-splash-screen';
 import * as SecureStore from 'expo-secure-store';
@@ -50,6 +50,8 @@ const RootLayout = () => {
 		SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
 		...FontAwesome.font,
 	});
+	const router = useRouter();
+	const { isLoaded, isSignedIn } = useAuth();
 
 	// Expo Router uses Error Boundaries to catch errors in the navigation tree.
 	useEffect(() => {
@@ -60,9 +62,26 @@ const RootLayout = () => {
 		if (loaded) SplashScreen.hideAsync();
 	}, [loaded]);
 
+	useEffect(() => {
+		if (isSignedIn) {
+			console.log('%c[signed in]', 'background: #000059; color: #9fcfff');
+		}
+	}, [isSignedIn]);
+
 	if (!loaded || !CLERK_PUBLISHABLE_KEY) return null;
 
-	return <RootLayoutNav />;
+	return (
+		<Stack>
+			<StatusBar style="light" />
+			<Stack.Screen
+				name="help"
+				options={{
+					title: 'Help',
+					presentation: 'modal',
+				}}
+			/>
+		</Stack>
+	);
 };
 
 const RootLayoutNav = () => {
@@ -71,18 +90,9 @@ const RootLayoutNav = () => {
 			publishableKey={CLERK_PUBLISHABLE_KEY!}
 			tokenCache={tokenCache}
 		>
-			<StatusBar style="light" />
-			<Stack>
-				<Stack.Screen
-					name="help"
-					options={{
-						title: 'Help',
-						presentation: 'modal',
-					}}
-				/>
-			</Stack>
+			<RootLayout />
 		</ClerkProvider>
 	);
 };
 
-export default RootLayout;
+export default RootLayoutNav;

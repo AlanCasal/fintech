@@ -1,8 +1,12 @@
-import { View, Text, TouchableOpacity, Platform } from 'react-native';
+import { View, Text, TouchableOpacity, Platform, Alert } from 'react-native';
 import React, { Fragment, useEffect, useState } from 'react';
 import { styles } from './styles';
 import { Link, router, Stack, useLocalSearchParams } from 'expo-router';
-import { useSignIn, useSignUp } from '@clerk/clerk-expo';
+import {
+	isClerkAPIResponseError,
+	useSignIn,
+	useSignUp,
+} from '@clerk/clerk-expo';
 import { defaultStyles } from '@/constants/Styles';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
@@ -19,13 +23,12 @@ const VerifyPhone = () => {
 	const [code, setCode] = useState('');
 
 	const { signIn: signInClerk } = useSignIn();
-	const { signUp: signUpClerk } = useSignUp();
+	const { signUp: signUpClerk, setActive } = useSignUp();
 	const { phoneNumber, signIn } = useLocalSearchParams<{
 		phoneNumber: string;
 		signIn: string;
 	}>();
 
-	const [value, setValue] = useState('');
 	const ref = useBlurOnFulfill({ value: code, cellCount: CELL_COUNT });
 	const [props, getCellOnLayoutHandler] = useClearByFocusCell({
 		value: code,
@@ -33,11 +36,29 @@ const VerifyPhone = () => {
 	});
 
 	const handleVerifyCode = async () => {
-		// ...
+		try {
+			await signUpClerk?.attemptPhoneNumberVerification({ code });
+			await setActive!({ session: signUpClerk!.createdSessionId });
+		} catch (error) {
+			if (isClerkAPIResponseError(error))
+				Alert.alert(
+					'Error',
+					error.errors[0]?.message || 'Something went wrong'
+				);
+		}
 	};
 
 	const handleVerifySignIn = async () => {
-		// ...
+		try {
+			await signInClerk!.attemptFirstFactor({ strategy: 'phone_code', code });
+			await setActive!({ session: signInClerk!.createdSessionId });
+		} catch (error) {
+			if (isClerkAPIResponseError(error))
+				Alert.alert(
+					'Error',
+					error.errors[0]?.message || 'Something went wrong'
+				);
+		}
 	};
 
 	useEffect(() => {

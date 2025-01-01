@@ -4,6 +4,7 @@ import {
 	TextInput,
 	TouchableOpacity,
 	KeyboardAvoidingView,
+	Alert,
 } from 'react-native';
 import React, { useState } from 'react';
 import { defaultStyles } from '@/constants/Styles';
@@ -12,11 +13,11 @@ import Colors from '@/constants/Colors';
 import { Link, Stack, useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
-import { useSignUp } from '@clerk/clerk-expo';
+import { isClerkAPIResponseError, useSignUp } from '@clerk/clerk-expo';
 import { KEYBOARD_VERTICAL_OFFSET } from '@/constants/Utils';
 
 const Signup = () => {
-	const [countryCode, setCountryCode] = useState('+49');
+	const [countryCode, setCountryCode] = useState('+54');
 	const [mobileNumber, setMobileNumber] = useState('');
 
 	const router = useRouter();
@@ -24,15 +25,19 @@ const Signup = () => {
 
 	const handleSignup = async () => {
 		const phoneNumber = `${countryCode}${mobileNumber}`;
-		router.push(`/verify/${phoneNumber}`);
 
-		// try {
-		// 	await signUp!.create({ phoneNumber });
-		// 	// await signUp!.prepareEmailAddressVerification({ strategy: 'email_code' });
-		// 	router.push(`/verify/${phoneNumber}`);
-		// } catch (error) {
-		// 	console.error('Signup error: ', error);
-		// }
+		try {
+			await signUp!.create({ phoneNumber });
+			signUp!.preparePhoneNumberVerification();
+
+			router.push(`/verify/${phoneNumber}`);
+		} catch (error) {
+			if (isClerkAPIResponseError(error))
+				Alert.alert(
+					'Error',
+					error.errors[0]?.message || 'Something went wrong'
+				);
+		}
 	};
 
 	return (
