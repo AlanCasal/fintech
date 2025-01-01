@@ -3,13 +3,15 @@ import React from 'react';
 import { styles } from './styles';
 import { useAssets } from 'expo-asset';
 import { ResizeMode, Video } from 'expo-av';
-import { Link } from 'expo-router';
+import { Link, Stack } from 'expo-router';
 import { defaultStyles } from '@/constants/Styles';
 
 const Intro = () => {
 	const [assets] = useAssets([require('@/assets/videos/intro.mp4')]);
 	return (
 		<View style={styles.container}>
+			<Stack.Screen name="intro" options={{ headerShown: false }} />
+
 			{assets && (
 				<Video
 					resizeMode={ResizeMode.COVER}
