@@ -4,7 +4,7 @@ import {
 	TextInput,
 	TouchableOpacity,
 	KeyboardAvoidingView,
-	Platform,
+	Alert,
 } from 'react-native';
 import React, { useState } from 'react';
 import { defaultStyles } from '@/constants/Styles';
@@ -13,6 +13,8 @@ import Colors from '@/constants/Colors';
 import { Link, Stack, useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
+import { KEYBOARD_VERTICAL_OFFSET } from '@/constants/Utils';
+import { isClerkAPIResponseError, useSignIn } from '@clerk/clerk-expo';
 
 enum SignInType {
 	PHONE = 'phone',
@@ -42,14 +44,41 @@ const CONTINUE_WITH_BUTTONS = [
 const Login = () => {
 	const [countryCode, setCountryCode] = useState('+49');
 	const [mobileNumber, setMobileNumber] = useState('');
+
 	const router = useRouter();
-	const keyboardVerticalOffset = Platform.OS === 'ios' ? 80 : 0;
+	const { signIn } = useSignIn();
 
-	const handleLogin = async (type: SignInType) => {
-		console.log('%c[handleLogin]', 'background: #000059; color: #9fcfff', type);
-
+	const handleSignIn = async (type: SignInType) => {
 		if (type === SignInType.PHONE) {
-			// ...
+			try {
+				const phoneNumber = `${countryCode}${mobileNumber}`;
+
+				const { supportedFirstFactors } = await signIn!.create({
+					identifier: phoneNumber,
+				});
+
+				const firstPhoneFactor = supportedFirstFactors?.find(
+					factor => factor.strategy === 'phone_code'
+				);
+
+				const { phoneNumberId } = firstPhoneFactor!;
+				await signIn!.prepareFirstFactor({
+					strategy: 'phone_code',
+					phoneNumberId,
+				});
+
+				router.push({
+					pathname: '/verify/[phoneNumber]',
+					params: { phoneNumber, signIn: 'true' },
+				});
+			} catch (error) {
+				if (isClerkAPIResponseError(error)) {
+					Alert.alert(
+						'Error',
+						error.errors[0]?.message || 'Something went wrong'
+					);
+				}
+			}
 		}
 	};
 
@@ -57,7 +86,7 @@ const Login = () => {
 		<KeyboardAvoidingView
 			behavior="padding"
 			style={{ flex: 1 }}
-			keyboardVerticalOffset={keyboardVerticalOffset}
+			keyboardVerticalOffset={KEYBOARD_VERTICAL_OFFSET}
 		>
 			<StatusBar style="dark" />
 			<Stack.Screen
@@ -117,7 +146,7 @@ const Login = () => {
 						styles.loginButton,
 						!mobileNumber ? styles.loginDisabled : styles.loginEnabled,
 					]}
-					onPress={() => handleLogin(SignInType.PHONE)}
+					onPress={() => handleSignIn(SignInType.PHONE)}
 					disabled={!mobileNumber}
 				>
 					<Text style={defaultStyles.buttonText}>Continue</Text>
@@ -133,7 +162,7 @@ const Login = () => {
 					<TouchableOpacity
 						key={button.type}
 						style={[defaultStyles.pillButton, styles.continueWithButton]}
-						onPress={() => handleLogin(button.type)}
+						onPress={() => handleSignIn(button.type)}
 					>
 						<Ionicons
 							name={button.icon as keyof typeof Ionicons.glyphMap}

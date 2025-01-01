@@ -4,7 +4,6 @@ import {
 	TextInput,
 	TouchableOpacity,
 	KeyboardAvoidingView,
-	Platform,
 } from 'react-native';
 import React, { useState } from 'react';
 import { defaultStyles } from '@/constants/Styles';
@@ -13,22 +12,34 @@ import Colors from '@/constants/Colors';
 import { Link, Stack, useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
+import { useSignUp } from '@clerk/clerk-expo';
+import { KEYBOARD_VERTICAL_OFFSET } from '@/constants/Utils';
 
 const Signup = () => {
 	const [countryCode, setCountryCode] = useState('+49');
 	const [mobileNumber, setMobileNumber] = useState('');
+
 	const router = useRouter();
-	const keyboardVerticalOffset = Platform.OS === 'ios' ? 80 : 0;
+	const { signUp } = useSignUp();
 
 	const handleSignup = async () => {
-		console.log('Signup');
+		const phoneNumber = `${countryCode}${mobileNumber}`;
+		router.push(`/verify/${phoneNumber}`);
+
+		// try {
+		// 	await signUp!.create({ phoneNumber });
+		// 	// await signUp!.prepareEmailAddressVerification({ strategy: 'email_code' });
+		// 	router.push(`/verify/${phoneNumber}`);
+		// } catch (error) {
+		// 	console.error('Signup error: ', error);
+		// }
 	};
 
 	return (
 		<KeyboardAvoidingView
 			behavior="padding"
 			style={{ flex: 1 }}
-			keyboardVerticalOffset={keyboardVerticalOffset}
+			keyboardVerticalOffset={KEYBOARD_VERTICAL_OFFSET}
 		>
 			<StatusBar style="dark" />
 			<Stack.Screen
