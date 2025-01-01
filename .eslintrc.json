@@ -1,0 +1,93 @@
+{
+	"root": true,
+	"extends": [
+		"eslint:recommended",
+		"plugin:react/recommended",
+		"plugin:react-hooks/recommended",
+		"plugin:@typescript-eslint/eslint-recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:prettier/recommended",
+		"plugin:import/recommended",
+		"airbnb-typescript",
+		"prettier"
+	],
+	"parser": "@typescript-eslint/parser",
+	"env": {
+		"browser": true,
+		"es6": true,
+		"jest": true
+	},
+	"parserOptions": {
+		"ecmaVersion": 2020,
+		"sourceType": "module",
+		"project": "./tsconfig.json",
+		"ecmaFeatures": {
+			"jsx": true,
+			"arrowFunctions": true
+		}
+	},
+	"plugins": ["react", "@typescript-eslint", "prettier", "import"],
+	"settings": {
+		"react": {
+			"version": "detect"
+		},
+		"import/resolver": {
+			"node": {
+				"extensions": [".js", ".jsx", ".ts", ".tsx"],
+				"paths": ["./src", "./scripts"]
+			}
+		},
+		"import/ignore": ["node_modules/react-native/index\\.js$"]
+	},
+	"rules": {
+		"@typescript-eslint/ban-ts-comment": "off",
+		"@typescript-eslint/ban-types": "off",
+		"@typescript-eslint/explicit-module-boundary-types": "off",
+		"@typescript-eslint/no-duplicate-enum-values": "off",
+		"@typescript-eslint/no-empty-function": "warn",
+		"@typescript-eslint/no-explicit-any": "warn",
+		"@typescript-eslint/no-unused-vars": "warn",
+		"@typescript-eslint/no-use-before-define": "warn",
+		"import/no-named-as-default": "off",
+		"import/prefer-default-export": "off",
+		"no-console": "warn",
+		"no-constant-condition": "warn",
+		"no-extra-boolean-cast": "warn",
+		"no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+		"no-use-before-define": "off",
+		"object-curly-spacing": ["warn", "always"],
+		"prettier/prettier": [
+			"error",
+			{
+				"endOfLine": "auto",
+				"singleQuote": true
+			}
+		],
+		"react/display-name": "off",
+		"react/jsx-boolean-value": "off",
+		"react/jsx-closing-bracket-location": "off",
+		"react/jsx-key": "error",
+		"react/jsx-one-expression-per-line": "off",
+		"react/jsx-props-no-spreading": "off",
+		"react/jsx-wrap-multilines": "off",
+		"react/no-unescaped-entities": "off",
+		"react/prop-types": "off",
+		"react/require-default-props": "off",
+		"import/extensions": [
+			"error",
+			"ignorePackages",
+			{
+				"": "never",
+				"js": "never",
+				"jsx": "never",
+				"ts": "never",
+				"tsx": "never"
+			}
+		],
+		"import/no-cycle": "error",
+		"quotes": ["error", "single"],
+		"@typescript-eslint/quotes": ["error", "single"],
+		"indent": ["error", "tab"]
+	},
+	"ignorePatterns": ["todos.js", "metro.config.js", "babel.config.js"]
+}

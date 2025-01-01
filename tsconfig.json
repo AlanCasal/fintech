@@ -1,17 +1,26 @@
 {
-  "extends": "expo/tsconfig.base",
-  "compilerOptions": {
-    "strict": true,
-    "paths": {
-      "@/*": [
-        "./*"
-      ]
-    }
-  },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    ".expo/types/**/*.ts",
-    "expo-env.d.ts"
-  ]
+	"extends": "expo/tsconfig.base",
+	"compilerOptions": {
+		"jsx": "react-native",
+		"target": "ES6",
+		"lib": ["ES6"],
+		"strict": true,
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["./*"]
+		},
+		"allowJs": true,
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"noEmit": true,
+		"allowSyntheticDefaultImports": true,
+		"forceConsistentCasingInFileNames": true,
+		"noFallthroughCasesInSwitch": true,
+		"module": "ESNext",
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"isolatedModules": true
+	},
+	"include": ["**/*.ts", "**/*.tsx"],
+	"exclude": ["node_modules"]
 }

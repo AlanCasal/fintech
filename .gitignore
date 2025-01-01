@@ -34,3 +34,8 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+todos.js
+
+# Native build folders
+ios/
+android/
