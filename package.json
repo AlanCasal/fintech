@@ -42,7 +42,8 @@
     "react-native-screens": "~4.4.0",
     "react-native-web": "~0.19.13",
     "zeego": "^2.0.4",
-    "zustand": "^5.0.2"
+    "zustand": "^5.0.2",
+    "expo-blur": "~14.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
