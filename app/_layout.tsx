@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Platform } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useFonts } from 'expo-font';
@@ -9,6 +9,17 @@ import { TokenCache } from '@clerk/clerk-expo/dist/cache';
 import * as SplashScreen from 'expo-splash-screen';
 import * as SecureStore from 'expo-secure-store';
 import 'react-native-reanimated';
+import LoadingSpinner from '@/components/LoadingSpinner';
+import Colors from '@/constants/Colors';
+
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center',
+		backgroundColor: Colors.dark,
+	},
+});
 
 const createTokenCache = (): TokenCache => {
 	return {
@@ -51,7 +62,7 @@ const RootLayout = () => {
 		...FontAwesome.font,
 	});
 	const router = useRouter();
-	const { isLoaded, isSignedIn } = useAuth();
+	const { isLoaded: isAuthLoaded, isSignedIn } = useAuth();
 
 	// Expo Router uses Error Boundaries to catch errors in the navigation tree.
 	useEffect(() => {
@@ -68,7 +79,13 @@ const RootLayout = () => {
 		}
 	}, [isSignedIn]);
 
-	if (!loaded || !CLERK_PUBLISHABLE_KEY) return null;
+	if (!loaded || !isAuthLoaded || !CLERK_PUBLISHABLE_KEY) {
+		return (
+			<View style={styles.container}>
+				<LoadingSpinner />
+			</View>
+		);
+	}
 
 	return (
 		<Stack>
