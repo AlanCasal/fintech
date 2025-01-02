@@ -13,6 +13,7 @@ import 'react-native-reanimated';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { styles } from './styles';
 import { CLERK_PUBLISHABLE_KEY } from '@/constants/Utils';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const createTokenCache = (): TokenCache => {
 	return {
@@ -72,7 +73,7 @@ const RootLayout = () => {
 
 		// is in login screen and signed in
 		if (isSignedIn && !inAuthGroup)
-			router.replace('/(authenticated)/(tabs)/home');
+			router.replace('/(authenticated)/(tabs)/crypto');
 		else if (!isSignedIn) router.replace('/');
 	}, [isSignedIn]);
 
@@ -98,16 +99,22 @@ const RootLayout = () => {
 	);
 };
 
+/*************************************************************************************/
+
+const queryClient = new QueryClient();
+
 const RootLayoutNav = () => {
 	return (
 		<ClerkProvider
 			publishableKey={CLERK_PUBLISHABLE_KEY!}
 			tokenCache={tokenCache}
 		>
-			{/* needed for gesture handler, like WidgetList */}
-			<GestureHandlerRootView style={{ flex: 1 }}>
-				<RootLayout />
-			</GestureHandlerRootView>
+			<QueryClientProvider client={queryClient}>
+				{/* needed for gesture handler, like WidgetList */}
+				<GestureHandlerRootView style={{ flex: 1 }}>
+					<RootLayout />
+				</GestureHandlerRootView>
+			</QueryClientProvider>
 		</ClerkProvider>
 	);
 };

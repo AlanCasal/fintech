@@ -1,12 +1,6 @@
-import { View, Text } from 'react-native';
 import React from 'react';
+import CryptoScreen from '@/screens/Crypto';
 
-const Crypto = () => {
-	return (
-		<View>
-			<Text>Crypto</Text>
-		</View>
-	);
-};
+const Crypto = () => <CryptoScreen />;
 
 export default Crypto;

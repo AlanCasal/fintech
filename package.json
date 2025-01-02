@@ -16,9 +16,11 @@
     "@clerk/clerk-expo": "^2.6.6",
     "@expo/vector-icons": "^14.0.2",
     "@react-navigation/native": "^7.0.14",
+    "@tanstack/react-query": "^5.62.11",
     "expo": "~52.0.23",
     "expo-asset": "~11.0.1",
     "expo-av": "~15.0.1",
+    "expo-blur": "~14.0.1",
     "expo-dev-client": "~5.0.8",
     "expo-font": "~13.0.2",
     "expo-linking": "~7.0.3",
@@ -42,8 +44,7 @@
     "react-native-screens": "~4.4.0",
     "react-native-web": "~0.19.13",
     "zeego": "^2.0.4",
-    "zustand": "^5.0.2",
-    "expo-blur": "~14.0.1"
+    "zustand": "^5.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
