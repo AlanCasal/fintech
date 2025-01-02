@@ -8,8 +8,10 @@ import RoundButton from '@/components/RoundButton';
 import Dropdown from '@/components/Dropdown';
 import WidgetList from '@/components/WidgetList';
 import { styles } from './styles';
+import { useHeaderHeight } from '@react-navigation/elements';
 
 const Home = () => {
+	const headerHeight = useHeaderHeight();
 	const { balance, transactions, runTransaction, clearTransactions } =
 		useBalanceStore();
 
@@ -30,7 +32,10 @@ const Home = () => {
 	};
 
 	return (
-		<ScrollView style={styles.container}>
+		<ScrollView
+			style={styles.container}
+			contentContainerStyle={{ paddingTop: headerHeight }}
+		>
 			<View style={styles.account}>
 				<View style={styles.balanceRow}>
 					<Text style={styles.balanceAmount}>${balance()}</Text>
