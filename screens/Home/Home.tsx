@@ -3,19 +3,28 @@ import React from 'react';
 import { styles } from './styles';
 import RoundButton from '@/components/RoundButton';
 import Dropdown from '@/components/Dropdown';
+import { useBalanceStore } from '@/store/balanceStore';
 
 const BALANCE = 1420;
 
 const Home = () => {
+	const { balance, transactions, runTransaction, clearTransactions } =
+		useBalanceStore();
+
 	const handleAddMoney = () => {
-		console.log('Add Money');
+		runTransaction({
+			id: Math.random().toString(),
+			amount: Math.floor(Math.random() * 1000) * (Math.random() > 0.5 ? 1 : -1),
+			date: new Date(),
+			title: 'Add Money',
+		});
 	};
 
 	return (
 		<ScrollView style={styles.container}>
 			<View style={styles.account}>
 				<View style={styles.balanceRow}>
-					<Text style={styles.balanceAmount}>${BALANCE}</Text>
+					<Text style={styles.balanceAmount}>${balance()}</Text>
 					<Text style={styles.balanceCurrency}>€</Text>
 				</View>
 			</View>
