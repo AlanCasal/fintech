@@ -29,4 +29,42 @@ export const styles = StyleSheet.create({
 		justifyContent: 'space-between',
 		padding: 20,
 	},
+	transactions: {
+		marginHorizontal: 20,
+		padding: 14,
+		backgroundColor: 'white',
+		borderRadius: 16,
+		gap: 20,
+	},
+	noTransactions: {
+		fontSize: 16,
+		fontWeight: '500',
+		color: Colors.gray,
+	},
+	transaction: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		gap: 16,
+	},
+	circle: {
+		width: 40,
+		height: 40,
+		borderRadius: 20,
+		backgroundColor: Colors.lightGray,
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
+	transactionDetails: {
+		flex: 1,
+	},
+	transactionTitle: {
+		fontSize: 16,
+		fontWeight: '400',
+		color: Colors.dark,
+	},
+	transactionDate: {
+		fontSize: 12,
+		fontWeight: '500',
+		color: Colors.gray,
+	},
 });

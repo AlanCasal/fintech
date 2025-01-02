@@ -4,20 +4,28 @@ import { styles } from './styles';
 import RoundButton from '@/components/RoundButton';
 import Dropdown from '@/components/Dropdown';
 import { useBalanceStore } from '@/store/balanceStore';
-
-const BALANCE = 1420;
+import { defaultStyles } from '@/constants/Styles';
+import { Ionicons } from '@expo/vector-icons';
+import Colors from '@/constants/Colors';
 
 const Home = () => {
 	const { balance, transactions, runTransaction, clearTransactions } =
 		useBalanceStore();
 
 	const handleAddMoney = () => {
+		const amount =
+			Math.floor(Math.random() * 1000) * (Math.random() > 0.5 ? 1 : -1);
+
 		runTransaction({
 			id: Math.random().toString(),
-			amount: Math.floor(Math.random() * 1000) * (Math.random() > 0.5 ? 1 : -1),
+			amount,
 			date: new Date(),
-			title: 'Add Money',
+			title: `${amount > 0 ? 'Received' : 'Sent'} Money`,
 		});
+	};
+
+	const handleClearTransactions = () => {
+		clearTransactions();
 	};
 
 	return (
@@ -31,9 +39,39 @@ const Home = () => {
 
 			<View style={styles.actionRow}>
 				<RoundButton icon={'add'} label="Add Money" onPress={handleAddMoney} />
-				<RoundButton icon={'refresh'} label="Exchange" />
+				<RoundButton
+					icon={'refresh'}
+					label="Exchange"
+					onPress={handleClearTransactions}
+				/>
 				<RoundButton icon={'list'} label="Details" />
 				<Dropdown />
+			</View>
+
+			<Text style={defaultStyles.sectionHeader}>Transactions</Text>
+
+			<View style={styles.transactions}>
+				{!transactions.length && (
+					<Text style={styles.noTransactions}>No transactions</Text>
+				)}
+				{transactions.map(transaction => (
+					<View style={styles.transaction} key={transaction.id}>
+						<View style={styles.circle}>
+							<Ionicons
+								name={transaction.amount > 0 ? 'add' : 'remove'}
+								size={20}
+								color={Colors.dark}
+							/>
+						</View>
+						<View style={styles.transactionDetails}>
+							<Text style={styles.transactionTitle}>{transaction.title}</Text>
+							<Text style={styles.transactionDate}>
+								{new Date(transaction.date).toLocaleDateString()}
+							</Text>
+						</View>
+						<Text>{transaction.amount}€</Text>
+					</View>
+				))}
 			</View>
 		</ScrollView>
 	);
