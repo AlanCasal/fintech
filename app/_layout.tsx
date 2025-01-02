@@ -3,7 +3,7 @@ import { Platform, StyleSheet, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useFonts } from 'expo-font';
-import { Stack, useRouter } from 'expo-router';
+import { Stack, useRouter, useSegments } from 'expo-router';
 import { ClerkProvider, useAuth } from '@clerk/clerk-expo';
 import { TokenCache } from '@clerk/clerk-expo/dist/cache';
 import * as SplashScreen from 'expo-splash-screen';
@@ -61,8 +61,9 @@ const RootLayout = () => {
 		SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
 		...FontAwesome.font,
 	});
-	const router = useRouter();
 	const { isLoaded: isAuthLoaded, isSignedIn } = useAuth();
+	const segments = useSegments();
+	const router = useRouter();
 
 	// Expo Router uses Error Boundaries to catch errors in the navigation tree.
 	useEffect(() => {
@@ -74,9 +75,15 @@ const RootLayout = () => {
 	}, [loaded]);
 
 	useEffect(() => {
-		if (isSignedIn) {
-			console.log('%c[signed in]', 'background: #000059; color: #9fcfff');
-		}
+		console.log('%c[signed in]', 'background: #000059; color: #9fcfff');
+		if (!isAuthLoaded) return;
+
+		const inAuthGroup = segments[0] === '(authenticated)';
+
+		// is in login screen and signed in
+		if (isSignedIn && !inAuthGroup)
+			router.replace('/(authenticated)/(tabs)/home');
+		else if (!isSignedIn) router.replace('/');
 	}, [isSignedIn]);
 
 	if (!loaded || !isAuthLoaded || !CLERK_PUBLISHABLE_KEY) {
