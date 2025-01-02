@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useFonts } from 'expo-font';
@@ -75,7 +76,6 @@ const RootLayout = () => {
 	}, [loaded]);
 
 	useEffect(() => {
-		console.log('%c[signed in]', 'background: #000059; color: #9fcfff');
 		if (!isAuthLoaded) return;
 
 		const inAuthGroup = segments[0] === '(authenticated)';
@@ -114,7 +114,10 @@ const RootLayoutNav = () => {
 			publishableKey={CLERK_PUBLISHABLE_KEY!}
 			tokenCache={tokenCache}
 		>
-			<RootLayout />
+			{/* needed for gesture handler, like WidgetList */}
+			<GestureHandlerRootView style={{ flex: 1 }}>
+				<RootLayout />
+			</GestureHandlerRootView>
 		</ClerkProvider>
 	);
 };

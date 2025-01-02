@@ -1,12 +1,13 @@
 import { Text, ScrollView, View } from 'react-native';
 import React from 'react';
-import { styles } from './styles';
+import { useBalanceStore } from '@/store/balanceStore';
+import { Ionicons } from '@expo/vector-icons';
+import { defaultStyles } from '@/constants/Styles';
+import Colors from '@/constants/Colors';
 import RoundButton from '@/components/RoundButton';
 import Dropdown from '@/components/Dropdown';
-import { useBalanceStore } from '@/store/balanceStore';
-import { defaultStyles } from '@/constants/Styles';
-import { Ionicons } from '@expo/vector-icons';
-import Colors from '@/constants/Colors';
+import WidgetList from '@/components/WidgetList';
+import { styles } from './styles';
 
 const Home = () => {
 	const { balance, transactions, runTransaction, clearTransactions } =
@@ -73,6 +74,10 @@ const Home = () => {
 					</View>
 				))}
 			</View>
+
+			<Text style={defaultStyles.sectionHeader}>Widgets</Text>
+
+			<WidgetList />
 		</ScrollView>
 	);
 };
