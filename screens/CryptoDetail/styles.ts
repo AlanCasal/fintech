@@ -49,7 +49,7 @@ export const styles = StyleSheet.create({
 		paddingBottom: 8,
 		backgroundColor: Colors.background,
 		borderBottomColor: Colors.gray,
-		borderBottomWidth: StyleSheet.hairlineWidth,
+		// borderBottomWidth: StyleSheet.hairlineWidth,
 	},
 	categoriesButton: {
 		padding: 10,

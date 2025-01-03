@@ -6,10 +6,13 @@ import Colors from '@/constants/Colors';
 import { styles } from './styles';
 import { defaultStyles } from '@/constants/Styles';
 import { useQuery } from '@tanstack/react-query';
-import { CryptoInfo } from '@/interfaces/crypto';
+import { CryptoInfo, Ticker } from '@/interfaces/crypto';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { useHeaderHeight } from '@react-navigation/elements';
 import { ScrollView } from 'react-native-gesture-handler';
+import { CartesianChart, Line } from 'victory-native';
+import { useFont } from '@shopify/react-native-skia';
+import { format } from 'date-fns';
 
 const CATEGORIES = ['Overview', 'News', 'Orders', 'Transactions'];
 
@@ -19,6 +22,7 @@ const Crypto = () => {
 	const { id } = useLocalSearchParams();
 	const router = useRouter();
 	const headerHeight = useHeaderHeight();
+	const font = useFont(require('@/assets/fonts/SpaceMono-Regular.ttf'), 12);
 
 	const { data, isLoading, error } = useQuery<CryptoInfo, Error>({
 		queryKey: ['info', id],
@@ -29,8 +33,18 @@ const Crypto = () => {
 		},
 	});
 
-	if (isLoading) return <LoadingSpinner />;
-	if (error) return <Text>Error: {error.message}</Text>;
+	const {
+		data: tickers,
+		isLoading: tickersLoading,
+		error: tickersError,
+	} = useQuery<Ticker[], Error>({
+		queryKey: ['tickers'],
+		queryFn: async (): Promise<Ticker[]> => {
+			const response = await fetch(`/api/tickers`);
+			const data = await response.json();
+			return data;
+		},
+	});
 
 	return (
 		<>
@@ -137,6 +151,32 @@ const Crypto = () => {
 				)}
 				renderItem={() => (
 					<>
+						{tickers && (
+							<View style={[defaultStyles.block, { height: 500 }]}>
+								<CartesianChart
+									axisOptions={{
+										font,
+										tickCount: 5,
+										labelOffset: { x: -2, y: 0 },
+										labelColor: Colors.gray,
+										formatYLabel: label => `${label}€`,
+										formatXLabel: ms => format(new Date(ms), 'MMM'),
+									}}
+									data={tickers}
+									xKey="timestamp"
+									yKeys={['price'] as const}
+								>
+									{({ points }) => (
+										<Line
+											points={points.price}
+											color={Colors.primary}
+											strokeWidth={3}
+										/>
+									)}
+								</CartesianChart>
+							</View>
+						)}
+
 						<View style={[defaultStyles.block, styles.overview]}>
 							<Text style={styles.subtitle}>Overview</Text>
 							<Text style={styles.description}>{data?.description}</Text>
