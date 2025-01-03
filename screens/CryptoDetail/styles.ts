@@ -85,4 +85,15 @@ export const styles = StyleSheet.create({
 	description: {
 		color: Colors.gray,
 	},
+
+	/* Chart */
+	chartTodayTextPrice: {
+		color: Colors.dark,
+		fontWeight: '700',
+		fontSize: 30,
+	},
+	chartTodayText: {
+		color: Colors.gray,
+		fontSize: 18,
+	},
 });
