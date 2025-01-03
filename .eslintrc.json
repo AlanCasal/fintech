@@ -32,9 +32,12 @@
 			"version": "detect"
 		},
 		"import/resolver": {
+			"typescript": {
+				"project": "./tsconfig.json"
+			},
 			"node": {
 				"extensions": [".js", ".jsx", ".ts", ".tsx"],
-				"paths": ["./src", "./scripts"]
+				"paths": ["."]
 			}
 		},
 		"import/ignore": ["node_modules/react-native/index\\.js$"]
