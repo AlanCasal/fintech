@@ -14,6 +14,7 @@ import LoadingSpinner from '@/components/LoadingSpinner';
 import { styles } from './styles';
 import { CLERK_PUBLISHABLE_KEY } from '@/constants/Utils';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { UserInactivityProvider } from '@/context/UserInactivity';
 
 const createTokenCache = (): TokenCache => {
 	return {
@@ -110,10 +111,12 @@ const RootLayoutNav = () => {
 			tokenCache={tokenCache}
 		>
 			<QueryClientProvider client={queryClient}>
-				{/* needed for gesture handler, like WidgetList */}
-				<GestureHandlerRootView style={{ flex: 1 }}>
-					<RootLayout />
-				</GestureHandlerRootView>
+				<UserInactivityProvider>
+					{/* needed for gesture handler, like WidgetList */}
+					<GestureHandlerRootView style={{ flex: 1 }}>
+						<RootLayout />
+					</GestureHandlerRootView>
+				</UserInactivityProvider>
 			</QueryClientProvider>
 		</ClerkProvider>
 	);
