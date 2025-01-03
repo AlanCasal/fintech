@@ -6,6 +6,7 @@ import { CurrencyData } from '@/interfaces/crypto';
 import { styles } from './styles';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { Link } from 'expo-router';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { useHeaderHeight } from '@react-navigation/elements';
 import { Ionicons } from '@expo/vector-icons';
 

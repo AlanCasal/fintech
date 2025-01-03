@@ -8,6 +8,7 @@ import RoundButton from '@/components/RoundButton';
 import Dropdown from '@/components/Dropdown';
 import WidgetList from '@/components/WidgetList';
 import { styles } from './styles';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { useHeaderHeight } from '@react-navigation/elements';
 
 const Home = () => {

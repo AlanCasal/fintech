@@ -65,6 +65,7 @@ const VerifyPhone = () => {
 		if (code.length === 6) {
 			signIn ? handleVerifySignIn() : handleVerifyCode();
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [code]);
 
 	return (

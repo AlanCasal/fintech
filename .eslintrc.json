@@ -90,7 +90,8 @@
 		"import/no-cycle": "error",
 		"quotes": ["error", "single"],
 		"@typescript-eslint/quotes": ["error", "single"],
-		"indent": ["error", "tab"]
+		"indent": ["error", "tab"],
+		"@typescript-eslint/no-unused-expressions": "off"
 	},
 	"ignorePatterns": ["todos.js", "metro.config.js", "babel.config.js"]
 }

@@ -16,15 +16,16 @@ import { StatusBar } from 'expo-status-bar';
 import { isClerkAPIResponseError, useSignUp } from '@clerk/clerk-expo';
 import { KEYBOARD_VERTICAL_OFFSET } from '@/constants/Utils';
 
+const COUNTRY_CODE = '+54';
+
 const Signup = () => {
-	const [countryCode, setCountryCode] = useState('+54');
 	const [mobileNumber, setMobileNumber] = useState('');
 
 	const router = useRouter();
 	const { signUp } = useSignUp();
 
 	const handleSignup = async () => {
-		const phoneNumber = `${countryCode}${mobileNumber}`;
+		const phoneNumber = `${COUNTRY_CODE}${mobileNumber}`;
 
 		try {
 			await signUp!.create({ phoneNumber });
@@ -75,7 +76,7 @@ const Signup = () => {
 						style={styles.input}
 						placeholderTextColor={Colors.gray}
 						keyboardType="numeric"
-						value={countryCode}
+						value={COUNTRY_CODE}
 					/>
 					<TextInput
 						style={[styles.input, styles.inputMobileNumber]}

@@ -3,6 +3,7 @@ import React from 'react';
 import { SectionList, View, Text } from 'react-native';
 import { useQuery } from '@tanstack/react-query';
 import { CryptoInfo } from '@/interfaces/crypto';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { useHeaderHeight } from '@react-navigation/elements';
 import ChartCartesian from '@/components/ChartCartesian';
 import ScreenHeader from './components/ScreenHeader';
@@ -12,8 +13,7 @@ import Actions from './components/Actions';
 import SymbolLogo from './components/SymbolLogo';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { styles } from './styles';
-
-const ERROR_MESSAGE = "Couldn't load data.\nPlease try again later";
+import { ERROR_MESSAGE_FETCHING_DATA } from '@/constants/Utils';
 
 const Crypto = () => {
 	const { id } = useLocalSearchParams();
@@ -23,8 +23,8 @@ const Crypto = () => {
 		queryKey: ['info', id],
 		queryFn: async () => {
 			const response = await fetch(`/api/info?ids=${id}`);
-			const data = await response.json();
-			return data[+id];
+			const info = await response.json();
+			return info[+id];
 		},
 	});
 
@@ -64,7 +64,7 @@ const Crypto = () => {
 				<View style={styles.centerContent}>
 					<Text style={styles.errorTitle}>Error</Text>
 					<Text style={styles.errorMessage}>
-						{error?.message || ERROR_MESSAGE}
+						{error?.message || ERROR_MESSAGE_FETCHING_DATA}
 					</Text>
 				</View>
 			)}

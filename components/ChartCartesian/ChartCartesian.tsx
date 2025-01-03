@@ -15,6 +15,7 @@ import Colors from '@/constants/Colors';
 import { defaultStyles } from '@/constants/Styles';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import SpaceMonoRegular from '@/assets/fonts/SpaceMono-Regular.ttf';
+import { ERROR_MESSAGE_FETCHING_DATA } from '@/constants/Utils';
 
 Animated.addWhitelistedNativeProps({ text: true });
 const AnimatedTextInput = Animated.createAnimatedComponent(TextInput);
@@ -26,9 +27,6 @@ const ToolTip = ({
 	x: SharedValue<number>;
 	y: SharedValue<number>;
 }) => <Circle cx={x} cy={y} r={8} color={Colors.primary} />;
-
-// eslint-disable-next-line quotes, @typescript-eslint/quotes
-const DEFAULT_ERROR_MESSAGE = "Couldn't load chart data";
 
 const ChartCartesian = () => {
 	const { data, isLoading, error } = useQuery<Ticker[], Error>({
@@ -79,7 +77,7 @@ const ChartCartesian = () => {
 			{error && (
 				<View style={styles.errorContainer}>
 					<Text style={styles.errorText}>
-						{error?.message || DEFAULT_ERROR_MESSAGE}
+						{error?.message || ERROR_MESSAGE_FETCHING_DATA}
 					</Text>
 				</View>
 			)}
