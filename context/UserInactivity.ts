@@ -18,6 +18,10 @@ export const UserInactivityProvider = ({ children }: Props) => {
 	const router = useRouter();
 	const { isSignedIn } = useAuth();
 
+	const recordStartTime = () => {
+		storage.set('startTime', Date.now());
+	};
+
 	const handleAppStateChange = (nextAppState: AppStateStatus) => {
 		if (['background', 'inactive'].includes(nextAppState)) {
 			recordStartTime();
@@ -33,10 +37,6 @@ export const UserInactivityProvider = ({ children }: Props) => {
 		appState.current = nextAppState;
 	};
 
-	const recordStartTime = () => {
-		storage.set('startTime', Date.now());
-	};
-
 	useEffect(() => {
 		const subscription = AppState.addEventListener(
 			'change',
@@ -46,6 +46,7 @@ export const UserInactivityProvider = ({ children }: Props) => {
 		return () => {
 			subscription.remove();
 		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return children;

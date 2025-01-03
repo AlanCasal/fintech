@@ -1,5 +1,5 @@
-import CryptoDetailScreen from '@/screens/CryptoDetail';
 import React from 'react';
+import CryptoDetailScreen from '@/screens/CryptoDetail';
 
 const CryptoDetail = () => <CryptoDetailScreen />;
 

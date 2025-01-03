@@ -1,4 +1,5 @@
-import { useEffect } from 'react';
+/* eslint-disable no-console */
+import React, { useEffect } from 'react';
 import { Platform, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
@@ -76,6 +77,7 @@ const RootLayout = () => {
 		if (isSignedIn && !inAuthGroup)
 			router.replace('/(authenticated)/(tabs)/crypto');
 		else if (!isSignedIn) router.replace('/');
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isSignedIn]);
 
 	if (!loaded || !isAuthLoaded || !CLERK_PUBLISHABLE_KEY) {

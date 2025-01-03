@@ -14,6 +14,7 @@ import { styles } from './styles';
 import Colors from '@/constants/Colors';
 import { defaultStyles } from '@/constants/Styles';
 import LoadingSpinner from '@/components/LoadingSpinner';
+import SpaceMonoRegular from '@/assets/fonts/SpaceMono-Regular.ttf';
 
 Animated.addWhitelistedNativeProps({ text: true });
 const AnimatedTextInput = Animated.createAnimatedComponent(TextInput);
@@ -26,17 +27,20 @@ const ToolTip = ({
 	y: SharedValue<number>;
 }) => <Circle cx={x} cy={y} r={8} color={Colors.primary} />;
 
+// eslint-disable-next-line quotes, @typescript-eslint/quotes
+const DEFAULT_ERROR_MESSAGE = "Couldn't load chart data";
+
 const ChartCartesian = () => {
 	const { data, isLoading, error } = useQuery<Ticker[], Error>({
 		queryKey: ['tickers'],
 		queryFn: async (): Promise<Ticker[]> => {
-			const response = await fetch(`/api/tickers`);
-			const data = await response.json();
-			return data;
+			const response = await fetch('/api/tickers');
+			const tickers = await response.json();
+			return tickers;
 		},
 	});
 
-	const font = useFont(require('@/assets/fonts/SpaceMono-Regular.ttf'), 12);
+	const font = useFont(SpaceMonoRegular, 12);
 	const { state, isActive } = useChartPressState<{
 		x: string | number;
 		y: Record<'price', number>;
@@ -75,7 +79,7 @@ const ChartCartesian = () => {
 			{error && (
 				<View style={styles.errorContainer}>
 					<Text style={styles.errorText}>
-						{error?.message || "Couldn't load chart data"}
+						{error?.message || DEFAULT_ERROR_MESSAGE}
 					</Text>
 				</View>
 			)}
