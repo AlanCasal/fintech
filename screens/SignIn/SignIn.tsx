@@ -41,8 +41,8 @@ const CONTINUE_WITH_BUTTONS = [
 	},
 ];
 
-const Login = () => {
-	const [countryCode, setCountryCode] = useState('+49');
+const SignIn = () => {
+	const [countryCode, setCountryCode] = useState('+54');
 	const [mobileNumber, setMobileNumber] = useState('');
 
 	const router = useRouter();
@@ -90,7 +90,7 @@ const Login = () => {
 		>
 			<StatusBar style="dark" />
 			<Stack.Screen
-				name="login"
+				name="signin"
 				options={{
 					title: '',
 					headerBackTitle: '',
@@ -143,8 +143,8 @@ const Login = () => {
 				<TouchableOpacity
 					style={[
 						defaultStyles.pillButton,
-						styles.loginButton,
-						!mobileNumber ? styles.loginDisabled : styles.loginEnabled,
+						styles.signInButton,
+						!mobileNumber ? styles.signInDisabled : styles.signInEnabled,
 					]}
 					onPress={() => handleSignIn(SignInType.PHONE)}
 					disabled={!mobileNumber}
@@ -179,4 +179,4 @@ const Login = () => {
 	);
 };
 
-export default Login;
+export default SignIn;

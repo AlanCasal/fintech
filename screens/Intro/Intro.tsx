@@ -29,13 +29,13 @@ const Intro = () => {
 
 			<View style={styles.buttons}>
 				<Link
-					href="/login"
+					href="/signin"
 					asChild
-					style={[defaultStyles.pillButton, styles.button, styles.buttonLogin]}
+					style={[defaultStyles.pillButton, styles.button, styles.buttonSignIn]}
 				>
 					<TouchableOpacity>
-						<Text style={[styles.buttonText, styles.buttonTextLogin]}>
-							Log In
+						<Text style={[styles.buttonText, styles.buttonTextSignIn]}>
+							Sign In
 						</Text>
 					</TouchableOpacity>
 				</Link>

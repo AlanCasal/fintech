@@ -124,9 +124,9 @@ const VerifyPhone = () => {
 				)}
 			/>
 
-			<Link href="/login" replace asChild>
+			<Link href="/signin" replace asChild>
 				<Text style={defaultStyles.textLink}>
-					Already have an account? Log In
+					Already have an account? Sign In
 				</Text>
 			</Link>
 		</View>

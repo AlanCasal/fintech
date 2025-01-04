@@ -88,10 +88,10 @@ const Signup = () => {
 					/>
 				</View>
 
-				<Link href={'/login'} replace asChild>
+				<Link href={'/signin'} replace asChild>
 					<TouchableOpacity>
 						<Text style={defaultStyles.textLink}>
-							Already have an account? Log In instead
+							Already have an account? Sign In instead
 						</Text>
 					</TouchableOpacity>
 				</Link>

@@ -36,10 +36,10 @@ export const styles = StyleSheet.create({
 		fontWeight: '500',
 		fontSize: 22,
 	},
-	buttonLogin: {
+	buttonSignIn: {
 		backgroundColor: Colors.dark,
 	},
-	buttonTextLogin: {
+	buttonTextSignIn: {
 		color: 'white',
 	},
 	buttonSignUp: {

@@ -18,13 +18,13 @@ export const styles = StyleSheet.create({
 	inputMobileNumber: {
 		flex: 1,
 	},
-	loginButton: {
+	signInButton: {
 		marginBottom: 20,
 	},
-	loginEnabled: {
+	signInEnabled: {
 		backgroundColor: Colors.dark,
 	},
-	loginDisabled: {
+	signInDisabled: {
 		backgroundColor: Colors.primaryMuted,
 	},
 	dividerContainer: {
