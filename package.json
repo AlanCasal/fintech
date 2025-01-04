@@ -49,7 +49,8 @@
     "victory-native": "^41.14.0",
     "zeego": "^2.0.4",
     "zustand": "^5.0.2",
-    "expo-local-authentication": "~15.0.1"
+    "expo-local-authentication": "~15.0.1",
+    "expo-image-picker": "~16.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
