@@ -3,7 +3,11 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
 	blurView: {
 		flex: 1,
-		backgroundColor: 'rgba(255, 255, 255, 0.05)',
+		shadowColor: '#000',
+		shadowOffset: { width: 0, height: 3 },
+		shadowOpacity: 0.2,
+		shadowRadius: 6,
+		elevation: 5,
 	},
 	tabBarStyle: {
 		backgroundColor: 'transparent',
