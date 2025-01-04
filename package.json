@@ -24,9 +24,12 @@
     "expo-av": "~15.0.1",
     "expo-blur": "~14.0.1",
     "expo-dev-client": "~5.0.8",
+    "expo-dynamic-app-icon": "^1.2.0",
     "expo-font": "~13.0.2",
     "expo-haptics": "~14.0.0",
+    "expo-image-picker": "~16.0.3",
     "expo-linking": "~7.0.3",
+    "expo-local-authentication": "~15.0.1",
     "expo-router": "~4.0.15",
     "expo-secure-store": "~14.0.0",
     "expo-splash-screen": "~0.29.18",
@@ -48,9 +51,7 @@
     "react-native-web": "~0.19.13",
     "victory-native": "^41.14.0",
     "zeego": "^2.0.4",
-    "zustand": "^5.0.2",
-    "expo-local-authentication": "~15.0.1",
-    "expo-image-picker": "~16.0.3"
+    "zustand": "^5.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

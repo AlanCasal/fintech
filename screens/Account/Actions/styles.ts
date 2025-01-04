@@ -14,6 +14,15 @@ export const styles = StyleSheet.create({
 		gap: 20,
 		alignItems: 'center',
 	},
+	iconText: {
+		color: 'white',
+		fontSize: 18,
+	},
+	iconImage: {
+		width: 24,
+		height: 24,
+		borderRadius: 5,
+	},
 	actionText: {
 		fontSize: 18,
 		flex: 1,

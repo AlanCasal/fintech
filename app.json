@@ -1,68 +1,85 @@
 {
-  "expo": {
-    "name": "fintech",
-    "slug": "fintech",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
-    "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
-    "splash": {
-      "image": "./assets/images/splash-icon.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.alan.casal.dev.fintech",
-      "infoPlist": {
-        "NSFaceIDUsageDescription": "This app uses FaceID to authenticate the user."
-      }
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      },
-      "package": "com.alan.casal.dev.fintech",
-      "permissions": [
-        "android.permission.USE_BIOMETRIC",
-        "android.permission.USE_FINGERPRINT"
-      ]
-    },
-    "web": {
-      "bundler": "metro",
-      "output": "server",
-      "favicon": "./assets/images/favicon.png"
-    },
-    "plugins": [
-      "expo-asset",
-      "expo-secure-store",
-      [
-        "expo-router",
-        {
-          "origin": "https://galaxies.dev"
-        }
-      ],
-      [
-        "expo-local-authentication",
-        {
-          "faceIDPermission": "Allow $(PRODUCT_NAME) to use Face ID to authenticate you"
-        }
-      ]
-    ],
-    "experiments": {
-      "typedRoutes": true
-    },
-    "extra": {
-      "router": {
-        "origin": "https://galaxies.dev"
-      },
-      "eas": {
-        "projectId": "aebe1b2b-4287-4adf-8989-b002a6208f90"
-      }
-    },
-    "owner": "alan.casal.dev"
-  }
+	"expo": {
+		"name": "fintech",
+		"slug": "fintech",
+		"version": "1.0.0",
+		"orientation": "portrait",
+		"icon": "./assets/images/icons/icon.png",
+		"scheme": "myapp",
+		"userInterfaceStyle": "automatic",
+		"newArchEnabled": true,
+		"splash": {
+			"image": "./assets/images/splash-icon.png",
+			"resizeMode": "contain",
+			"backgroundColor": "#ffffff"
+		},
+		"ios": {
+			"supportsTablet": true,
+			"bundleIdentifier": "com.alan.casal.dev.fintech",
+			"infoPlist": {
+				"NSFaceIDUsageDescription": "This app uses FaceID to authenticate the user."
+			}
+		},
+		"android": {
+			"adaptiveIcon": {
+				"foregroundImage": "./assets/images/adaptive-icon.png",
+				"backgroundColor": "#ffffff"
+			},
+			"package": "com.alan.casal.dev.fintech",
+			"permissions": [
+				"android.permission.USE_BIOMETRIC",
+				"android.permission.USE_FINGERPRINT"
+			]
+		},
+		"web": {
+			"bundler": "metro",
+			"output": "server",
+			"favicon": "./assets/images/favicon.png"
+		},
+		"plugins": [
+			"expo-asset",
+			"expo-secure-store",
+			[
+				"expo-router",
+				{
+					"origin": "https://galaxies.dev"
+				}
+			],
+			[
+				"expo-local-authentication",
+				{
+					"faceIDPermission": "Allow $(PRODUCT_NAME) to use Face ID to authenticate you"
+				}
+			],
+			[
+				"expo-dynamic-app-icon",
+				{
+					"default": {
+						"image": "./assets/images/icons/icon.png",
+						"prerendered": true
+					},
+					"dark": {
+						"image": "./assets/images/icons/icon-dark.png",
+						"prerendered": true
+					},
+					"vivid": {
+						"image": "./assets/images/icons/icon-vivid.png",
+						"prerendered": true
+					}
+				}
+			]
+		],
+		"experiments": {
+			"typedRoutes": true
+		},
+		"extra": {
+			"router": {
+				"origin": "https://galaxies.dev"
+			},
+			"eas": {
+				"projectId": "aebe1b2b-4287-4adf-8989-b002a6208f90"
+			}
+		},
+		"owner": "alan.casal.dev"
+	}
 }
