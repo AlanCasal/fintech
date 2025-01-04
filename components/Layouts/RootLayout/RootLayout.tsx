@@ -73,9 +73,9 @@ const RootLayout = () => {
 
 		const inAuthGroup = segments[0] === '(authenticated)';
 
-		// is in login screen and signed in
+		// is in signIn screen and signed in
 		if (isSignedIn && !inAuthGroup)
-			router.replace('/(authenticated)/(tabs)/crypto');
+			router.replace('/(authenticated)/(tabs)/home');
 		else if (!isSignedIn) router.replace('/');
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isSignedIn]);

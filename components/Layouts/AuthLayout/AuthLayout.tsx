@@ -17,7 +17,7 @@ const AuthLayout = () => {
 				screenOptions={{
 					tabBarActiveTintColor: Colors.primary,
 					tabBarBackground: () => (
-						<BlurView intensity={100} style={styles.blurView} />
+						<BlurView intensity={90} style={styles.blurView} />
 					),
 					tabBarStyle: styles.tabBarStyle,
 				}}
