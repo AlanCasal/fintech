@@ -1,7 +1,6 @@
 import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 import React from 'react';
 import { defaultStyles } from '@/constants/Styles';
-import { useQuery } from '@tanstack/react-query';
 import { CurrencyData } from '@/interfaces/crypto';
 import { styles } from './styles';
 import LoadingSpinner from '@/components/LoadingSpinner';
@@ -9,39 +8,18 @@ import { Link } from 'expo-router';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useHeaderHeight } from '@react-navigation/elements';
 import { Ionicons } from '@expo/vector-icons';
+import { useGetCryptoList } from './api/hooks/useGetCryptoList';
+import { useGetCryptoInfo } from './api/hooks/useGetCryptoInfo';
 
 const Crypto = () => {
 	const headerHeight = useHeaderHeight();
-	const {
-		data: currencies,
-		isLoading: currenciesLoading,
-		error: currenciesError,
-	} = useQuery({
-		queryKey: ['currencies'],
-		queryFn: async () => {
-			const response = await fetch('/api/listings');
-			const data = await response.json();
-			return data;
-		},
-	});
+	const { currencies, currenciesLoading, currenciesError } = useGetCryptoList();
 
 	const ids = currencies
 		?.map((currency: CurrencyData) => currency.id)
 		.join(',');
 
-	const {
-		data: currenciesData,
-		isLoading: infoLoading,
-		error: infoError,
-	} = useQuery({
-		enabled: !!ids,
-		queryKey: ['info', ids],
-		queryFn: async () => {
-			const response = await fetch(`/api/info?ids=${ids}`);
-			const data = await response.json();
-			return data;
-		},
-	});
+	const { currenciesData, infoLoading, infoError } = useGetCryptoInfo(ids);
 
 	if (currenciesLoading || infoLoading) return <LoadingSpinner />;
 	if (currenciesError || infoError)
