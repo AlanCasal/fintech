@@ -1,7 +1,6 @@
 import {
 	View,
 	Text,
-	TextInput,
 	TouchableOpacity,
 	KeyboardAvoidingView,
 	Alert,
@@ -16,31 +15,10 @@ import { StatusBar } from 'expo-status-bar';
 import { KEYBOARD_VERTICAL_OFFSET } from '@/constants/Utils';
 import { isClerkAPIResponseError, useSignIn } from '@clerk/clerk-expo';
 import BackButton from '@/components/Buttons/BackButton';
-
-enum SignInType {
-	PHONE = 'phone',
-	EMAIL = 'email',
-	GOOGLE = 'google',
-	APPLE = 'apple',
-}
-
-const CONTINUE_WITH_BUTTONS = [
-	{
-		type: SignInType.EMAIL,
-		icon: 'mail',
-		text: 'Continue with Email',
-	},
-	{
-		type: SignInType.GOOGLE,
-		icon: 'logo-google',
-		text: 'Continue with Google',
-	},
-	{
-		type: SignInType.APPLE,
-		icon: 'logo-apple',
-		text: 'Continue with Apple',
-	},
-];
+import SignInButtons from '@/components/Buttons/SignInButtons';
+import { SignInType } from '@/enums';
+import GlobalPhoneInputs from '@/components/Inputs/GlobalPhoneInputs';
+import Divider from '@/components/Divider';
 
 const SignIn = () => {
 	const [countryCode, setCountryCode] = useState('+54');
@@ -116,26 +94,16 @@ const SignIn = () => {
 
 			<View style={[defaultStyles.container, styles.container]}>
 				<Text style={defaultStyles.header}>Welcome Back !</Text>
+
 				<Text style={defaultStyles.descriptionText}>
 					Enter the phone number associated with your account
 				</Text>
-
-				<View style={styles.inputContainer}>
-					<TextInput
-						style={styles.input}
-						placeholderTextColor={Colors.gray}
-						keyboardType="numeric"
-						value={countryCode}
-					/>
-					<TextInput
-						style={[styles.input, styles.inputMobileNumber]}
-						placeholder="Mobile number"
-						placeholderTextColor={Colors.gray}
-						keyboardType="numeric"
-						value={mobileNumber}
-						onChangeText={setMobileNumber}
-					/>
-				</View>
+				<GlobalPhoneInputs
+					countryCode={countryCode}
+					mobileNumber={mobileNumber}
+					handleCountryCodeChange={setCountryCode}
+					handleMobileNumberChange={setMobileNumber}
+				/>
 
 				<TouchableOpacity
 					style={[
@@ -149,28 +117,9 @@ const SignIn = () => {
 					<Text style={defaultStyles.buttonText}>Continue</Text>
 				</TouchableOpacity>
 
-				<View style={styles.dividerContainer}>
-					<View style={styles.divider} />
-					<Text style={defaultStyles.descriptionText}>or</Text>
-					<View style={styles.divider} />
-				</View>
+				<Divider centerText="or" />
 
-				{CONTINUE_WITH_BUTTONS.map(button => (
-					<TouchableOpacity
-						key={button.type}
-						style={[defaultStyles.pillButton, styles.continueWithButton]}
-						onPress={() => handleSignIn(button.type)}
-					>
-						<Ionicons
-							name={button.icon as keyof typeof Ionicons.glyphMap}
-							size={24}
-							color={Colors.dark}
-						/>
-						<Text style={[defaultStyles.buttonText, styles.continueWithText]}>
-							{button.text}
-						</Text>
-					</TouchableOpacity>
-				))}
+				<SignInButtons handleSignIn={handleSignIn} />
 			</View>
 		</KeyboardAvoidingView>
 	);
