@@ -32,7 +32,7 @@ export const styles = StyleSheet.create({
 	transactions: {
 		marginHorizontal: 20,
 		padding: 14,
-		backgroundColor: 'white',
+		backgroundColor: Colors.white,
 		borderRadius: 16,
 		gap: 20,
 	},

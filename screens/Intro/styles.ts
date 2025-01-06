@@ -1,5 +1,5 @@
-import Colors from '@/constants/Colors';
 import { StyleSheet } from 'react-native';
+import Colors from '@/constants/Colors';
 
 export const styles = StyleSheet.create({
 	container: {
@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
 		fontSize: 36,
 		fontWeight: '900',
 		textTransform: 'uppercase',
-		color: 'white',
+		color: Colors.white,
 	},
 	buttons: {
 		flexDirection: 'row',
@@ -40,12 +40,12 @@ export const styles = StyleSheet.create({
 		backgroundColor: Colors.dark,
 	},
 	buttonTextSignIn: {
-		color: 'white',
+		color: Colors.white,
 	},
 	buttonSignUp: {
-		backgroundColor: 'white',
+		backgroundColor: Colors.white,
 	},
 	buttonTextSignUp: {
-		color: 'black',
+		color: Colors.dark,
 	},
 });

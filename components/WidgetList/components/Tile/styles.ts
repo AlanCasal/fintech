@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
 	container: {
 		width: SIZE - 20,
 		height: 150,
-		backgroundColor: 'white',
+		backgroundColor: Colors.white,
 		borderRadius: 20,
 		shadowColor: '#000',
 		shadowOffset: { width: 0, height: 1 },
@@ -45,7 +45,7 @@ export const styles = StyleSheet.create({
 		justifyContent: 'center',
 	},
 	cashbackTitle: {
-		color: 'white',
+		color: Colors.white,
 		fontWeight: '700',
 		fontSize: 18,
 	},

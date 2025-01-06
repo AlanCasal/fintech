@@ -1,5 +1,5 @@
-import Colors from '@/constants/Colors';
 import { StyleSheet } from 'react-native';
+import Colors from '@/constants/Colors';
 
 export const styles = StyleSheet.create({
 	container: {
@@ -40,7 +40,7 @@ export const styles = StyleSheet.create({
 	continueWithButton: {
 		flexDirection: 'row',
 		gap: 10,
-		backgroundColor: 'white',
+		backgroundColor: Colors.white,
 	},
 	continueWithText: {
 		color: Colors.dark,

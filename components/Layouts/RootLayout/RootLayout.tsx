@@ -17,6 +17,7 @@ import { CLERK_PUBLISHABLE_KEY } from '@/constants/Utils';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { UserInactivityProvider } from '@/context/UserInactivity';
 import BackButton from '@/components/Buttons/BackButton';
+import Colors from '@/constants/Colors';
 
 const createTokenCache = (): TokenCache => {
 	return {
@@ -107,7 +108,9 @@ const RootLayout = () => {
 					animation: 'slide_from_bottom',
 					title: '',
 					headerTransparent: true,
-					headerLeft: () => <BackButton icon="close-outline" color="white" />,
+					headerLeft: () => (
+						<BackButton icon="close-outline" color={Colors.white} />
+					),
 				}}
 				name="(authenticated)/(modals)/account"
 			/>

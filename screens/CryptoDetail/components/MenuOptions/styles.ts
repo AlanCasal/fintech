@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		borderRadius: 20,
-		backgroundColor: 'white',
+		backgroundColor: Colors.white,
 	},
 	menuText: {
 		fontSize: 14,

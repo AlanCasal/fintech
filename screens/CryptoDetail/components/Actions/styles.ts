@@ -13,6 +13,6 @@ export const styles = StyleSheet.create({
 		gap: 16,
 	},
 	buttonText: {
-		color: 'white',
+		color: Colors.white,
 	},
 });

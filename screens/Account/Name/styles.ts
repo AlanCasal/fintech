@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
 	title: {
 		fontSize: 26,
 		fontWeight: 'bold',
-		color: 'white',
+		color: Colors.white,
 	},
 	nameWrapper: {
 		flexDirection: 'row',
@@ -25,6 +25,6 @@ export const styles = StyleSheet.create({
 		borderColor: Colors.gray,
 		padding: 10,
 		borderRadius: 10,
-		backgroundColor: 'white',
+		backgroundColor: Colors.white,
 	},
 });

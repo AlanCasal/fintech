@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
 		alignItems: 'center',
 	},
 	userText: {
-		color: 'white',
+		color: Colors.white,
 		fontWeight: '500',
 		fontSize: 16,
 	},

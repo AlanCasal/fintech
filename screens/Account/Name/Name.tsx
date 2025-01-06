@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { styles } from './styles';
 import { Ionicons } from '@expo/vector-icons';
 import { useUser } from '@clerk/clerk-expo';
+import Colors from '@/constants/Colors';
 
 const Name = () => {
 	const { user } = useUser();
@@ -32,7 +33,11 @@ const Name = () => {
 						{firstName} {lastName}
 					</Text>
 					<TouchableOpacity onPress={() => setIsEditing(true)}>
-						<Ionicons name="ellipsis-horizontal" size={24} color="white" />
+						<Ionicons
+							name="ellipsis-horizontal"
+							size={24}
+							color={Colors.white}
+						/>
 					</TouchableOpacity>
 				</View>
 			)}
@@ -49,7 +54,7 @@ const Name = () => {
 						onChangeText={setLastName}
 					/>
 					<TouchableOpacity onPress={handleSaveUser}>
-						<Ionicons name="checkmark-outline" size={24} color="white" />
+						<Ionicons name="checkmark-outline" size={24} color={Colors.white} />
 					</TouchableOpacity>
 				</View>
 			)}

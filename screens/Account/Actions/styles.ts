@@ -3,7 +3,7 @@ import Colors from '@/constants/Colors';
 
 export const styles = StyleSheet.create({
 	actions: {
-		backgroundColor: 'rgba(256, 256, 256, 0.1)',
+		backgroundColor: Colors.blackTransparent02,
 		borderRadius: 16,
 		gap: 0,
 		margin: 20,
@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
 		alignItems: 'center',
 	},
 	iconText: {
-		color: 'white',
+		color: Colors.white,
 		fontSize: 18,
 	},
 	iconImage: {
@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
 	actionText: {
 		fontSize: 18,
 		flex: 1,
-		color: 'white',
+		color: Colors.white,
 		fontWeight: '500',
 	},
 	inboxBadgeWrapper: {
@@ -36,7 +36,7 @@ export const styles = StyleSheet.create({
 		justifyContent: 'center',
 	},
 	inboxBadge: {
-		color: 'white',
+		color: Colors.white,
 		fontSize: 12,
 	},
 });

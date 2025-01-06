@@ -4,6 +4,7 @@ import { styles } from './styles';
 import { Ionicons } from '@expo/vector-icons';
 import { useAuth } from '@clerk/clerk-expo';
 import { getAppIcon, setAppIcon } from 'expo-dynamic-app-icon';
+import Colors from '@/constants/Colors';
 
 const ICONS = [
 	{
@@ -47,22 +48,22 @@ const Actions = () => {
 		<>
 			<View style={styles.actions}>
 				<TouchableOpacity style={styles.actionButton}>
-					<Ionicons name="person" size={24} color="white" />
+					<Ionicons name="person" size={24} color={Colors.white} />
 					<Text style={styles.actionText}>Account</Text>
 				</TouchableOpacity>
 				<TouchableOpacity style={styles.actionButton}>
-					<Ionicons name="bulb" size={24} color="white" />
+					<Ionicons name="bulb" size={24} color={Colors.white} />
 					<Text style={styles.actionText}>Learn</Text>
 				</TouchableOpacity>
 				<TouchableOpacity style={styles.actionButton}>
-					<Ionicons name="megaphone" size={24} color="white" />
+					<Ionicons name="megaphone" size={24} color={Colors.white} />
 					<Text style={styles.actionText}>Inbox</Text>
 					<View style={styles.inboxBadgeWrapper}>
 						<Text style={styles.inboxBadge}>14</Text>
 					</View>
 				</TouchableOpacity>
 				<TouchableOpacity style={styles.actionButton} onPress={handleSignOut}>
-					<Ionicons name="log-out" size={24} color="white" />
+					<Ionicons name="log-out" size={24} color={Colors.white} />
 					<Text style={styles.actionText}>Sign Out</Text>
 				</TouchableOpacity>
 			</View>
@@ -77,7 +78,7 @@ const Actions = () => {
 						<Image source={icon.icon} style={styles.iconImage} />
 						<Text style={styles.iconText}>{icon.name}</Text>
 						{activeIcon.toLowerCase() === icon.name.toLowerCase() && (
-							<Ionicons name="checkmark" size={24} color="white" />
+							<Ionicons name="checkmark" size={24} color={Colors.white} />
 						)}
 					</TouchableOpacity>
 				))}

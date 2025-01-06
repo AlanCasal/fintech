@@ -24,7 +24,7 @@ const ACTIONS: Action[] = [
 	{
 		label: 'Buy',
 		icon: 'add',
-		iconColor: 'white',
+		iconColor: Colors.white,
 	},
 	{
 		label: 'Receive',

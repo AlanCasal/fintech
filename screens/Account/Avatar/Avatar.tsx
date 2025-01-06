@@ -4,6 +4,7 @@ import { styles } from './styles';
 import { Ionicons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 import { useUser } from '@clerk/clerk-expo';
+import Colors from '@/constants/Colors';
 
 const Avatar = () => {
 	const { user } = useUser();
@@ -38,7 +39,7 @@ const Avatar = () => {
 				/>
 			) : (
 				<View style={styles.userIconWrapper}>
-					<Ionicons name="person" size={42} color="white" />
+					<Ionicons name="person" size={42} color={Colors.white} />
 				</View>
 			)}
 		</TouchableOpacity>
