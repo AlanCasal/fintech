@@ -1,5 +1,5 @@
 import { Text, ScrollView, View } from 'react-native';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useBalanceStore } from '@/store/balanceStore';
 import { Ionicons } from '@expo/vector-icons';
 import { defaultStyles } from '@/constants/Styles';
@@ -32,6 +32,10 @@ const Home = () => {
 		clearTransactions();
 	};
 
+	const sortedTransactions = useMemo(() => {
+		return transactions.slice().reverse();
+	}, [transactions]);
+
 	return (
 		<ScrollView
 			style={styles.container}
@@ -61,7 +65,7 @@ const Home = () => {
 				{!transactions.length && (
 					<Text style={styles.noTransactions}>No transactions</Text>
 				)}
-				{transactions.map(transaction => (
+				{sortedTransactions.map(transaction => (
 					<View style={styles.transaction} key={transaction.id}>
 						<View style={styles.circle}>
 							<Ionicons
