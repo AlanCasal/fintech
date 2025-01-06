@@ -1,8 +1,6 @@
 import { useLocalSearchParams } from 'expo-router';
 import React from 'react';
 import { SectionList, View, Text } from 'react-native';
-import { useQuery } from '@tanstack/react-query';
-import { CryptoInfo } from '@/components/ChartCartesian/api/interfaces';
 import ChartCartesian from '@/components/ChartCartesian';
 import ScreenHeader from './components/ScreenHeader';
 import Details from './components/Details';
@@ -12,17 +10,11 @@ import SymbolLogo from './components/SymbolLogo';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { styles } from './styles';
 import { ERROR_MESSAGE_FETCHING_DATA } from '@/constants/Utils';
+import { useGetCryptoInfo } from './api/hooks/useGetCryptoInfo';
 
 const Crypto = () => {
 	const { id } = useLocalSearchParams();
-	const { data, isLoading, error } = useQuery<CryptoInfo, Error>({
-		queryKey: ['info', id],
-		queryFn: async () => {
-			const response = await fetch(`/api/info?ids=${id}`);
-			const info = await response.json();
-			return info[+id];
-		},
-	});
+	const { data, isLoading, error } = useGetCryptoInfo(id as string);
 
 	return (
 		<>
