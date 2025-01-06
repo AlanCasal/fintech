@@ -15,6 +15,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
 import { KEYBOARD_VERTICAL_OFFSET } from '@/constants/Utils';
 import { isClerkAPIResponseError, useSignIn } from '@clerk/clerk-expo';
+import BackButton from '@/components/Buttons/BackButton';
 
 enum SignInType {
 	PHONE = 'phone',
@@ -98,11 +99,7 @@ const SignIn = () => {
 					headerStyle: {
 						backgroundColor: Colors.background,
 					},
-					headerLeft: () => (
-						<TouchableOpacity onPress={router.back}>
-							<Ionicons name="arrow-back" size={34} color={Colors.dark} />
-						</TouchableOpacity>
-					),
+					headerLeft: () => <BackButton />,
 					headerRight: () => (
 						<Link href="/help" asChild>
 							<TouchableOpacity>

@@ -1,14 +1,13 @@
-import { View, Text, TouchableOpacity, Platform, Alert } from 'react-native';
+import { View, Text, Platform, Alert } from 'react-native';
 import React, { Fragment, useEffect, useState } from 'react';
 import { styles } from './styles';
-import { Link, router, Stack, useLocalSearchParams } from 'expo-router';
+import { Link, Stack, useLocalSearchParams } from 'expo-router';
 import {
 	isClerkAPIResponseError,
 	useSignIn,
 	useSignUp,
 } from '@clerk/clerk-expo';
 import { defaultStyles } from '@/constants/Styles';
-import { Ionicons } from '@expo/vector-icons';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import {
 	CodeField,
@@ -16,6 +15,7 @@ import {
 	useBlurOnFulfill,
 	useClearByFocusCell,
 } from 'react-native-confirmation-code-field';
+import BackButton from '@/components/Buttons/BackButton';
 
 const CELL_COUNT = 6;
 
@@ -79,11 +79,7 @@ const VerifyPhone = () => {
 					headerStyle: {
 						backgroundColor: Colors.background,
 					},
-					headerLeft: () => (
-						<TouchableOpacity onPress={router.back}>
-							<Ionicons name="arrow-back" size={34} color={Colors.dark} />
-						</TouchableOpacity>
-					),
+					headerLeft: () => <BackButton />,
 				}}
 			/>
 

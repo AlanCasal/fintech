@@ -1,6 +1,6 @@
 import React from 'react';
 import * as DropdownMenu from 'zeego/dropdown-menu';
-import RoundButton from '../RoundButton';
+import RoundButton from '../Buttons/RoundButton';
 
 const Dropdown = () => {
 	return (

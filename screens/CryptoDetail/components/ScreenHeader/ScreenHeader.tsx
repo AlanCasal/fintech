@@ -1,12 +1,12 @@
 import { TouchableOpacity, View } from 'react-native';
 import React from 'react';
-import { Stack, useRouter } from 'expo-router';
+import { Stack } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
 import { styles } from './styles';
+import BackButton from '@/components/Buttons/BackButton';
 
 const ScreenHeader = ({ title = '' }: { title?: string }) => {
-	const router = useRouter();
 	return (
 		<Stack.Screen
 			name="(authenticated)/(tabs)/[id]"
@@ -17,11 +17,7 @@ const ScreenHeader = ({ title = '' }: { title?: string }) => {
 				title,
 				headerLargeTitle: true,
 				headerTransparent: true,
-				headerLeft: () => (
-					<TouchableOpacity onPress={router.back}>
-						<Ionicons name="arrow-back" size={34} color={Colors.dark} />
-					</TouchableOpacity>
-				),
+				headerLeft: () => <BackButton />,
 				headerRight: () =>
 					title && (
 						<View style={styles.headerRight}>

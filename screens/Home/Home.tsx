@@ -4,7 +4,7 @@ import { useBalanceStore } from '@/store/balanceStore';
 import { Ionicons } from '@expo/vector-icons';
 import { defaultStyles } from '@/constants/Styles';
 import Colors from '@/constants/Colors';
-import RoundButton from '@/components/RoundButton';
+import RoundButton from '@/components/Buttons/RoundButton';
 import Dropdown from '@/components/Dropdown';
 import WidgetList from '@/components/WidgetList';
 import { styles } from './styles';

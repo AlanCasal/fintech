@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import React, { useEffect } from 'react';
-import { Platform, TouchableOpacity, View } from 'react-native';
+import { Platform, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
@@ -16,7 +16,7 @@ import { styles } from './styles';
 import { CLERK_PUBLISHABLE_KEY } from '@/constants/Utils';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { UserInactivityProvider } from '@/context/UserInactivity';
-import { Ionicons } from '@expo/vector-icons';
+import BackButton from '@/components/Buttons/BackButton';
 
 const createTokenCache = (): TokenCache => {
 	return {
@@ -107,11 +107,7 @@ const RootLayout = () => {
 					animation: 'slide_from_bottom',
 					title: '',
 					headerTransparent: true,
-					headerLeft: () => (
-						<TouchableOpacity onPress={router.back}>
-							<Ionicons name="close-outline" size={34} color="white" />
-						</TouchableOpacity>
-					),
+					headerLeft: () => <BackButton icon="close-outline" color="white" />,
 				}}
 				name="(authenticated)/(modals)/account"
 			/>

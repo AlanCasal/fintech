@@ -11,10 +11,10 @@ import { defaultStyles } from '@/constants/Styles';
 import { styles } from './styles';
 import Colors from '@/constants/Colors';
 import { Link, Stack, useRouter } from 'expo-router';
-import { Ionicons } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
 import { isClerkAPIResponseError, useSignUp } from '@clerk/clerk-expo';
 import { KEYBOARD_VERTICAL_OFFSET } from '@/constants/Utils';
+import BackButton from '@/components/Buttons/BackButton';
 
 const COUNTRY_CODE = '+54';
 
@@ -57,11 +57,7 @@ const Signup = () => {
 					headerStyle: {
 						backgroundColor: Colors.background,
 					},
-					headerLeft: () => (
-						<TouchableOpacity onPress={router.back}>
-							<Ionicons name="arrow-back" size={34} color={Colors.dark} />
-						</TouchableOpacity>
-					),
+					headerLeft: () => <BackButton />,
 				}}
 			/>
 
