@@ -2,7 +2,7 @@ import { useLocalSearchParams } from 'expo-router';
 import React from 'react';
 import { SectionList, View, Text } from 'react-native';
 import { useQuery } from '@tanstack/react-query';
-import { CryptoInfo } from '@/interfaces/crypto';
+import { CryptoInfo } from '@/components/ChartCartesian/api/interfaces';
 import ChartCartesian from '@/components/ChartCartesian';
 import ScreenHeader from './components/ScreenHeader';
 import Details from './components/Details';

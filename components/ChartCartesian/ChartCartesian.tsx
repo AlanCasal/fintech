@@ -8,14 +8,13 @@ import Animated, {
 	SharedValue,
 	useAnimatedProps,
 } from 'react-native-reanimated';
-import { Ticker } from '@/interfaces/crypto';
-import { useQuery } from '@tanstack/react-query';
 import { styles } from './styles';
 import Colors from '@/constants/Colors';
 import { defaultStyles } from '@/constants/Styles';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import SpaceMonoRegular from '@/assets/fonts/SpaceMono-Regular.ttf';
 import { ERROR_MESSAGE_FETCHING_DATA } from '@/constants/Utils';
+import { useGetTickers } from './api/hooks/useGetTickers';
 
 Animated.addWhitelistedNativeProps({ text: true });
 const AnimatedTextInput = Animated.createAnimatedComponent(TextInput);
@@ -29,14 +28,7 @@ const ToolTip = ({
 }) => <Circle cx={x} cy={y} r={8} color={Colors.primary} />;
 
 const ChartCartesian = () => {
-	const { data, isLoading, error } = useQuery<Ticker[], Error>({
-		queryKey: ['tickers'],
-		queryFn: async (): Promise<Ticker[]> => {
-			const response = await fetch('/api/tickers');
-			const tickers = await response.json();
-			return tickers;
-		},
-	});
+	const { data, isLoading, error } = useGetTickers();
 
 	const font = useFont(SpaceMonoRegular, 12);
 	const { state, isActive } = useChartPressState<{
