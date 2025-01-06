@@ -1,16 +1,27 @@
-import { View, TextInput } from 'react-native';
+import { View, TextInput, Text, LogBox } from 'react-native';
 import React from 'react';
 import { styles } from './styles';
 import Colors from '@/constants/Colors';
+import CountryPicker, {
+	Country,
+	DARK_THEME,
+} from 'react-native-country-picker-modal';
+import { CountryCode, CallingCode } from './api/types';
+
+LogBox.ignoreLogs([
+	'Support for defaultProps will be removed from function components',
+]);
 
 interface GlobalPhoneInputsProps {
-	countryCode: string;
+	callingCode: CallingCode;
+	countryCode: CountryCode;
 	mobileNumber: string;
-	handleCountryCodeChange: (text: string) => void;
+	handleCountryCodeChange: (country: Country) => void;
 	handleMobileNumberChange: (text: string) => void;
 }
 
 const GlobalPhoneInputs = ({
+	callingCode,
 	countryCode,
 	mobileNumber,
 	handleCountryCodeChange,
@@ -18,14 +29,19 @@ const GlobalPhoneInputs = ({
 }: GlobalPhoneInputsProps) => {
 	return (
 		<View style={styles.inputContainer}>
-			<TextInput
-				style={styles.input}
-				placeholderTextColor={Colors.gray}
-				keyboardType="numeric"
-				value={countryCode}
-				onChangeText={handleCountryCodeChange}
-				editable={false}
-			/>
+			<View style={styles.inputContainerCountryCode}>
+				<CountryPicker
+					countryCode={countryCode}
+					theme={DARK_THEME}
+					withFlag
+					withCallingCode
+					withFilter
+					withCloseButton
+					onSelect={handleCountryCodeChange}
+				/>
+				{callingCode && <Text>+{callingCode}</Text>}
+			</View>
+
 			<TextInput
 				style={[styles.input, styles.inputMobileNumber]}
 				placeholder="Mobile number"

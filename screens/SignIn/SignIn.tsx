@@ -19,18 +19,39 @@ import SignInButtons from '@/components/Buttons/SignInButtons';
 import { SignInType } from '@/enums';
 import GlobalPhoneInputs from '@/components/Inputs/GlobalPhoneInputs';
 import Divider from '@/components/Divider';
+import {
+	Country,
+	CountryCode,
+	CallingCode,
+} from '@/components/Inputs/GlobalPhoneInputs/api/types';
+
+const DEFAULT_COUNTRY_CALLING_CODE = '54';
+const DEFAULT_COUNTRY_CODE = 'AR';
 
 const SignIn = () => {
-	const [countryCode, setCountryCode] = useState('+54');
-	const [mobileNumber, setMobileNumber] = useState('');
-
 	const router = useRouter();
 	const { signIn } = useSignIn();
+
+	const [mobileNumber, setMobileNumber] = useState('');
+	const [countryCode, setCountryCode] = useState<{
+		callingCode: CallingCode;
+		countryCode: CountryCode;
+	}>({
+		callingCode: DEFAULT_COUNTRY_CALLING_CODE,
+		countryCode: DEFAULT_COUNTRY_CODE,
+	});
+
+	const handleCountryCodeChange = (selectedCountry: Country) => {
+		setCountryCode({
+			callingCode: selectedCountry.callingCode[0],
+			countryCode: selectedCountry.cca2,
+		});
+	};
 
 	const handleSignIn = async (type: SignInType) => {
 		if (type === SignInType.PHONE) {
 			try {
-				const phoneNumber = `${countryCode}${mobileNumber}`;
+				const phoneNumber = `+${countryCode.callingCode}${mobileNumber}`;
 
 				const { supportedFirstFactors } = await signIn!.create({
 					identifier: phoneNumber,
@@ -99,9 +120,10 @@ const SignIn = () => {
 					Enter the phone number associated with your account
 				</Text>
 				<GlobalPhoneInputs
-					countryCode={countryCode}
+					callingCode={countryCode.callingCode}
+					countryCode={countryCode.countryCode}
 					mobileNumber={mobileNumber}
-					handleCountryCodeChange={setCountryCode}
+					handleCountryCodeChange={handleCountryCodeChange}
 					handleMobileNumberChange={setMobileNumber}
 				/>
 

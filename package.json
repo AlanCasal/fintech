@@ -41,6 +41,7 @@
     "react-dom": "18.3.1",
     "react-native": "0.76.5",
     "react-native-confirmation-code-field": "^7.4.0",
+    "react-native-country-picker-modal": "^2.0.0",
     "react-native-gesture-handler": "~2.20.2",
     "react-native-ios-context-menu": "^2.5.3",
     "react-native-ios-utilities": "^4.5.2",
