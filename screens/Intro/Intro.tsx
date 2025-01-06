@@ -7,7 +7,7 @@ import { Link, Stack } from 'expo-router';
 import { defaultStyles } from '@/constants/Styles';
 
 const Intro = () => {
-	const [assets] = useAssets([require('@/assets/videos/intro.mp4')]);
+	const [assets] = useAssets([require('@/assets/videos/intro2.mp4')]);
 	return (
 		<View style={styles.container}>
 			<Stack.Screen name="intro" options={{ headerShown: false }} />
