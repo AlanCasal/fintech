@@ -1,15 +1,18 @@
 /* eslint-disable no-console */
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 
 import { MARGIN } from './components/Config';
 import Tile from './components/Tile';
 import SortableList from './components/SortableList';
 import { tiles } from './components/Tile/Tile';
+import { defaultStyles } from '@/constants/Styles';
 
 const WidgetList = () => {
 	return (
 		<View style={{ paddingHorizontal: MARGIN, marginBottom: 80 }}>
+			<Text style={defaultStyles.sectionHeader}>Widgets</Text>
+
 			<SortableList
 				editing={true}
 				onDragEnd={positions => console.log(JSON.stringify(positions, null, 2))}
