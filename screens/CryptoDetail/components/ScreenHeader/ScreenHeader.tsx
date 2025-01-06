@@ -7,11 +7,13 @@ import { styles } from './styles';
 
 const ScreenHeader = ({ title = '' }: { title?: string }) => {
 	const router = useRouter();
-
 	return (
 		<Stack.Screen
 			name="(authenticated)/(tabs)/[id]"
 			options={{
+				headerStyle: {
+					backgroundColor: Colors.background,
+				},
 				title,
 				headerLargeTitle: true,
 				headerTransparent: true,

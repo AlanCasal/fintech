@@ -3,8 +3,6 @@ import React from 'react';
 import { SectionList, View, Text } from 'react-native';
 import { useQuery } from '@tanstack/react-query';
 import { CryptoInfo } from '@/interfaces/crypto';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { useHeaderHeight } from '@react-navigation/elements';
 import ChartCartesian from '@/components/ChartCartesian';
 import ScreenHeader from './components/ScreenHeader';
 import Details from './components/Details';
@@ -17,8 +15,6 @@ import { ERROR_MESSAGE_FETCHING_DATA } from '@/constants/Utils';
 
 const Crypto = () => {
 	const { id } = useLocalSearchParams();
-	const headerHeight = useHeaderHeight();
-
 	const { data, isLoading, error } = useQuery<CryptoInfo, Error>({
 		queryKey: ['info', id],
 		queryFn: async () => {
@@ -38,9 +34,18 @@ const Crypto = () => {
 				</View>
 			)}
 
-			{data && !isLoading && (
+			{error && (
+				<View style={styles.centerContent}>
+					<Text style={styles.errorTitle}>Error</Text>
+					<Text style={styles.errorMessage}>
+						{error?.message || ERROR_MESSAGE_FETCHING_DATA}
+					</Text>
+				</View>
+			)}
+
+			{data && (
 				<SectionList
-					style={{ marginTop: headerHeight }}
+					style={styles.container}
 					contentInsetAdjustmentBehavior="automatic"
 					keyExtractor={(item, index) => item.title + index}
 					sections={[{ data: [{ title: 'Section 1' }] }]}
@@ -58,15 +63,6 @@ const Crypto = () => {
 						</>
 					)}
 				/>
-			)}
-
-			{error && (
-				<View style={styles.centerContent}>
-					<Text style={styles.errorTitle}>Error</Text>
-					<Text style={styles.errorMessage}>
-						{error?.message || ERROR_MESSAGE_FETCHING_DATA}
-					</Text>
-				</View>
 			)}
 		</>
 	);
