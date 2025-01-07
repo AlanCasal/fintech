@@ -18,6 +18,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { UserInactivityProvider } from '@/context/UserInactivity';
 import BackButton from '@/components/Buttons/BackButton';
 import Colors from '@/constants/Colors';
+import { Aldrich_400Regular } from '@expo-google-fonts/aldrich';
 
 const createTokenCache = (): TokenCache => {
 	return {
@@ -55,6 +56,7 @@ SplashScreen.preventAutoHideAsync();
 const RootLayout = () => {
 	const [loaded, error] = useFonts({
 		SpaceMono: require('@/assets/fonts/SpaceMono-Regular.ttf'),
+		Aldrich_400Regular,
 		...FontAwesome.font,
 	});
 	const { isLoaded: isAuthLoaded, isSignedIn } = useAuth();

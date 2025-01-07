@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import Colors from '@/constants/Colors';
+import { PRIMARY_FONT_FAMILY } from '@/constants/Utils';
 
 export const styles = StyleSheet.create({
 	container: {
@@ -17,6 +18,9 @@ export const styles = StyleSheet.create({
 		padding: 20,
 	},
 	header: {
+		fontFamily: PRIMARY_FONT_FAMILY,
+		letterSpacing: 1,
+		lineHeight: 45,
 		fontSize: 36,
 		fontWeight: '900',
 		textTransform: 'uppercase',

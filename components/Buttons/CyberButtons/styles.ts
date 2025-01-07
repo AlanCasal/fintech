@@ -1,41 +1,33 @@
 import { StyleSheet } from 'react-native';
 import Colors from '@/constants/Colors';
+import { PRIMARY_FONT_FAMILY } from '@/constants/Utils';
 
 export const styles = StyleSheet.create({
-	buttons: {
+	container: {
 		flexDirection: 'row',
 		justifyContent: 'center',
 		gap: 10,
 	},
-	leftButton: {
+	button: {
 		position: 'relative',
 		alignItems: 'center',
 		height: 72,
 	},
-	rightButton: {
-		position: 'relative',
-		alignItems: 'center',
-		height: 72,
+	text: {
+		position: 'absolute',
+		zIndex: 1,
+		top: 29,
+		fontSize: 18,
+		fontFamily: PRIMARY_FONT_FAMILY,
+		letterSpacing: 3,
+		fontWeight: '700',
+		textTransform: 'uppercase',
 	},
 	leftButtonText: {
-		position: 'absolute',
-		zIndex: 1,
-		top: 24,
 		backgroundColor: 'transparent',
-		fontSize: 22,
-		letterSpacing: 2,
 		color: Colors.primary,
-		fontWeight: '700',
-		textTransform: 'uppercase',
 	},
 	rightButtonText: {
-		position: 'absolute',
-		zIndex: 1,
-		top: 24,
-		fontSize: 22,
 		color: Colors.dark,
-		fontWeight: '700',
-		letterSpacing: 2,
-		textTransform: 'uppercase',
 	},
 });

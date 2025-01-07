@@ -1,4 +1,3 @@
-import { useAuth } from '@clerk/clerk-expo';
 import { useRouter } from 'expo-router';
 import { useEffect, useRef } from 'react';
 import { AppState, AppStateStatus } from 'react-native';
@@ -16,7 +15,6 @@ const storage = new MMKV({
 export const UserInactivityProvider = ({ children }: Props) => {
 	const appState = useRef(AppState.currentState);
 	const router = useRouter();
-	const { isSignedIn } = useAuth();
 
 	const recordStartTime = () => {
 		storage.set('startTime', Date.now());

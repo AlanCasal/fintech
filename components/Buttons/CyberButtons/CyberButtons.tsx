@@ -23,23 +23,23 @@ const CyberButtons = ({
 	actionRight,
 }: CyberButtonsProps) => {
 	return (
-		<View style={[styles.buttons, containerStyles]}>
-			<TouchableOpacity onPress={actionLeft} style={styles.leftButton}>
+		<View style={[styles.container, containerStyles]}>
+			<TouchableOpacity onPress={actionLeft} style={styles.button}>
 				<CyberButtonLeft
 					width={170}
 					fill={Colors.dark}
 					stroke={Colors.primary}
 				/>
-				<Text style={styles.leftButtonText}>Sign In</Text>
+				<Text style={[styles.text, styles.leftButtonText]}>Sign In</Text>
 			</TouchableOpacity>
 
-			<TouchableOpacity onPress={actionRight} style={styles.rightButton}>
+			<TouchableOpacity onPress={actionRight} style={styles.button}>
 				<CyberButtonRight
 					width={170}
 					stroke={Colors.primary}
 					fill={Colors.primary}
 				/>
-				<Text style={styles.rightButtonText}>Sign Up</Text>
+				<Text style={[styles.text, styles.rightButtonText]}>Sign Up</Text>
 			</TouchableOpacity>
 		</View>
 	);

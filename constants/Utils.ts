@@ -8,3 +8,5 @@ export const CLERK_PUBLISHABLE_KEY =
 export const ERROR_MESSAGE_FETCHING_DATA =
 	// eslint-disable-next-line prettier/prettier, quotes, @typescript-eslint/quotes
 	"Couldn't load data.\nPlease try again later";
+
+export const PRIMARY_FONT_FAMILY = 'Aldrich_400Regular';

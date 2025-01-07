@@ -67,7 +67,8 @@
 						"prerendered": true
 					}
 				}
-			]
+			],
+			"expo-font"
 		],
 		"experiments": {
 			"typedRoutes": true
