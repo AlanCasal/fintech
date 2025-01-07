@@ -66,6 +66,9 @@ export const styles = StyleSheet.create({
 		fontSize: 18,
 		paddingVertical: 10,
 	},
+	textSuccess: {
+		color: Colors.success,
+	},
 	transactionTitle: {
 		color: Colors.gray,
 		fontWeight: '700',

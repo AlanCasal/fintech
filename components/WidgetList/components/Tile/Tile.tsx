@@ -57,6 +57,8 @@ const Tile = ({ id }: TileProps) => {
 	}
 
 	if (id === 'recent') {
+		const lastTransaction = transactions[transactions.length - 1];
+
 		return (
 			<View style={styles.container} pointerEvents="none">
 				<View>
@@ -68,11 +70,17 @@ const Tile = ({ id }: TileProps) => {
 
 					{transactions.length > 0 && (
 						<>
-							<Text style={styles.transactionAmount}>
-								{transactions[transactions.length - 1].amount}€
+							<Text
+								style={{
+									...styles.transactionAmount,
+									...(lastTransaction.amount > 0 && styles.textSuccess),
+								}}
+							>
+								{lastTransaction.amount > 0 && '+ '}
+								{lastTransaction.amount}€
 							</Text>
 							<Text style={styles.transactionTitle}>
-								{transactions[transactions.length - 1].title}
+								{lastTransaction.title}
 							</Text>
 						</>
 					)}

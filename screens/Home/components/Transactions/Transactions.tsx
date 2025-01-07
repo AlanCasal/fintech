@@ -21,24 +21,36 @@ const Transactions = () => {
 				{!sortedTransactions.length && (
 					<Text style={styles.noTransactions}>No transactions</Text>
 				)}
-				{sortedTransactions.map(transaction => (
-					<View style={styles.transaction} key={transaction.id}>
-						<View style={styles.circle}>
-							<Ionicons
-								name={transaction.amount > 0 ? 'add' : 'remove'}
-								size={20}
-								color={Colors.dark}
-							/>
-						</View>
-						<View style={styles.transactionDetails}>
-							<Text style={styles.transactionTitle}>{transaction.title}</Text>
-							<Text style={styles.transactionDate}>
-								{new Date(transaction.date).toLocaleDateString()}
+				{sortedTransactions.map(transaction => {
+					const isPositive = transaction.amount > 0;
+
+					return (
+						<View style={styles.transaction} key={transaction.id}>
+							<View style={styles.circle}>
+								<Ionicons
+									name={isPositive ? 'arrow-down' : 'arrow-up'}
+									size={20}
+									color={Colors.dark}
+								/>
+							</View>
+							<View style={styles.transactionDetails}>
+								<Text style={styles.transactionTitle}>{transaction.title}</Text>
+								<Text style={styles.transactionDate}>
+									{new Date(transaction.date).toLocaleDateString()}
+								</Text>
+							</View>
+							<Text
+								style={{
+									...styles.text,
+									...(isPositive && styles.textSuccess),
+								}}
+							>
+								{isPositive && '+ '}
+								{transaction.amount}€
 							</Text>
 						</View>
-						<Text>{transaction.amount}€</Text>
-					</View>
-				))}
+					);
+				})}
 			</View>
 		</View>
 	);

@@ -40,4 +40,12 @@ export const styles = StyleSheet.create({
 		fontWeight: '500',
 		color: Colors.gray,
 	},
+	text: {
+		fontWeight: '400',
+		color: Colors.dark,
+	},
+	textSuccess: {
+		color: Colors.success,
+		fontWeight: '700',
+	},
 });
