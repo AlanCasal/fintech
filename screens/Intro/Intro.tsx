@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import React from 'react';
 import { styles } from './styles';
 import { useAssets } from 'expo-asset';
@@ -22,6 +22,16 @@ const Intro = () => {
 	return (
 		<View style={styles.container}>
 			<Stack.Screen name="intro" options={{ headerShown: false }} />
+			<Image
+				source={require('@/assets/images/cyber-dots primary.png')}
+				style={styles.cyberDotsTop}
+				resizeMode="repeat"
+			/>
+			<Image
+				source={require('@/assets/images/cyber-dots primary.png')}
+				style={styles.cyberDotsBottom}
+				resizeMode="repeat"
+			/>
 
 			{assets && (
 				<Video
@@ -38,11 +48,13 @@ const Intro = () => {
 				<Text style={styles.header}>Ready to change the way you money ?</Text>
 			</View>
 
-			<CyberButtons
-				containerStyles={{ marginBottom: 60 }}
-				actionLeft={handleRedirectToSignIn}
-				actionRight={handleRedirectToSignUp}
-			/>
+			<View style={styles.buttonsContainer}>
+				<CyberButtons
+					containerStyles={{ marginBottom: 60 }}
+					actionLeft={handleRedirectToSignIn}
+					actionRight={handleRedirectToSignUp}
+				/>
+			</View>
 		</View>
 	);
 };

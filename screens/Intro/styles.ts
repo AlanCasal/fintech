@@ -26,4 +26,26 @@ export const styles = StyleSheet.create({
 		textTransform: 'uppercase',
 		color: Colors.white,
 	},
+	cyberDotsTop: {
+		width: '100%',
+		height: '20%',
+		position: 'absolute',
+		top: 0,
+		left: 0,
+		zIndex: 2,
+		elevation: 2,
+	},
+	cyberDotsBottom: {
+		width: '100%',
+		height: '30%',
+		position: 'absolute',
+		bottom: 0,
+		left: 0,
+		zIndex: 2,
+		elevation: 2,
+	},
+	buttonsContainer: {
+		zIndex: 2,
+		elevation: 2,
+	},
 });
