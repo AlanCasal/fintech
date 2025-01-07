@@ -10,6 +10,7 @@ import { styles } from './styles';
 import Colors from '@/constants/Colors';
 import CyberButtonLeft from '@/assets/images/cyber-button-top-left.svg';
 import CyberButtonRight from '@/assets/images/cyber-button-bot-right.svg';
+import GlitchText from '@/components/Animations/GlitchText';
 
 type CyberButtonsProps = {
 	containerStyles?: StyleProp<ViewStyle>;
@@ -30,7 +31,10 @@ const CyberButtons = ({
 					fill={Colors.dark}
 					stroke={Colors.primary}
 				/>
-				<Text style={[styles.text, styles.leftButtonText]}>Sign In</Text>
+				<GlitchText
+					text="Sign In"
+					styles={[styles.text, styles.leftButtonText]}
+				/>
 			</TouchableOpacity>
 
 			<TouchableOpacity onPress={actionRight} style={styles.button}>
@@ -39,7 +43,10 @@ const CyberButtons = ({
 					stroke={Colors.primary}
 					fill={Colors.primary}
 				/>
-				<Text style={[styles.text, styles.rightButtonText]}>Sign Up</Text>
+				<GlitchText
+					text="Sign Up"
+					styles={[styles.text, styles.rightButtonText]}
+				/>
 			</TouchableOpacity>
 		</View>
 	);
