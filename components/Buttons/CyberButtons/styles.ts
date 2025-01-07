@@ -10,16 +10,17 @@ export const styles = StyleSheet.create({
 	leftButton: {
 		position: 'relative',
 		alignItems: 'center',
+		height: 72,
 	},
 	rightButton: {
 		position: 'relative',
 		alignItems: 'center',
+		height: 72,
 	},
 	leftButtonText: {
 		position: 'absolute',
 		zIndex: 1,
-		top: '50%',
-		transform: [{ translateY: -13 }],
+		top: 24,
 		backgroundColor: 'transparent',
 		fontSize: 22,
 		letterSpacing: 2,
@@ -30,8 +31,7 @@ export const styles = StyleSheet.create({
 	rightButtonText: {
 		position: 'absolute',
 		zIndex: 1,
-		top: '50%',
-		transform: [{ translateY: -13 }],
+		top: 24,
 		fontSize: 22,
 		color: Colors.dark,
 		fontWeight: '700',
