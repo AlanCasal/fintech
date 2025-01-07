@@ -13,5 +13,7 @@ export default {
 	blackTransparent05: 'rgba(0, 0, 0, 0.5)',
 	blackTransparent02: 'rgba(0, 0, 0, 0.2)',
 
+	whiteGlow: 'rgba(255, 255, 255, 0.5)',
+
 	success: '#228B22',
 };

@@ -1,10 +1,11 @@
-import { View, Text, Image } from 'react-native';
+import { View, Image } from 'react-native';
 import React from 'react';
 import { styles } from './styles';
 import { useAssets } from 'expo-asset';
 import { ResizeMode, Video } from 'expo-av';
 import { Stack, useRouter } from 'expo-router';
 import CyberButtons from '@/components/Buttons/CyberButtons';
+import TypewriterGlitchText from '@/components/Animations/TypewriterGlitchText';
 
 const Intro = () => {
 	const [assets] = useAssets([require('@/assets/videos/intro2.mp4')]);
@@ -45,7 +46,10 @@ const Intro = () => {
 			)}
 
 			<View style={styles.content}>
-				<Text style={styles.header}>Ready to change the way you money ?</Text>
+				<TypewriterGlitchText
+					text="> Ready to change the way you money ?"
+					extraStyle={styles.header}
+				/>
 			</View>
 
 			<View style={styles.buttonsContainer}>
