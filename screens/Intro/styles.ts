@@ -22,30 +22,4 @@ export const styles = StyleSheet.create({
 		textTransform: 'uppercase',
 		color: Colors.white,
 	},
-	buttons: {
-		flexDirection: 'row',
-		justifyContent: 'center',
-		gap: 20,
-		marginBottom: 60,
-		paddingHorizontal: 20,
-	},
-	button: {
-		flex: 1,
-	},
-	buttonText: {
-		fontWeight: '500',
-		fontSize: 22,
-	},
-	buttonSignIn: {
-		backgroundColor: Colors.dark,
-	},
-	buttonTextSignIn: {
-		color: Colors.white,
-	},
-	buttonSignUp: {
-		backgroundColor: Colors.white,
-	},
-	buttonTextSignUp: {
-		color: Colors.dark,
-	},
 });

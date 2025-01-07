@@ -80,6 +80,10 @@
 				"projectId": "aebe1b2b-4287-4adf-8989-b002a6208f90"
 			}
 		},
+		"packagerOpts": {
+			"sourceExts": ["js", "jsx", "svgx"],
+			"transformer": "node_modules/react-native-svg-transformer/index.js"
+		},
 		"owner": "alan.casal.dev"
 	}
 }

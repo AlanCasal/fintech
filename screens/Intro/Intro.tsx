@@ -1,13 +1,24 @@
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text } from 'react-native';
 import React from 'react';
 import { styles } from './styles';
 import { useAssets } from 'expo-asset';
 import { ResizeMode, Video } from 'expo-av';
-import { Link, Stack } from 'expo-router';
-import { defaultStyles } from '@/constants/Styles';
+import { Stack, useRouter } from 'expo-router';
+import CyberButtons from '@/components/Buttons/CyberButtons';
 
 const Intro = () => {
 	const [assets] = useAssets([require('@/assets/videos/intro2.mp4')]);
+
+	const router = useRouter();
+
+	const handleRedirectToSignIn = () => {
+		router.push('/signin');
+	};
+
+	const handleRedirectToSignUp = () => {
+		router.push('/signup');
+	};
+
 	return (
 		<View style={styles.container}>
 			<Stack.Screen name="intro" options={{ headerShown: false }} />
@@ -27,30 +38,11 @@ const Intro = () => {
 				<Text style={styles.header}>Ready to change the way you money ?</Text>
 			</View>
 
-			<View style={styles.buttons}>
-				<Link
-					href="/signin"
-					asChild
-					style={[defaultStyles.pillButton, styles.button, styles.buttonSignIn]}
-				>
-					<TouchableOpacity>
-						<Text style={[styles.buttonText, styles.buttonTextSignIn]}>
-							Sign In
-						</Text>
-					</TouchableOpacity>
-				</Link>
-				<Link
-					href="/signup"
-					asChild
-					style={[defaultStyles.pillButton, styles.button, styles.buttonSignUp]}
-				>
-					<TouchableOpacity>
-						<Text style={[styles.buttonText, styles.buttonTextSignUp]}>
-							Sign Up
-						</Text>
-					</TouchableOpacity>
-				</Link>
-			</View>
+			<CyberButtons
+				containerStyles={{ marginBottom: 60 }}
+				actionLeft={handleRedirectToSignIn}
+				actionRight={handleRedirectToSignUp}
+			/>
 		</View>
 	);
 };
