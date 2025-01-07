@@ -1,13 +1,13 @@
 import { StyleSheet } from 'react-native';
+import Colors from '@/constants/Colors';
 
 export const styles = StyleSheet.create({
-	content: {
-		flexDirection: 'row',
+	circle: {
+		width: 40,
+		height: 40,
+		borderRadius: 20,
+		backgroundColor: Colors.lightGray,
 		justifyContent: 'center',
 		alignItems: 'center',
-		gap: 10,
-		height: 60,
-		backgroundColor: 'transparent',
-		paddingHorizontal: 20,
 	},
 });
