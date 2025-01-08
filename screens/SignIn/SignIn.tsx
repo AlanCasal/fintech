@@ -12,7 +12,6 @@ import { styles } from './styles';
 import Colors from '@/constants/Colors';
 import { Link, Stack, useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
-import { StatusBar } from 'expo-status-bar';
 import { KEYBOARD_VERTICAL_OFFSET } from '@/constants/Utils';
 import { isClerkAPIResponseError, useSignIn } from '@clerk/clerk-expo';
 import BackButton from '@/components/Buttons/BackButton';
@@ -29,12 +28,15 @@ import CyberButtonLarge from '@/components/Buttons/CyberButtons/components/Cyber
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useHeaderHeight } from '@react-navigation/elements';
 import BoxCorners from '@/components/BoxCorners';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import Logo from '@/components/Logo';
 
 const DEFAULT_COUNTRY_CALLING_CODE = '54';
 const DEFAULT_COUNTRY_CODE = 'AR';
 
 const SignIn = () => {
 	const headerHeight = useHeaderHeight();
+	const { bottom } = useSafeAreaInsets();
 	const router = useRouter();
 	const { signIn } = useSignIn();
 
@@ -91,7 +93,7 @@ const SignIn = () => {
 	return (
 		<KeyboardAvoidingView
 			behavior="padding"
-			style={{ flex: 1, ...defaultStyles.darkBackground }}
+			style={[defaultStyles.darkBackground, { flex: 1 }]}
 			keyboardVerticalOffset={KEYBOARD_VERTICAL_OFFSET}
 		>
 			<Stack.Screen
@@ -172,6 +174,10 @@ const SignIn = () => {
 				style={[styles.cyberDots, styles.bottom]}
 				resizeMode="repeat"
 			/>
+			<View style={[styles.logoContainer, { bottom: bottom + 10 }]}>
+				<Logo />
+				<BoxCorners cornerBottomRight cornerTopLeft width={10} height={10} />
+			</View>
 		</KeyboardAvoidingView>
 	);
 };

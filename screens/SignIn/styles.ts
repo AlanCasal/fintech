@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		gap: 25,
+		gap: 20,
 		zIndex: 1,
 	},
 	cyberDots: {
@@ -29,5 +29,11 @@ export const styles = StyleSheet.create({
 	},
 	headerBorder: {
 		margin: 10,
+	},
+	logoContainer: {
+		position: 'absolute',
+		bottom: 0,
+		alignSelf: 'center',
+		padding: 10,
 	},
 });
