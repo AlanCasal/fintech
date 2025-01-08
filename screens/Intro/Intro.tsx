@@ -7,6 +7,8 @@ import { Stack, useRouter } from 'expo-router';
 import CyberButtons from '@/components/Buttons/CyberButtons';
 import TypewriterGlitchText from '@/components/Animations/TypewriterGlitchText';
 import GlitchDots from '@/components/Animations/GlitchDots';
+import Logo from '@/components/Logo';
+import BoxCorners from '@/components/BoxCorners';
 
 const Intro = () => {
 	const [assets] = useAssets([require('@/assets/videos/intro2.mp4')]);
@@ -46,6 +48,11 @@ const Intro = () => {
 			</View>
 
 			<View style={styles.buttonsContainer}>
+				<View style={styles.logoContainer}>
+					<Logo />
+					<BoxCorners cornerBottomRight cornerTopLeft />
+				</View>
+
 				<CyberButtons
 					containerStyle={{ marginBottom: 60 }}
 					leftButtonText="Sign In"

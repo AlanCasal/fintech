@@ -26,6 +26,11 @@ export const styles = StyleSheet.create({
 		textTransform: 'uppercase',
 		color: Colors.white,
 	},
+	logoContainer: {
+		alignSelf: 'center',
+		marginBottom: 19,
+		padding: 15,
+	},
 	buttonsContainer: {
 		zIndex: 2,
 		elevation: 2,
