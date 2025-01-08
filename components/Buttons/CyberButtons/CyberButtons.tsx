@@ -1,53 +1,48 @@
-import {
-	View,
-	TouchableOpacity,
-	StyleProp,
-	ViewStyle,
-	Text,
-} from 'react-native';
+import { View, StyleProp, ViewStyle } from 'react-native';
 import React from 'react';
 import { styles } from './styles';
 import Colors from '@/constants/Colors';
-import CyberButtonLeft from '@/assets/images/cyber-button-top-left.svg';
-import CyberButtonRight from '@/assets/images/cyber-button-bot-right.svg';
-import GlitchText from '@/components/Animations/GlitchText';
+import CyberButton from './components/CyberButton';
 
 type CyberButtonsProps = {
-	containerStyles?: StyleProp<ViewStyle>;
-	actionLeft?: () => void;
-	actionRight?: () => void;
+	leftButtonAction: VoidFunction;
+	rightButtonAction: VoidFunction;
+	containerStyle?: StyleProp<ViewStyle>;
+	leftButtonTextColor?: string;
+	leftButtonText?: string;
+	rightButtonTextColor?: string;
+	rightButtonText?: string;
+	withTextGlitch?: boolean;
 };
 
 const CyberButtons = ({
-	containerStyles,
-	actionLeft,
-	actionRight,
+	containerStyle,
+	leftButtonAction,
+	leftButtonText = '',
+	leftButtonTextColor = Colors.primary,
+	rightButtonAction,
+	rightButtonText = '',
+	rightButtonTextColor = Colors.darkBackground,
+	withTextGlitch = false,
 }: CyberButtonsProps) => {
 	return (
-		<View style={[styles.container, containerStyles]}>
-			<TouchableOpacity onPress={actionLeft} style={styles.button}>
-				<CyberButtonLeft
-					width={170}
-					fill={Colors.darkBackground}
-					stroke={Colors.primary}
-				/>
-				<GlitchText
-					text="Sign In"
-					extraStyles={[styles.text, styles.leftButtonText]}
-				/>
-			</TouchableOpacity>
+		<View style={[styles.container, containerStyle]}>
+			<CyberButton
+				handleOnPress={leftButtonAction}
+				buttonText={leftButtonText}
+				buttonTextColor={leftButtonTextColor}
+				withTextGlitch={withTextGlitch}
+				steepPosition={'top-left'}
+				buttonBackgroundColor={Colors.darkBackground}
+			/>
 
-			<TouchableOpacity onPress={actionRight} style={styles.button}>
-				<CyberButtonRight
-					width={170}
-					stroke={Colors.primary}
-					fill={Colors.primary}
-				/>
-				<GlitchText
-					text="Sign Up"
-					extraStyles={[styles.text, styles.rightButtonText]}
-				/>
-			</TouchableOpacity>
+			<CyberButton
+				handleOnPress={rightButtonAction}
+				buttonText={rightButtonText}
+				buttonTextColor={rightButtonTextColor}
+				withTextGlitch={withTextGlitch}
+				steepPosition={'bottom-right'}
+			/>
 		</View>
 	);
 };
