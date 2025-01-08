@@ -4,24 +4,13 @@ import Colors from '@/constants/Colors';
 export const styles = StyleSheet.create({
 	inputContainer: {
 		flexDirection: 'row',
-		gap: 10,
+		gap: 20,
 	},
 	inputContainerCountryCode: {
 		flexDirection: 'row',
 		alignItems: 'center',
 		gap: 5,
-		backgroundColor: Colors.lightGray,
-		padding: 20,
-		borderRadius: 16,
-		fontSize: 20,
-	},
-	input: {
-		backgroundColor: Colors.lightGray,
-		padding: 20,
-		borderRadius: 16,
-		fontSize: 20,
-	},
-	inputMobileNumber: {
-		flex: 1,
+		borderBottomWidth: 1,
+		borderBottomColor: Colors.lightGray,
 	},
 });

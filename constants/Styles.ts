@@ -47,6 +47,16 @@ export const defaultStyles = StyleSheet.create({
 		color: Colors.lightGray,
 		fontFamily: SECONDARY_FONT_FAMILY,
 	},
+	input: {
+		borderBottomWidth: 1,
+		borderBottomColor: Colors.lightGray,
+		flex: 1,
+	},
+	inputText: {
+		fontSize: 16,
+		color: Colors.lightGray,
+		fontFamily: SECONDARY_FONT_FAMILY,
+	},
 	buttonText: {
 		color: '#fff',
 		fontSize: 18,

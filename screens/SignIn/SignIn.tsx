@@ -96,7 +96,7 @@ const SignIn = () => {
 					headerBackTitle: '',
 					headerShadowVisible: false,
 					headerStyle: {
-						backgroundColor: Colors.background,
+						backgroundColor: Colors.darkBackground,
 					},
 					headerLeft: () => <BackButton />,
 					headerRight: () => (
@@ -105,7 +105,7 @@ const SignIn = () => {
 								<Ionicons
 									name="help-circle-outline"
 									size={34}
-									color={Colors.dark}
+									color={Colors.darkBackground}
 								/>
 							</TouchableOpacity>
 						</Link>
@@ -113,8 +113,21 @@ const SignIn = () => {
 				}}
 			/>
 
-			<View style={[defaultStyles.container, styles.container]}>
-				<Text style={defaultStyles.header}>Welcome Back !</Text>
+			<View
+				style={[
+					defaultStyles.container,
+					defaultStyles.darkBackground,
+					styles.container,
+				]}
+			>
+				<Text
+					style={[
+						defaultStyles.secondaryFontFamilySemiBold,
+						defaultStyles.header,
+					]}
+				>
+					{'>'} Welcome Back !
+				</Text>
 
 				<Text style={defaultStyles.descriptionText}>
 					Enter the phone number associated with your account

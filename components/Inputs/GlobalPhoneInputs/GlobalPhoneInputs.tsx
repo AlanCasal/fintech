@@ -1,5 +1,5 @@
 import { View, TextInput, Text, LogBox } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import { styles } from './styles';
 import Colors from '@/constants/Colors';
 import CountryPicker, {
@@ -7,6 +7,7 @@ import CountryPicker, {
 	DARK_THEME,
 } from 'react-native-country-picker-modal';
 import { CountryCode, CallingCode } from './api/types';
+import { defaultStyles } from '@/constants/Styles';
 
 LogBox.ignoreLogs([
 	'Support for defaultProps will be removed from function components',
@@ -27,6 +28,12 @@ const GlobalPhoneInputs = ({
 	handleCountryCodeChange,
 	handleMobileNumberChange,
 }: GlobalPhoneInputsProps) => {
+	const [isFocused, setIsFocused] = useState(false);
+
+	const handleFocus = () => setIsFocused(true);
+
+	const handleBlur = () => setIsFocused(false);
+
 	return (
 		<View style={styles.inputContainer}>
 			<View style={styles.inputContainerCountryCode}>
@@ -39,16 +46,25 @@ const GlobalPhoneInputs = ({
 					withCloseButton
 					onSelect={handleCountryCodeChange}
 				/>
-				{callingCode && <Text>+{callingCode}</Text>}
+				{callingCode && (
+					<Text style={defaultStyles.inputText}>+{callingCode}</Text>
+				)}
 			</View>
 
 			<TextInput
-				style={[styles.input, styles.inputMobileNumber]}
+				style={[
+					defaultStyles.input,
+					defaultStyles.inputText,
+					isFocused ? { borderBottomColor: Colors.primary } : {},
+				]}
 				placeholder="Mobile number"
 				placeholderTextColor={Colors.gray}
-				keyboardType="numeric"
+				keyboardType="number-pad"
 				value={mobileNumber}
 				onChangeText={handleMobileNumberChange}
+				cursorColor={Colors.primary}
+				onFocus={handleFocus}
+				onBlur={handleBlur}
 			/>
 		</View>
 	);
