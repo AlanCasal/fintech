@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import React, { useEffect } from 'react';
-import { Platform, View } from 'react-native';
+import { View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
@@ -13,12 +13,16 @@ import * as SecureStore from 'expo-secure-store';
 import 'react-native-reanimated';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { styles } from './styles';
-import { CLERK_PUBLISHABLE_KEY } from '@/constants/Utils';
+import { CLERK_PUBLISHABLE_KEY, isIos } from '@/constants/Utils';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { UserInactivityProvider } from '@/context/UserInactivity';
 import BackButton from '@/components/Buttons/BackButton';
 import Colors from '@/constants/Colors';
 import { Aldrich_400Regular } from '@expo-google-fonts/aldrich';
+import {
+	Oxanium_400Regular,
+	Oxanium_600SemiBold,
+} from '@expo-google-fonts/oxanium';
 
 const createTokenCache = (): TokenCache => {
 	return {
@@ -42,8 +46,7 @@ const createTokenCache = (): TokenCache => {
 };
 
 // SecureStore is not supported on the web
-export const tokenCache =
-	Platform.OS !== 'web' ? createTokenCache() : undefined;
+export const tokenCache = isIos ? createTokenCache() : undefined;
 
 export {
 	// Catch any errors thrown by the Layout component.
@@ -57,6 +60,8 @@ const RootLayout = () => {
 	const [loaded, error] = useFonts({
 		SpaceMono: require('@/assets/fonts/SpaceMono-Regular.ttf'),
 		Aldrich_400Regular,
+		Oxanium_400Regular,
+		Oxanium_600SemiBold,
 		...FontAwesome.font,
 	});
 	const { isLoaded: isAuthLoaded, isSignedIn } = useAuth();

@@ -1,15 +1,34 @@
 import { StyleSheet } from 'react-native';
 import Colors from '@/constants/Colors';
+import {
+	PRIMARY_FONT_FAMILY,
+	SECONDARY_FONT_FAMILY,
+	SECONDARY_FONT_FAMILY_SEMI_BOLD,
+} from './Utils';
 
 export const defaultStyles = StyleSheet.create({
+	primaryFontFamily: {
+		fontFamily: PRIMARY_FONT_FAMILY,
+	},
+	secondaryFontFamily: {
+		fontFamily: SECONDARY_FONT_FAMILY,
+	},
+	secondaryFontFamilySemiBold: {
+		fontFamily: SECONDARY_FONT_FAMILY_SEMI_BOLD,
+	},
 	container: {
 		flex: 1,
-		backgroundColor: Colors.background,
 		padding: 16,
+	},
+	lightBackground: {
+		backgroundColor: Colors.lightBackground,
+	},
+	darkBackground: {
+		backgroundColor: Colors.darkBackground,
 	},
 	header: {
 		fontSize: 40,
-		fontWeight: '700',
+		color: Colors.primary,
 	},
 	pillButton: {
 		padding: 10,
@@ -25,7 +44,8 @@ export const defaultStyles = StyleSheet.create({
 	},
 	descriptionText: {
 		fontSize: 18,
-		color: Colors.gray,
+		color: Colors.lightGray,
+		fontFamily: SECONDARY_FONT_FAMILY,
 	},
 	buttonText: {
 		color: '#fff',
