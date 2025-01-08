@@ -1,17 +1,33 @@
 import { StyleSheet } from 'react-native';
-import Colors from '@/constants/Colors';
 
 export const styles = StyleSheet.create({
 	container: {
-		gap: 20,
+		flex: 1,
+		gap: 25,
+		zIndex: 1,
 	},
-	signInButton: {
-		marginBottom: 20,
+	cyberDots: {
+		position: 'absolute',
+		width: '100%',
+		height: '30%',
+		left: 0,
+		transform: [{ scale: 1.5 }],
 	},
-	signInEnabled: {
-		backgroundColor: Colors.darkBackground,
+	top: {
+		top: 0,
+		height: '15%',
 	},
-	signInDisabled: {
-		backgroundColor: Colors.primaryMuted,
+	bottom: {
+		bottom: -100,
+	},
+	headerContainer: {
+		position: 'relative',
+		alignSelf: 'flex-start',
+		width: '100%',
+		alignItems: 'center',
+		paddingVertical: 10,
+	},
+	headerBorder: {
+		margin: 10,
 	},
 });

@@ -58,7 +58,7 @@ const GlitchDots = ({
 			}}
 		>
 			<Image
-				source={require('@/assets/images/cyber-dots primary.png')}
+				source={require('@/assets/images/cyber-dots-primary.png')}
 				style={[
 					styles.cyberDots,
 					styles[`${position}`],

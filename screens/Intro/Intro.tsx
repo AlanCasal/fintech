@@ -47,9 +47,12 @@ const Intro = () => {
 
 			<View style={styles.buttonsContainer}>
 				<CyberButtons
-					containerStyles={{ marginBottom: 60 }}
-					actionLeft={handleRedirectToSignIn}
-					actionRight={handleRedirectToSignUp}
+					containerStyle={{ marginBottom: 60 }}
+					leftButtonText="Sign In"
+					leftButtonAction={handleRedirectToSignIn}
+					rightButtonText="Sign Up"
+					rightButtonAction={handleRedirectToSignUp}
+					withTextGlitch
 				/>
 			</View>
 		</View>

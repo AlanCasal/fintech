@@ -4,6 +4,7 @@ import {
 	TouchableOpacity,
 	KeyboardAvoidingView,
 	Alert,
+	Image,
 } from 'react-native';
 import React, { useState } from 'react';
 import { defaultStyles } from '@/constants/Styles';
@@ -24,11 +25,16 @@ import {
 	CountryCode,
 	CallingCode,
 } from '@/components/Inputs/GlobalPhoneInputs/api/types';
+import CyberButtonLarge from '@/components/Buttons/CyberButtons/components/CyberButtonLarge';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { useHeaderHeight } from '@react-navigation/elements';
+import BoxCorners from '@/components/BoxCorners';
 
 const DEFAULT_COUNTRY_CALLING_CODE = '54';
 const DEFAULT_COUNTRY_CODE = 'AR';
 
 const SignIn = () => {
+	const headerHeight = useHeaderHeight();
 	const router = useRouter();
 	const { signIn } = useSignIn();
 
@@ -85,19 +91,16 @@ const SignIn = () => {
 	return (
 		<KeyboardAvoidingView
 			behavior="padding"
-			style={{ flex: 1 }}
+			style={{ flex: 1, ...defaultStyles.darkBackground }}
 			keyboardVerticalOffset={KEYBOARD_VERTICAL_OFFSET}
 		>
-			<StatusBar style="dark" />
 			<Stack.Screen
 				name="signin"
 				options={{
 					title: '',
 					headerBackTitle: '',
 					headerShadowVisible: false,
-					headerStyle: {
-						backgroundColor: Colors.darkBackground,
-					},
+					headerTransparent: true,
 					headerLeft: () => <BackButton />,
 					headerRight: () => (
 						<Link href="/help" asChild>
@@ -105,7 +108,7 @@ const SignIn = () => {
 								<Ionicons
 									name="help-circle-outline"
 									size={34}
-									color={Colors.darkBackground}
+									color={Colors.white}
 								/>
 							</TouchableOpacity>
 						</Link>
@@ -116,22 +119,28 @@ const SignIn = () => {
 			<View
 				style={[
 					defaultStyles.container,
-					defaultStyles.darkBackground,
 					styles.container,
+					{ paddingTop: headerHeight + 20 },
 				]}
 			>
-				<Text
-					style={[
-						defaultStyles.secondaryFontFamilySemiBold,
-						defaultStyles.header,
-					]}
-				>
-					{'>'} Welcome Back !
-				</Text>
+				<View style={styles.headerContainer}>
+					<Text
+						style={[
+							defaultStyles.secondaryFontFamilySemiBold,
+							defaultStyles.header,
+							styles.headerBorder,
+						]}
+					>
+						{'>'} Welcome Back !
+					</Text>
+
+					<BoxCorners cornerBottomRight cornerTopLeft />
+				</View>
 
 				<Text style={defaultStyles.descriptionText}>
 					Enter the phone number associated with your account
 				</Text>
+
 				<GlobalPhoneInputs
 					callingCode={countryCode.callingCode}
 					countryCode={countryCode.countryCode}
@@ -140,22 +149,29 @@ const SignIn = () => {
 					handleMobileNumberChange={setMobileNumber}
 				/>
 
-				<TouchableOpacity
-					style={[
-						defaultStyles.pillButton,
-						styles.signInButton,
-						!mobileNumber ? styles.signInDisabled : styles.signInEnabled,
-					]}
-					onPress={() => handleSignIn(SignInType.PHONE)}
+				<CyberButtonLarge
+					handleOnPress={() => handleSignIn(SignInType.PHONE)}
+					buttonText="Continue"
+					buttonTextColor={Colors.darkBackground}
+					steepPosition="top-left"
 					disabled={!mobileNumber}
-				>
-					<Text style={defaultStyles.buttonText}>Continue</Text>
-				</TouchableOpacity>
+				/>
 
 				<Divider centerText="or" />
 
 				<SignInButtons handleSignIn={handleSignIn} />
 			</View>
+
+			<Image
+				source={require('@/assets/images/cyber-dots-primary.png')}
+				style={[styles.cyberDots, styles.top]}
+				resizeMode="repeat"
+			/>
+			<Image
+				source={require('@/assets/images/cyber-dots-primary.png')}
+				style={[styles.cyberDots, styles.bottom]}
+				resizeMode="repeat"
+			/>
 		</KeyboardAvoidingView>
 	);
 };

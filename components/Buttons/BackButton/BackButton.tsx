@@ -12,7 +12,7 @@ interface BackButtonProps {
 
 const BackButton = ({
 	size = 34,
-	color = Colors.darkBackground,
+	color = Colors.white,
 	icon = 'arrow-back',
 }: BackButtonProps) => {
 	const router = useRouter();

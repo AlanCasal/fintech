@@ -1,4 +1,5 @@
 import Colors from '@/constants/Colors';
+import { SECONDARY_FONT_FAMILY } from '@/constants/Utils';
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
@@ -15,5 +16,6 @@ export const styles = StyleSheet.create({
 	centerText: {
 		fontSize: 18,
 		color: Colors.gray,
+		fontFamily: SECONDARY_FONT_FAMILY,
 	},
 });

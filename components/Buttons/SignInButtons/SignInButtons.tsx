@@ -1,10 +1,9 @@
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
-import { styles } from './styles';
-import { defaultStyles } from '@/constants/Styles';
 import Colors from '@/constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
 import { SignInType } from '@/enums';
+import CyberButtonLarge from '../CyberButtons/components/CyberButtonLarge/CyberButtonLarge';
+import { styles } from './styles';
 
 const SIGN_IN_LIST = [
 	{
@@ -30,20 +29,23 @@ type SignInButtonsProps = {
 
 const SignInButtons = ({ handleSignIn }: SignInButtonsProps) => {
 	return SIGN_IN_LIST.map(button => (
-		<TouchableOpacity
+		<CyberButtonLarge
 			key={button.type}
-			style={[defaultStyles.pillButton, styles.continueWithButton]}
-			onPress={() => handleSignIn(button.type)}
-		>
-			<Ionicons
-				name={button.icon as keyof typeof Ionicons.glyphMap}
-				size={24}
-				color={Colors.darkBackground}
-			/>
-			<Text style={[defaultStyles.buttonText, styles.continueWithText]}>
-				{button.text}
-			</Text>
-		</TouchableOpacity>
+			handleOnPress={() => handleSignIn(button.type)}
+			buttonBackgroundColor={Colors.white}
+			buttonTextColor={Colors.darkBackground}
+			buttonText={button.text}
+			buttonBorderColor={Colors.white}
+			steepPosition="bottom-right"
+			buttonTextStyle={styles.buttonText}
+			icon={
+				<Ionicons
+					name={button.icon as keyof typeof Ionicons.glyphMap}
+					size={20}
+					color={Colors.darkBackground}
+				/>
+			}
+		/>
 	));
 };
 
