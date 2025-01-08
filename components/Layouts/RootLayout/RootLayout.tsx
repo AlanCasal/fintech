@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
 import React, { useEffect } from 'react';
-import { View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
@@ -11,8 +10,6 @@ import { TokenCache } from '@clerk/clerk-expo/dist/cache';
 import * as SplashScreen from 'expo-splash-screen';
 import * as SecureStore from 'expo-secure-store';
 import 'react-native-reanimated';
-import LoadingSpinner from '@/components/LoadingSpinner';
-import { styles } from './styles';
 import { CLERK_PUBLISHABLE_KEY, isIos } from '@/constants/Utils';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { UserInactivityProvider } from '@/context/UserInactivity';
@@ -23,6 +20,7 @@ import {
 	Oxanium_400Regular,
 	Oxanium_600SemiBold,
 } from '@expo-google-fonts/oxanium';
+import LoadingBackground from '@/components/LoadingBackground';
 
 const createTokenCache = (): TokenCache => {
 	return {
@@ -89,13 +87,8 @@ const RootLayout = () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isSignedIn]);
 
-	if (!loaded || !isAuthLoaded || !CLERK_PUBLISHABLE_KEY) {
-		return (
-			<View style={styles.container}>
-				<LoadingSpinner />
-			</View>
-		);
-	}
+	if (!loaded || !isAuthLoaded || !CLERK_PUBLISHABLE_KEY)
+		return <LoadingBackground />;
 
 	return (
 		<Stack>

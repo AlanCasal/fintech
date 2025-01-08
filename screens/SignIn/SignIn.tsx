@@ -30,6 +30,7 @@ import { useHeaderHeight } from '@react-navigation/elements';
 import BoxCorners from '@/components/BoxCorners';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Logo from '@/components/Logo';
+import CyberDots from '@/components/CyberDots';
 
 const DEFAULT_COUNTRY_CALLING_CODE = '54';
 const DEFAULT_COUNTRY_CODE = 'AR';
@@ -164,16 +165,9 @@ const SignIn = () => {
 				<SignInButtons handleSignIn={handleSignIn} />
 			</View>
 
-			<Image
-				source={require('@/assets/images/cyber-dots-primary.png')}
-				style={[styles.cyberDots, styles.top]}
-				resizeMode="repeat"
-			/>
-			<Image
-				source={require('@/assets/images/cyber-dots-primary.png')}
-				style={[styles.cyberDots, styles.bottom]}
-				resizeMode="repeat"
-			/>
+			<CyberDots position="top" height="20%" />
+			<CyberDots position="bottom" height="30%" />
+
 			<View style={[styles.logoContainer, { bottom: bottom + 10 }]}>
 				<Logo />
 				<BoxCorners cornerBottomRight cornerTopLeft width={10} height={10} />
