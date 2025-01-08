@@ -2,8 +2,9 @@ import {
 	View,
 	Text,
 	TouchableOpacity,
-	KeyboardAvoidingView,
 	Alert,
+	TouchableWithoutFeedback,
+	Keyboard,
 } from 'react-native';
 import React, { useState } from 'react';
 import { defaultStyles } from '@/constants/Styles';
@@ -11,7 +12,6 @@ import { styles } from './styles';
 import Colors from '@/constants/Colors';
 import { Link, Stack, useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
-import { KEYBOARD_VERTICAL_OFFSET } from '@/constants/Utils';
 import { isClerkAPIResponseError, useSignIn } from '@clerk/clerk-expo';
 import BackButton from '@/components/Buttons/BackButton';
 import SignInButtons from '@/components/Buttons/SignInButtons';
@@ -34,6 +34,11 @@ import CyberDots from '@/components/CyberDots';
 const DEFAULT_COUNTRY_CALLING_CODE = '54';
 const DEFAULT_COUNTRY_CODE = 'AR';
 
+type PhoneCodes = {
+	callingCode: CallingCode;
+	countryCode: CountryCode;
+};
+
 const SignIn = () => {
 	const headerHeight = useHeaderHeight();
 	const { bottom } = useSafeAreaInsets();
@@ -41,10 +46,7 @@ const SignIn = () => {
 	const { signIn } = useSignIn();
 
 	const [mobileNumber, setMobileNumber] = useState('');
-	const [countryCode, setCountryCode] = useState<{
-		callingCode: CallingCode;
-		countryCode: CountryCode;
-	}>({
+	const [countryCode, setCountryCode] = useState<PhoneCodes>({
 		callingCode: DEFAULT_COUNTRY_CALLING_CODE,
 		countryCode: DEFAULT_COUNTRY_CODE,
 	});
@@ -90,12 +92,18 @@ const SignIn = () => {
 		}
 	};
 
+	const containerStyles = [
+		defaultStyles.container,
+		defaultStyles.darkBackground,
+		styles.container,
+		{
+			paddingTop: headerHeight + 10,
+			paddingBottom: bottom + 10,
+		},
+	];
+
 	return (
-		<KeyboardAvoidingView
-			behavior="padding"
-			style={[defaultStyles.darkBackground, { flex: 1 }]}
-			keyboardVerticalOffset={KEYBOARD_VERTICAL_OFFSET}
-		>
+		<View style={{ flex: 1 }}>
 			<Stack.Screen
 				name="signin"
 				options={{
@@ -118,60 +126,65 @@ const SignIn = () => {
 				}}
 			/>
 
-			<View
-				style={[
-					defaultStyles.container,
-					styles.container,
-					{ paddingTop: headerHeight + 20 },
-				]}
-			>
-				<View style={styles.headerContainer}>
-					<Text
-						style={[
-							defaultStyles.secondaryFontFamilySemiBold,
-							defaultStyles.header,
-							styles.headerBorder,
-						]}
-					>
-						{'>'} Welcome Back !
-					</Text>
+			<TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+				<View style={containerStyles}>
+					<CyberDots position="top" height="20%" />
+					<CyberDots position="bottom" height="30%" />
 
-					<BoxCorners cornerBottomRight cornerTopLeft />
+					<View style={styles.gap20}>
+						<View style={styles.titleContainer}>
+							<Text
+								style={[
+									defaultStyles.secondaryFontFamilySemiBold,
+									defaultStyles.header,
+									styles.headerBorder,
+								]}
+							>
+								{'>'} Welcome Back !
+							</Text>
+
+							<BoxCorners cornerBottomRight cornerTopLeft />
+						</View>
+
+						<Text style={defaultStyles.descriptionText}>
+							Enter the phone number associated with your account
+						</Text>
+					</View>
+
+					<View style={styles.gap20}>
+						<GlobalPhoneInputs
+							callingCode={countryCode.callingCode}
+							countryCode={countryCode.countryCode}
+							mobileNumber={mobileNumber}
+							handleCountryCodeChange={handleCountryCodeChange}
+							handleMobileNumberChange={setMobileNumber}
+						/>
+
+						<CyberButtonLarge
+							handleOnPress={() => handleSignIn(SignInType.PHONE)}
+							buttonText="Continue"
+							buttonTextColor={Colors.darkBackground}
+							steepPosition="top-left"
+							disabled={!mobileNumber}
+						/>
+					</View>
+
+					<Divider centerText="or" marginVertical={10} />
+
+					<SignInButtons handleSignIn={handleSignIn} />
+
+					<View style={styles.logoContainer}>
+						<Logo />
+						<BoxCorners
+							cornerBottomRight
+							cornerTopLeft
+							width={10}
+							height={10}
+						/>
+					</View>
 				</View>
-
-				<Text style={defaultStyles.descriptionText}>
-					Enter the phone number associated with your account
-				</Text>
-
-				<GlobalPhoneInputs
-					callingCode={countryCode.callingCode}
-					countryCode={countryCode.countryCode}
-					mobileNumber={mobileNumber}
-					handleCountryCodeChange={handleCountryCodeChange}
-					handleMobileNumberChange={setMobileNumber}
-				/>
-
-				<CyberButtonLarge
-					handleOnPress={() => handleSignIn(SignInType.PHONE)}
-					buttonText="Continue"
-					buttonTextColor={Colors.darkBackground}
-					steepPosition="top-left"
-					disabled={!mobileNumber}
-				/>
-
-				<Divider centerText="or" />
-
-				<SignInButtons handleSignIn={handleSignIn} />
-			</View>
-
-			<CyberDots position="top" height="20%" />
-			<CyberDots position="bottom" height="30%" />
-
-			<View style={[styles.logoContainer, { bottom: bottom + 10 }]}>
-				<Logo />
-				<BoxCorners cornerBottomRight cornerTopLeft width={10} height={10} />
-			</View>
-		</KeyboardAvoidingView>
+			</TouchableWithoutFeedback>
+		</View>
 	);
 };
 

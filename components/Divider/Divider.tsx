@@ -4,11 +4,12 @@ import { styles } from './styles';
 
 interface DividerProps {
 	centerText?: string;
+	marginVertical?: number;
 }
 
-const Divider = ({ centerText }: DividerProps) => {
+const Divider = ({ centerText, marginVertical }: DividerProps) => {
 	return (
-		<View style={styles.dividerContainer}>
+		<View style={[styles.dividerContainer, { marginVertical }]}>
 			{centerText ? (
 				<>
 					<View style={styles.divider} />
