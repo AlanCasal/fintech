@@ -33,7 +33,7 @@ const CyberButtons = ({
 				/>
 				<GlitchText
 					text="Sign In"
-					styles={[styles.text, styles.leftButtonText]}
+					extraStyles={[styles.text, styles.leftButtonText]}
 				/>
 			</TouchableOpacity>
 
@@ -45,7 +45,7 @@ const CyberButtons = ({
 				/>
 				<GlitchText
 					text="Sign Up"
-					styles={[styles.text, styles.rightButtonText]}
+					extraStyles={[styles.text, styles.rightButtonText]}
 				/>
 			</TouchableOpacity>
 		</View>

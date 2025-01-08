@@ -58,6 +58,7 @@ const TypewriterGlitchText = ({
 
 		setTimeout(typeNextChar, 500);
 
+		// Cleanup function
 		return () => {
 			mountedRef.current = false;
 			clearInterval(glitchInterval);
@@ -81,9 +82,7 @@ const TypewriterGlitchText = ({
 					useNativeDriver: true,
 				}),
 			]).start(() => {
-				if (mountedRef.current) {
-					blinkCursor();
-				}
+				if (mountedRef.current) blinkCursor();
 			});
 		};
 

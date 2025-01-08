@@ -1,4 +1,4 @@
-import { View, Image } from 'react-native';
+import { View } from 'react-native';
 import React from 'react';
 import { styles } from './styles';
 import { useAssets } from 'expo-asset';
@@ -6,6 +6,7 @@ import { ResizeMode, Video } from 'expo-av';
 import { Stack, useRouter } from 'expo-router';
 import CyberButtons from '@/components/Buttons/CyberButtons';
 import TypewriterGlitchText from '@/components/Animations/TypewriterGlitchText';
+import GlitchDots from '@/components/Animations/GlitchDots';
 
 const Intro = () => {
 	const [assets] = useAssets([require('@/assets/videos/intro2.mp4')]);
@@ -23,16 +24,8 @@ const Intro = () => {
 	return (
 		<View style={styles.container}>
 			<Stack.Screen name="intro" options={{ headerShown: false }} />
-			<Image
-				source={require('@/assets/images/cyber-dots primary.png')}
-				style={styles.cyberDotsTop}
-				resizeMode="repeat"
-			/>
-			<Image
-				source={require('@/assets/images/cyber-dots primary.png')}
-				style={styles.cyberDotsBottom}
-				resizeMode="repeat"
-			/>
+			<GlitchDots position="top" height="10%" />
+			<GlitchDots position="bottom" height="25%" />
 
 			{assets && (
 				<Video

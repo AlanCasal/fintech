@@ -1,17 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { StyleProp, TextStyle, Animated } from 'react-native';
-import { styles as baseStyles } from './styles';
+import { styles } from './styles';
 
 type GlitchTextProps = {
 	text: string;
-	styles?: StyleProp<TextStyle>;
+	extraStyles?: StyleProp<TextStyle>;
 	withShadow?: boolean;
 	textShadowColor?: string;
 };
 
 const GlitchText = ({
 	text,
-	styles,
+	extraStyles,
 	withShadow = false,
 	textShadowColor,
 }: GlitchTextProps) => {
@@ -22,10 +22,10 @@ const GlitchText = ({
 
 	const finalStyles = [
 		withShadow && {
-			...baseStyles.shadow,
+			...styles.shadow,
 			...(textShadowColor && { textShadowColor }),
 		},
-		styles,
+		extraStyles,
 	];
 
 	useEffect(() => {
