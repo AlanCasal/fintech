@@ -1,30 +1,17 @@
-import Colors from '@/constants/Colors';
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
 	container: {
 		gap: 20,
 	},
-	inputContainer: {
-		flexDirection: 'row',
-		gap: 10,
+	header: {
+		fontSize: 36,
+		paddingVertical: 20,
+		textAlign: 'center',
 	},
-	input: {
-		backgroundColor: Colors.lightGray,
-		padding: 20,
-		borderRadius: 16,
-		fontSize: 20,
-	},
-	inputMobileNumber: {
-		flex: 1,
-	},
-	signUpButton: {
+	logoContainer: {
+		alignSelf: 'center',
+		padding: 10,
 		marginBottom: 20,
-	},
-	signUpEnabled: {
-		backgroundColor: Colors.darkBackground,
-	},
-	signUpDisabled: {
-		backgroundColor: Colors.primaryMuted,
 	},
 });

@@ -38,12 +38,14 @@ export const defaultStyles = StyleSheet.create({
 		alignItems: 'center',
 	},
 	textLink: {
+		fontFamily: SECONDARY_FONT_FAMILY_SEMI_BOLD,
 		color: Colors.primary,
 		fontSize: 18,
 		fontWeight: '500',
 	},
 	descriptionText: {
 		fontSize: 18,
+		lineHeight: 22,
 		color: Colors.lightGray,
 		fontFamily: SECONDARY_FONT_FAMILY,
 	},

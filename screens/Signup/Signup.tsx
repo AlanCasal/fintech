@@ -10,7 +10,7 @@ import { defaultStyles } from '@/constants/Styles';
 import { styles } from './styles';
 import Colors from '@/constants/Colors';
 import { Link, Stack, useRouter } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { isClerkAPIResponseError, useSignUp } from '@clerk/clerk-expo';
 import { KEYBOARD_VERTICAL_OFFSET } from '@/constants/Utils';
 import BackButton from '@/components/Buttons/BackButton';
@@ -20,6 +20,13 @@ import {
 	CallingCode,
 } from '@/components/Inputs/GlobalPhoneInputs/api/types';
 import GlobalPhoneInputs from '@/components/Inputs/GlobalPhoneInputs';
+import Ionicons from '@expo/vector-icons/build/Ionicons';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { useHeaderHeight } from '@react-navigation/elements';
+import BoxCorners from '@/components/BoxCorners';
+import CyberButtonLarge from '@/components/Buttons/CyberButtons/components/CyberButtonLarge';
+import CyberDots from '@/components/CyberDots';
+import Logo from '@/components/Logo';
 
 const DEFAULT_COUNTRY_CALLING_CODE = '54';
 const DEFAULT_COUNTRY_CODE = 'AR';
@@ -27,6 +34,8 @@ const DEFAULT_COUNTRY_CODE = 'AR';
 const Signup = () => {
 	const router = useRouter();
 	const { signUp } = useSignUp();
+	const { bottom } = useSafeAreaInsets();
+	const headerHeight = useHeaderHeight();
 
 	const [mobileNumber, setMobileNumber] = useState('');
 	const [countryCode, setCountryCode] = useState<{
@@ -64,27 +73,50 @@ const Signup = () => {
 	return (
 		<KeyboardAvoidingView
 			behavior="padding"
-			style={{ flex: 1 }}
+			style={[defaultStyles.darkBackground, { flex: 1 }]}
 			keyboardVerticalOffset={KEYBOARD_VERTICAL_OFFSET}
 		>
-			<StatusBar style="dark" />
 			<Stack.Screen
 				name="signup"
 				options={{
 					title: '',
 					headerBackTitle: '',
 					headerShadowVisible: false,
-					headerStyle: {
-						backgroundColor: Colors.lightBackground,
-					},
+					headerTransparent: true,
 					headerLeft: () => <BackButton />,
+					headerRight: () => (
+						<Link href="/help" asChild>
+							<TouchableOpacity>
+								<Ionicons
+									name="help-circle-outline"
+									size={34}
+									color={Colors.white}
+								/>
+							</TouchableOpacity>
+						</Link>
+					),
 				}}
 			/>
+			<CyberDots position="top" height="20%" />
+			<CyberDots position="bottom" height="30%" />
 
-			<View style={[defaultStyles.container, styles.container]}>
-				<Text style={defaultStyles.header}>Let's get you started</Text>
+			<View
+				style={[
+					defaultStyles.container,
+					styles.container,
+					{ paddingTop: headerHeight + 20, paddingBottom: bottom + 20 },
+				]}
+			>
+				<View>
+					<Text style={[defaultStyles.header, styles.header]}>
+						Let's get you started
+					</Text>
+
+					<BoxCorners cornerBottomRight cornerTopLeft />
+				</View>
+
 				<Text style={defaultStyles.descriptionText}>
-					Enter your phone number. We'll send you a verification code.
+					{`Enter your phone number.${'\n'}We'll send you a verification code.`}
 				</Text>
 
 				<GlobalPhoneInputs
@@ -97,25 +129,27 @@ const Signup = () => {
 
 				<Link href={'/signin'} replace asChild>
 					<TouchableOpacity>
-						<Text style={defaultStyles.textLink}>
-							Already have an account? Sign In instead
+						<Text style={defaultStyles.descriptionText}>
+							Already have an account?{' '}
+							<Text style={defaultStyles.textLink}>Sign In instead</Text>
 						</Text>
 					</TouchableOpacity>
 				</Link>
 
 				<View style={{ flex: 1 }} />
 
-				<TouchableOpacity
-					style={[
-						defaultStyles.pillButton,
-						styles.signUpButton,
-						!mobileNumber ? styles.signUpDisabled : styles.signUpEnabled,
-					]}
-					onPress={handleSignup}
+				<View style={styles.logoContainer}>
+					<Logo />
+					<BoxCorners cornerBottomRight cornerTopLeft width={10} height={10} />
+				</View>
+
+				<CyberButtonLarge
+					buttonText="Sign Up"
+					steepPosition="top-left"
+					buttonTextColor={Colors.darkBackground}
+					handleOnPress={handleSignup}
 					disabled={!mobileNumber}
-				>
-					<Text style={defaultStyles.buttonText}>Sign Up</Text>
-				</TouchableOpacity>
+				/>
 			</View>
 		</KeyboardAvoidingView>
 	);
