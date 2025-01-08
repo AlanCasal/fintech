@@ -12,7 +12,7 @@ const ScreenHeader = ({ title = '' }: { title?: string }) => {
 			name="(authenticated)/(tabs)/[id]"
 			options={{
 				headerStyle: {
-					backgroundColor: Colors.background,
+					backgroundColor: Colors.lightBackground,
 				},
 				title,
 				headerLargeTitle: true,
@@ -25,11 +25,15 @@ const ScreenHeader = ({ title = '' }: { title?: string }) => {
 								<Ionicons
 									name="notifications-outline"
 									size={30}
-									color={Colors.dark}
+									color={Colors.darkBackground}
 								/>
 							</TouchableOpacity>
 							<TouchableOpacity>
-								<Ionicons name="star-outline" size={30} color={Colors.dark} />
+								<Ionicons
+									name="star-outline"
+									size={30}
+									color={Colors.darkBackground}
+								/>
 							</TouchableOpacity>
 						</View>
 					),

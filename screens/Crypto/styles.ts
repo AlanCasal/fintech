@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: Colors.background,
+		backgroundColor: Colors.lightBackground,
 	},
 	currencyWrapper: {
 		flexDirection: 'row',
@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
 	},
 	currencyName: {
 		fontWeight: '600',
-		color: Colors.dark,
+		color: Colors.darkBackground,
 	},
 	currencySymbol: {
 		color: Colors.gray,
@@ -32,7 +32,7 @@ export const styles = StyleSheet.create({
 	},
 	currencyPrice: {
 		fontWeight: '600',
-		color: Colors.dark,
+		color: Colors.darkBackground,
 	},
 	priceChangeWraper: {
 		flexDirection: 'row',

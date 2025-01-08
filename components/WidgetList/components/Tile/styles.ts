@@ -22,7 +22,7 @@ export const styles = StyleSheet.create({
 		fontSize: 16,
 	},
 	subtitle: {
-		color: Colors.dark,
+		color: Colors.darkBackground,
 		fontWeight: '700',
 		fontSize: 26,
 		paddingTop: 10,
@@ -61,7 +61,7 @@ export const styles = StyleSheet.create({
 		paddingTop: 10,
 	},
 	transactionAmount: {
-		color: Colors.dark,
+		color: Colors.darkBackground,
 		fontWeight: '700',
 		fontSize: 18,
 		paddingVertical: 10,

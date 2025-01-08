@@ -33,7 +33,7 @@ export const styles = StyleSheet.create({
 	transactionTitle: {
 		fontSize: 16,
 		fontWeight: '400',
-		color: Colors.dark,
+		color: Colors.darkBackground,
 	},
 	transactionDate: {
 		fontSize: 12,
@@ -42,7 +42,7 @@ export const styles = StyleSheet.create({
 	},
 	text: {
 		fontWeight: '400',
-		color: Colors.dark,
+		color: Colors.darkBackground,
 	},
 	textSuccess: {
 		color: Colors.success,

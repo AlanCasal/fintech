@@ -9,9 +9,8 @@ export const styles = StyleSheet.create({
 		paddingHorizontal: 16,
 		gap: 10,
 		paddingBottom: 8,
-		backgroundColor: Colors.background,
+		backgroundColor: Colors.lightBackground,
 		borderBottomColor: Colors.gray,
-		// borderBottomWidth: StyleSheet.hairlineWidth,
 	},
 	menuButton: {
 		padding: 10,
@@ -34,6 +33,6 @@ export const styles = StyleSheet.create({
 	},
 	menuTextActive: {
 		fontSize: 14,
-		color: Colors.dark,
+		color: Colors.darkBackground,
 	},
 });

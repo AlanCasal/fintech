@@ -17,6 +17,6 @@ export const styles = StyleSheet.create({
 	label: {
 		fontSize: 16,
 		fontWeight: '500',
-		color: Colors.dark,
+		color: Colors.darkBackground,
 	},
 });

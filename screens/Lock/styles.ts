@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
 		fontSize: 24,
 		fontWeight: '700',
 		alignSelf: 'center',
-		color: Colors.dark,
+		color: Colors.darkBackground,
 	},
 	forgotPassword: {
 		position: 'absolute',

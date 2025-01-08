@@ -77,7 +77,7 @@ const VerifyPhone = () => {
 					headerBackTitle: '',
 					headerShadowVisible: false,
 					headerStyle: {
-						backgroundColor: Colors.background,
+						backgroundColor: Colors.lightBackground,
 					},
 					headerLeft: () => <BackButton />,
 				}}

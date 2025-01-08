@@ -11,3 +11,5 @@ export const ERROR_MESSAGE_FETCHING_DATA =
 	"Couldn't load data.\nPlease try again later";
 
 export const PRIMARY_FONT_FAMILY = 'Aldrich_400Regular';
+export const SECONDARY_FONT_FAMILY = 'Oxanium_400Regular';
+export const SECONDARY_FONT_FAMILY_SEMI_BOLD = 'Oxanium_600SemiBold';

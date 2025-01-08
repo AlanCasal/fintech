@@ -8,10 +8,10 @@ const ActionButtons = () => {
 	return (
 		<>
 			<View style={styles.circle}>
-				<Ionicons name="stats-chart" size={20} color={Colors.dark} />
+				<Ionicons name="stats-chart" size={20} color={Colors.darkBackground} />
 			</View>
 			<View style={styles.circle}>
-				<Ionicons name="card" size={20} color={Colors.dark} />
+				<Ionicons name="card" size={20} color={Colors.darkBackground} />
 			</View>
 		</>
 	);

@@ -20,6 +20,6 @@ export const styles = StyleSheet.create({
 		paddingRight: 10,
 		paddingBottom: 10,
 		paddingLeft: 0,
-		color: Colors.dark,
+		color: Colors.darkBackground,
 	},
 });

@@ -28,6 +28,6 @@ export const styles = StyleSheet.create({
 		color: Colors.primary,
 	},
 	rightButtonText: {
-		color: Colors.dark,
+		color: Colors.darkBackground,
 	},
 });

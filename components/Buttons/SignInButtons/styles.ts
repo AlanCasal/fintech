@@ -8,6 +8,6 @@ export const styles = StyleSheet.create({
 		backgroundColor: Colors.white,
 	},
 	continueWithText: {
-		color: Colors.dark,
+		color: Colors.darkBackground,
 	},
 });

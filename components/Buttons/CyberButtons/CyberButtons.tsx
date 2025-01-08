@@ -28,7 +28,7 @@ const CyberButtons = ({
 			<TouchableOpacity onPress={actionLeft} style={styles.button}>
 				<CyberButtonLeft
 					width={170}
-					fill={Colors.dark}
+					fill={Colors.darkBackground}
 					stroke={Colors.primary}
 				/>
 				<GlitchText

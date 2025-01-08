@@ -6,7 +6,7 @@ const STICKY_HEADER_PADDING_FIX = 100;
 export const styles = StyleSheet.create({
 	container: {
 		marginTop: STICKY_HEADER_PADDING_FIX,
-		backgroundColor: Colors.background,
+		backgroundColor: Colors.lightBackground,
 	},
 	centerContent: {
 		flex: 1,
@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
 	errorTitle: {
 		fontSize: 24,
 		fontWeight: 'bold',
-		color: Colors.dark,
+		color: Colors.darkBackground,
 	},
 	errorMessage: {
 		fontSize: 16,

@@ -22,7 +22,7 @@ export const styles = StyleSheet.create({
 		marginBottom: 20,
 	},
 	signUpEnabled: {
-		backgroundColor: Colors.dark,
+		backgroundColor: Colors.darkBackground,
 	},
 	signUpDisabled: {
 		backgroundColor: Colors.primaryMuted,

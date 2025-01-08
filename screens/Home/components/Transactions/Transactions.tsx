@@ -30,7 +30,7 @@ const Transactions = () => {
 								<Ionicons
 									name={isPositive ? 'arrow-down' : 'arrow-up'}
 									size={20}
-									color={Colors.dark}
+									color={Colors.darkBackground}
 								/>
 							</View>
 							<View style={styles.transactionDetails}>

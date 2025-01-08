@@ -30,7 +30,7 @@ const Biometrics = () => {
 			<MaterialCommunityIcons
 				name="face-recognition"
 				size={32}
-				color={Colors.dark}
+				color={Colors.darkBackground}
 			/>
 		</TouchableOpacity>
 	);

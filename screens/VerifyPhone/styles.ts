@@ -20,12 +20,12 @@ export const styles = StyleSheet.create({
 		borderRadius: 8,
 	},
 	cellText: {
-		color: Colors.dark,
+		color: Colors.darkBackground,
 		fontSize: 36,
 		textAlign: 'center',
 	},
 	focusCell: {
-		borderColor: Colors.dark,
+		borderColor: Colors.darkBackground,
 	},
 	separator: {
 		height: 2,

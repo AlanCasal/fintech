@@ -20,6 +20,6 @@ export const styles = StyleSheet.create({
 	number: {
 		fontSize: 32,
 		fontWeight: '700',
-		color: Colors.dark,
+		color: Colors.darkBackground,
 	},
 });

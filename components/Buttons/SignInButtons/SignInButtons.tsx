@@ -38,7 +38,7 @@ const SignInButtons = ({ handleSignIn }: SignInButtonsProps) => {
 			<Ionicons
 				name={button.icon as keyof typeof Ionicons.glyphMap}
 				size={24}
-				color={Colors.dark}
+				color={Colors.darkBackground}
 			/>
 			<Text style={[defaultStyles.buttonText, styles.continueWithText]}>
 				{button.text}

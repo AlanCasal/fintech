@@ -20,7 +20,7 @@ const DeleteKey = ({
 			<MaterialCommunityIcons
 				name={code.length === 0 ? 'backspace-outline' : 'backspace'}
 				size={24}
-				color={code.length === 0 ? Colors.gray : Colors.dark}
+				color={code.length === 0 ? Colors.gray : Colors.darkBackground}
 			/>
 		</TouchableOpacity>
 	);

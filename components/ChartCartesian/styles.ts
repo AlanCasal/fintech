@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
 		color: Colors.gray,
 	},
 	chartTodayTextPrice: {
-		color: Colors.dark,
+		color: Colors.darkBackground,
 		fontWeight: '700',
 		fontSize: 30,
 	},
