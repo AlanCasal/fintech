@@ -78,7 +78,9 @@ export const defaultStyles = StyleSheet.create({
 	},
 	sectionHeader: {
 		fontSize: 20,
-		fontWeight: 'bold',
+		fontFamily: PRIMARY_FONT_FAMILY,
+		textTransform: 'uppercase',
+		color: Colors.lightGray,
 		margin: 20,
 		marginBottom: 10,
 	},

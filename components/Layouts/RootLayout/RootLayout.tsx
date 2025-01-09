@@ -103,6 +103,7 @@ const RootLayout = () => {
 				}}
 			/>
 			<Stack.Screen
+				name="(authenticated)/(modals)/account"
 				options={{
 					presentation: 'transparentModal',
 					animation: 'slide_from_bottom',
@@ -112,7 +113,6 @@ const RootLayout = () => {
 						<BackButton icon="close-outline" color={Colors.white} />
 					),
 				}}
-				name="(authenticated)/(modals)/account"
 			/>
 		</Stack>
 	);
