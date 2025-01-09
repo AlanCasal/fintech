@@ -13,9 +13,15 @@ export const styles = StyleSheet.create({
 		gap: 20,
 		alignItems: 'center',
 	},
+	actionButtonDivider: {
+		borderBottomWidth: StyleSheet.hairlineWidth,
+		borderBottomColor: Colors.gray,
+		borderBottomLeftRadius: '15%',
+		borderBottomRightRadius: '5%',
+	},
 	iconImage: {
-		width: 24,
-		height: 24,
+		width: 20,
+		height: 20,
 		borderRadius: 5,
 	},
 	actionText: {

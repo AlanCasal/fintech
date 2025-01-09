@@ -29,7 +29,8 @@ export const styles = StyleSheet.create({
 		borderBottomWidth: StyleSheet.hairlineWidth,
 		borderBottomColor: Colors.gray,
 		paddingBottom: 16,
-		borderBottomLeftRadius: 40,
+		borderBottomLeftRadius: '15%',
+		borderBottomRightRadius: '1%',
 	},
 	circle: {
 		width: 40,

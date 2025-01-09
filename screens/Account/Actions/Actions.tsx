@@ -45,6 +45,29 @@ const Actions = () => {
 		loadCurrentIcon();
 	}, []);
 
+	const MENU_OPTIONS = [
+		{
+			name: 'Account',
+			icon: 'person',
+			action: () => {},
+		},
+		{
+			name: 'Learn',
+			icon: 'bulb',
+			action: () => {},
+		},
+		{
+			name: 'Inbox',
+			icon: 'megaphone',
+			action: () => {},
+		},
+		{
+			name: 'Sign Out',
+			icon: 'log-out',
+			action: handleSignOut,
+		},
+	];
+
 	return (
 		<>
 			<View style={styles.actions}>
@@ -55,28 +78,24 @@ const Actions = () => {
 					height={'10%'}
 					borderWidth={StyleSheet.hairlineWidth}
 				/>
-				<TouchableOpacity style={styles.actionButton}>
-					<Ionicons name="person" size={24} color={Colors.white} />
-					<Text style={styles.actionText}>Account</Text>
-				</TouchableOpacity>
 
-				<TouchableOpacity style={styles.actionButton}>
-					<Ionicons name="bulb" size={24} color={Colors.white} />
-					<Text style={styles.actionText}>Learn</Text>
-				</TouchableOpacity>
-
-				<TouchableOpacity style={styles.actionButton}>
-					<Ionicons name="megaphone" size={24} color={Colors.white} />
-					<Text style={styles.actionText}>Inbox</Text>
-					<View style={styles.inboxBadgeWrapper}>
-						<Text style={styles.inboxBadge}>14</Text>
-					</View>
-				</TouchableOpacity>
-
-				<TouchableOpacity style={styles.actionButton} onPress={handleSignOut}>
-					<Ionicons name="log-out" size={24} color={Colors.white} />
-					<Text style={styles.actionText}>Sign Out</Text>
-				</TouchableOpacity>
+				{MENU_OPTIONS.map((option, index) => (
+					<TouchableOpacity
+						style={[
+							styles.actionButton,
+							index !== MENU_OPTIONS.length - 1 && styles.actionButtonDivider,
+						]}
+						key={option.name}
+						onPress={option.action}
+					>
+						<Ionicons
+							name={option.icon as keyof typeof Ionicons.glyphMap}
+							size={18}
+							color={Colors.white}
+						/>
+						<Text style={styles.actionText}>{option.name}</Text>
+					</TouchableOpacity>
+				))}
 			</View>
 
 			<View style={styles.actions}>
@@ -87,14 +106,18 @@ const Actions = () => {
 					width={'10%'}
 					borderWidth={StyleSheet.hairlineWidth}
 				/>
-				{ICONS.map(icon => {
+
+				{ICONS.map((icon, index) => {
 					const isActive = activeIcon.toLowerCase() === icon.name.toLowerCase();
 
 					return (
 						<TouchableOpacity
 							key={icon.name}
 							onPress={() => handleChangeIcon(icon.name)}
-							style={styles.actionButton}
+							style={[
+								styles.actionButton,
+								index !== ICONS.length - 1 && styles.actionButtonDivider,
+							]}
 						>
 							<Image source={icon.icon} style={styles.iconImage} />
 							<Text style={[styles.actionText, isActive && styles.activeText]}>
@@ -103,7 +126,7 @@ const Actions = () => {
 							{isActive && (
 								<Ionicons
 									name="checkmark"
-									size={24}
+									size={20}
 									color={Colors.primaryMuted}
 								/>
 							)}
