@@ -3,8 +3,10 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
 	account: {
-		marginTop: 80,
-		marginBottom: 20,
+		marginTop: 20,
+		paddingTop: 60,
+		paddingBottom: 20,
+		marginHorizontal: 20,
 		alignItems: 'center',
 	},
 	balanceRow: {

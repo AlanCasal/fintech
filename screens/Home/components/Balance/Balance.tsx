@@ -3,6 +3,7 @@ import React from 'react';
 import { useBalanceStore } from '@/store/balanceStore';
 import { styles } from './styles';
 import Colors from '@/constants/Colors';
+import BoxCorners from '@/components/BoxCorners';
 
 const Balance = () => {
 	const { balance } = useBalanceStore();
@@ -17,6 +18,13 @@ const Balance = () => {
 				</Text>
 				<Text style={[styles.balanceCurrency, { color: balanceColor }]}>€</Text>
 			</View>
+
+			<BoxCorners
+				cornerTopLeft
+				cornerBottomRight
+				borderColor={Colors.primaryMuted}
+				borderWidth={1}
+			/>
 		</View>
 	);
 };
