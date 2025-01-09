@@ -6,10 +6,12 @@ import SortableList from './components/SortableList';
 import { tiles } from './components/Tile/Tile';
 import { defaultStyles } from '@/constants/Styles';
 import { styles } from './styles';
+import CyberDots from '../CyberDots';
 
 const WidgetList = () => {
 	return (
 		<View style={styles.container}>
+			<CyberDots position="bottom" height="10%" />
 			<Text style={defaultStyles.sectionHeader}>Widgets</Text>
 
 			<SortableList
