@@ -5,6 +5,5 @@ export const styles = StyleSheet.create({
 		position: 'absolute',
 		width: '100%',
 		left: 18,
-		transform: [{ scale: 1.5 }],
 	},
 });
