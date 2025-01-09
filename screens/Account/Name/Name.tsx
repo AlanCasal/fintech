@@ -1,9 +1,11 @@
 import { View, Text, TouchableOpacity, TextInput, Alert } from 'react-native';
 import React, { useState } from 'react';
 import { styles } from './styles';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useUser } from '@clerk/clerk-expo';
 import Colors from '@/constants/Colors';
+
+const ICON_SIZE = 28;
 
 const Name = () => {
 	const { user } = useUser();
@@ -25,21 +27,19 @@ const Name = () => {
 		}
 	};
 
-	const iconSize = 24;
-
 	return (
 		<View style={styles.nameWrapper}>
 			{!isEditing && (
 				<View style={styles.editRow}>
-					<View style={{ width: iconSize }} />
+					<View style={{ width: ICON_SIZE }} />
 					<Text style={styles.title}>
 						{firstName} {lastName}
 					</Text>
 					<TouchableOpacity onPress={() => setIsEditing(true)}>
-						<Ionicons
-							name="ellipsis-horizontal"
-							size={iconSize}
-							color={Colors.white}
+						<MaterialCommunityIcons
+							name="pencil-box"
+							size={ICON_SIZE}
+							color={Colors.lightGray}
 						/>
 					</TouchableOpacity>
 				</View>

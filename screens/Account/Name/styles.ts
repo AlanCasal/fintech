@@ -7,13 +7,14 @@ export const styles = StyleSheet.create({
 		flexDirection: 'row',
 		gap: 12,
 		marginTop: 20,
+		alignItems: 'center',
 	},
 	title: {
 		fontSize: 26,
-		lineHeight: 26,
 		fontFamily: PRIMARY_FONT_FAMILY,
 		textTransform: 'uppercase',
 		color: Colors.lightGray,
+		top: 3,
 	},
 	nameWrapper: {
 		flexDirection: 'row',

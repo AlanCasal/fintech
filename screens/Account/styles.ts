@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
 		backgroundColor: Colors.blackTransparent05,
 		paddingTop: 100,
 	},
-	content: {
+	headerContainer: {
 		alignItems: 'center',
 	},
 });

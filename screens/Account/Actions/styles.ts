@@ -1,11 +1,10 @@
 import { StyleSheet } from 'react-native';
 import Colors from '@/constants/Colors';
+import { SECONDARY_FONT_FAMILY } from '@/constants/Utils';
 
 export const styles = StyleSheet.create({
 	actions: {
 		backgroundColor: Colors.blackTransparent02,
-		borderRadius: 16,
-		gap: 0,
 		margin: 20,
 	},
 	actionButton: {
@@ -14,10 +13,6 @@ export const styles = StyleSheet.create({
 		gap: 20,
 		alignItems: 'center',
 	},
-	iconText: {
-		color: Colors.white,
-		fontSize: 18,
-	},
 	iconImage: {
 		width: 24,
 		height: 24,
@@ -25,14 +20,18 @@ export const styles = StyleSheet.create({
 	},
 	actionText: {
 		fontSize: 18,
+		fontFamily: SECONDARY_FONT_FAMILY,
 		flex: 1,
 		color: Colors.white,
-		fontWeight: '500',
+		textTransform: 'capitalize',
+	},
+	activeText: {
+		color: Colors.primaryMuted,
 	},
 	inboxBadgeWrapper: {
-		backgroundColor: Colors.primary,
+		backgroundColor: Colors.primaryMuted,
 		paddingHorizontal: 10,
-		borderRadius: 10,
+		borderRadius: 2,
 		justifyContent: 'center',
 	},
 	inboxBadge: {

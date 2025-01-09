@@ -8,8 +8,8 @@ interface BoxCornersProps {
 	cornerBottomLeft?: boolean;
 	cornerTopRight?: boolean;
 	cornerBottomRight?: boolean;
-	width?: number;
-	height?: number;
+	width?: number | `${number}%`;
+	height?: number | `${number}%`;
 	borderColor?: string;
 	borderWidth?: number;
 }

@@ -1,10 +1,11 @@
-import { Image, View, Text, TouchableOpacity } from 'react-native';
+import { Image, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { styles } from './styles';
 import { Ionicons } from '@expo/vector-icons';
 import { useAuth } from '@clerk/clerk-expo';
 import { getAppIcon, setAppIcon } from 'expo-dynamic-app-icon';
 import Colors from '@/constants/Colors';
+import BoxCorners from '@/components/BoxCorners';
 
 const ICONS = [
 	{
@@ -47,14 +48,23 @@ const Actions = () => {
 	return (
 		<>
 			<View style={styles.actions}>
+				<BoxCorners
+					cornerTopLeft
+					cornerBottomRight
+					width={'40%'}
+					height={'10%'}
+					borderWidth={StyleSheet.hairlineWidth}
+				/>
 				<TouchableOpacity style={styles.actionButton}>
 					<Ionicons name="person" size={24} color={Colors.white} />
 					<Text style={styles.actionText}>Account</Text>
 				</TouchableOpacity>
+
 				<TouchableOpacity style={styles.actionButton}>
 					<Ionicons name="bulb" size={24} color={Colors.white} />
 					<Text style={styles.actionText}>Learn</Text>
 				</TouchableOpacity>
+
 				<TouchableOpacity style={styles.actionButton}>
 					<Ionicons name="megaphone" size={24} color={Colors.white} />
 					<Text style={styles.actionText}>Inbox</Text>
@@ -62,6 +72,7 @@ const Actions = () => {
 						<Text style={styles.inboxBadge}>14</Text>
 					</View>
 				</TouchableOpacity>
+
 				<TouchableOpacity style={styles.actionButton} onPress={handleSignOut}>
 					<Ionicons name="log-out" size={24} color={Colors.white} />
 					<Text style={styles.actionText}>Sign Out</Text>
@@ -69,19 +80,36 @@ const Actions = () => {
 			</View>
 
 			<View style={styles.actions}>
-				{ICONS.map(icon => (
-					<TouchableOpacity
-						key={icon.name}
-						onPress={() => handleChangeIcon(icon.name)}
-						style={styles.actionButton}
-					>
-						<Image source={icon.icon} style={styles.iconImage} />
-						<Text style={styles.iconText}>{icon.name}</Text>
-						{activeIcon.toLowerCase() === icon.name.toLowerCase() && (
-							<Ionicons name="checkmark" size={24} color={Colors.white} />
-						)}
-					</TouchableOpacity>
-				))}
+				<BoxCorners
+					cornerBottomLeft
+					cornerTopRight
+					height={'60%'}
+					width={'10%'}
+					borderWidth={StyleSheet.hairlineWidth}
+				/>
+				{ICONS.map(icon => {
+					const isActive = activeIcon.toLowerCase() === icon.name.toLowerCase();
+
+					return (
+						<TouchableOpacity
+							key={icon.name}
+							onPress={() => handleChangeIcon(icon.name)}
+							style={styles.actionButton}
+						>
+							<Image source={icon.icon} style={styles.iconImage} />
+							<Text style={[styles.actionText, isActive && styles.activeText]}>
+								{icon.name}
+							</Text>
+							{isActive && (
+								<Ionicons
+									name="checkmark"
+									size={24}
+									color={Colors.primaryMuted}
+								/>
+							)}
+						</TouchableOpacity>
+					);
+				})}
 			</View>
 		</>
 	);

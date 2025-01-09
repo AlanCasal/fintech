@@ -8,7 +8,7 @@ import Name from './Name';
 
 const Account = () => (
 	<BlurView intensity={80} style={styles.blurView} tint="dark">
-		<View style={styles.content}>
+		<View style={styles.headerContainer}>
 			<Avatar />
 			<Name />
 		</View>
