@@ -4,6 +4,7 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
 	account: {
 		marginTop: 80,
+		marginBottom: 20,
 		alignItems: 'center',
 	},
 	balanceRow: {
