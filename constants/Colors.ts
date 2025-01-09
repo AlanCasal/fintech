@@ -16,4 +16,8 @@ export default {
 	whiteGlow: 'rgba(255, 255, 255, 0.5)',
 
 	success: '#228B22',
+	error: '#FF0000',
+
+	green: '#00FF00',
+	darkRed: '#8B0000',
 };
