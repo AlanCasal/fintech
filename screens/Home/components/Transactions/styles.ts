@@ -6,6 +6,9 @@ import {
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
+	container: {
+		marginTop: 20,
+	},
 	transactions: {
 		marginHorizontal: 20,
 		padding: 14,
