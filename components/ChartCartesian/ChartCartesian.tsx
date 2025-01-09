@@ -56,7 +56,7 @@ const ChartCartesian = () => {
 	return (
 		<View
 			style={{
-				...defaultStyles.block,
+				...defaultStyles.tableContainer,
 				...(data && !isLoading && !error && { height: 500 }),
 			}}
 		>

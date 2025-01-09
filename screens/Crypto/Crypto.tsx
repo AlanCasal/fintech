@@ -10,6 +10,7 @@ import { useHeaderHeight } from '@react-navigation/elements';
 import { Ionicons } from '@expo/vector-icons';
 import { useGetCryptoList } from './api/hooks/useGetCryptoList';
 import { useGetCryptoInfo } from './api/hooks/useGetCryptoInfo';
+import Colors from '@/constants/Colors';
 
 const Crypto = () => {
 	const headerHeight = useHeaderHeight();
@@ -37,16 +38,26 @@ const Crypto = () => {
 		>
 			<Text style={defaultStyles.sectionHeader}>Latest Crypto</Text>
 
-			<View style={defaultStyles.block}>
+			<View style={defaultStyles.tableContainer}>
 				{!!currencies &&
-					currencies.map((currency: CurrencyData) => {
+					currencies.map((currency: CurrencyData, index: number) => {
 						const { percent_change_1h: percentChange, price } =
 							currency.quote.EUR;
-						const isChangePositive = percentChange > 0;
+						const isPositive = percentChange > 0;
+						const isNegative = percentChange < 0;
+
+						let color = Colors.lightGray;
+						if (isPositive) color = Colors.success;
+						else if (isNegative) color = Colors.error;
 
 						return (
 							<Link href={`/crypto/${currency.id}`} key={currency.id} asChild>
-								<TouchableOpacity style={styles.currencyWrapper}>
+								<TouchableOpacity
+									style={{
+										...styles.itemWrapper,
+										...(index !== currencies.length - 1 && styles.itemDivider),
+									}}
+								>
 									<Image
 										source={{ uri: currenciesData?.[currency.id]?.logo }}
 										style={styles.currencyImage}
@@ -57,20 +68,16 @@ const Crypto = () => {
 									</View>
 
 									<View style={styles.currencyPriceWrapper}>
-										<Text style={styles.currencyPrice}>
-											{price.toFixed(2)} €
-										</Text>
+										<Text style={styles.numbers}>{price.toFixed(2)} €</Text>
 										<View style={styles.priceChangeWraper}>
-											<Ionicons
-												name={isChangePositive ? 'caret-up' : 'caret-down'}
-												size={16}
-												color={isChangePositive ? 'green' : 'red'}
-											/>
-											<Text
-												style={{
-													color: isChangePositive ? 'green' : 'red',
-												}}
-											>
+											{(isPositive || isNegative) && (
+												<Ionicons
+													name={isPositive ? 'caret-up' : 'caret-down'}
+													size={16}
+													color={color}
+												/>
+											)}
+											<Text style={[styles.numbers, { color }]}>
 												{percentChange.toFixed(2)} %
 											</Text>
 										</View>

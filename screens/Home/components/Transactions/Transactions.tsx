@@ -18,7 +18,7 @@ const Transactions = () => {
 		<View style={styles.container}>
 			<Text style={defaultStyles.sectionHeader}>Transactions</Text>
 
-			<View style={styles.transactions}>
+			<View style={styles.tableContainer}>
 				{!sortedTransactions.length && (
 					<Text style={styles.noTransactions}>No transactions</Text>
 				)}
@@ -28,8 +28,8 @@ const Transactions = () => {
 					return (
 						<View
 							style={[
-								styles.transaction,
-								transactions.length - 1 !== index && styles.transactionDivider,
+								styles.tableItem,
+								transactions.length - 1 !== index && styles.itemDivider,
 							]}
 							key={transaction.id}
 						>

@@ -5,7 +5,7 @@ import { defaultStyles } from '@/constants/Styles';
 
 const Details = ({ description }: { description?: string }) => {
 	return (
-		<View style={[defaultStyles.block, styles.overview]}>
+		<View style={[defaultStyles.tableContainer, styles.overview]}>
 			{!description ? (
 				<Text style={styles.description}>No description available</Text>
 			) : (

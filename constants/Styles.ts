@@ -84,11 +84,10 @@ export const defaultStyles = StyleSheet.create({
 		margin: 20,
 		marginBottom: 10,
 	},
-	block: {
+	tableContainer: {
 		marginHorizontal: 20,
 		padding: 14,
-		backgroundColor: '#fff',
-		borderRadius: 16,
+		backgroundColor: Colors.blackTransparent02,
 		gap: 20,
 	},
 });

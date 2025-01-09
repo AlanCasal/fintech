@@ -70,7 +70,7 @@ const Actions = () => {
 
 	return (
 		<>
-			<View style={styles.actions}>
+			<View style={styles.tableContainer}>
 				<BoxCorners
 					cornerTopLeft
 					cornerBottomRight
@@ -82,8 +82,8 @@ const Actions = () => {
 				{MENU_OPTIONS.map((option, index) => (
 					<TouchableOpacity
 						style={[
-							styles.actionButton,
-							index !== MENU_OPTIONS.length - 1 && styles.actionButtonDivider,
+							styles.tableItem,
+							index !== MENU_OPTIONS.length - 1 && styles.itemDivider,
 						]}
 						key={option.name}
 						onPress={option.action}
@@ -98,7 +98,7 @@ const Actions = () => {
 				))}
 			</View>
 
-			<View style={styles.actions}>
+			<View style={styles.tableContainer}>
 				<BoxCorners
 					cornerBottomLeft
 					cornerTopRight
@@ -115,8 +115,8 @@ const Actions = () => {
 							key={icon.name}
 							onPress={() => handleChangeIcon(icon.name)}
 							style={[
-								styles.actionButton,
-								index !== ICONS.length - 1 && styles.actionButtonDivider,
+								styles.tableItem,
+								index !== ICONS.length - 1 && styles.itemDivider,
 							]}
 						>
 							<Image source={icon.icon} style={styles.iconImage} />

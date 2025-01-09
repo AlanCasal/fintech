@@ -3,17 +3,17 @@ import Colors from '@/constants/Colors';
 import { SECONDARY_FONT_FAMILY } from '@/constants/Utils';
 
 export const styles = StyleSheet.create({
-	actions: {
+	tableContainer: {
 		backgroundColor: Colors.blackTransparent02,
 		margin: 20,
 	},
-	actionButton: {
+	tableItem: {
 		padding: 14,
 		flexDirection: 'row',
 		gap: 20,
 		alignItems: 'center',
 	},
-	actionButtonDivider: {
+	itemDivider: {
 		borderBottomWidth: StyleSheet.hairlineWidth,
 		borderBottomColor: Colors.gray,
 		borderBottomLeftRadius: '15%',

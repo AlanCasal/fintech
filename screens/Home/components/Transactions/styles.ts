@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
 	container: {
 		marginTop: 20,
 	},
-	transactions: {
+	tableContainer: {
 		marginHorizontal: 20,
 		padding: 14,
 		backgroundColor: Colors.blackTransparent02,
@@ -20,12 +20,12 @@ export const styles = StyleSheet.create({
 		fontFamily: SECONDARY_FONT_FAMILY,
 		color: Colors.gray,
 	},
-	transaction: {
+	tableItem: {
 		flexDirection: 'row',
 		alignItems: 'center',
 		gap: 16,
 	},
-	transactionDivider: {
+	itemDivider: {
 		borderBottomWidth: StyleSheet.hairlineWidth,
 		borderBottomColor: Colors.gray,
 		paddingBottom: 16,
