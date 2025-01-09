@@ -1,16 +1,12 @@
 import { StyleSheet } from 'react-native';
+import Colors from '@/constants/Colors';
 
 export const styles = StyleSheet.create({
 	blurView: {
 		flex: 1,
-		shadowColor: '#000',
-		shadowOffset: { width: 0, height: 3 },
-		shadowOpacity: 0.2,
-		shadowRadius: 6,
-		elevation: 5,
 	},
 	tabBarStyle: {
-		backgroundColor: 'transparent',
+		backgroundColor: Colors.blackTransparent05,
 		position: 'absolute',
 		bottom: 0,
 		left: 0,
