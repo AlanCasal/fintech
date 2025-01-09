@@ -1,17 +1,21 @@
 import Colors from '@/constants/Colors';
+import {
+	SECONDARY_FONT_FAMILY,
+	SECONDARY_FONT_FAMILY_SEMI_BOLD,
+} from '@/constants/Utils';
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
 	transactions: {
 		marginHorizontal: 20,
 		padding: 14,
-		backgroundColor: Colors.white,
+		backgroundColor: Colors.blackTransparent05,
 		borderRadius: 16,
 		gap: 20,
 	},
 	noTransactions: {
 		fontSize: 16,
-		fontWeight: '500',
+		fontFamily: SECONDARY_FONT_FAMILY,
 		color: Colors.gray,
 	},
 	transaction: {
@@ -23,7 +27,7 @@ export const styles = StyleSheet.create({
 		width: 40,
 		height: 40,
 		borderRadius: 20,
-		backgroundColor: Colors.lightGray,
+		backgroundColor: Colors.gray,
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
@@ -32,20 +36,20 @@ export const styles = StyleSheet.create({
 	},
 	transactionTitle: {
 		fontSize: 16,
-		fontWeight: '400',
-		color: Colors.darkBackground,
+		fontFamily: SECONDARY_FONT_FAMILY,
+		color: Colors.lightGray,
 	},
 	transactionDate: {
 		fontSize: 12,
-		fontWeight: '500',
+		fontFamily: SECONDARY_FONT_FAMILY,
 		color: Colors.gray,
 	},
 	text: {
-		fontWeight: '400',
-		color: Colors.darkBackground,
+		fontFamily: SECONDARY_FONT_FAMILY,
+		color: Colors.lightGray,
 	},
 	textSuccess: {
 		color: Colors.success,
-		fontWeight: '700',
+		fontFamily: SECONDARY_FONT_FAMILY_SEMI_BOLD,
 	},
 });

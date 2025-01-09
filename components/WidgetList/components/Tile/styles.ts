@@ -1,12 +1,13 @@
 import { StyleSheet } from 'react-native';
 import Colors from '@/constants/Colors';
 import { SIZE } from '../Config';
+import { SECONDARY_FONT_FAMILY, SECONDARY_FONT_FAMILY_SEMI_BOLD } from '@/constants/Utils';
 
 export const styles = StyleSheet.create({
 	container: {
 		width: SIZE - 20,
 		height: 150,
-		backgroundColor: Colors.white,
+		backgroundColor: Colors.blackTransparent05,
 		borderRadius: 20,
 		shadowColor: '#000',
 		shadowOffset: { width: 0, height: 1 },
@@ -17,13 +18,13 @@ export const styles = StyleSheet.create({
 		alignSelf: 'center',
 	},
 	title: {
-		color: Colors.gray,
-		fontWeight: '500',
+		color: Colors.lightGray,
+		fontFamily: SECONDARY_FONT_FAMILY,
 		fontSize: 16,
 	},
 	subtitle: {
-		color: Colors.darkBackground,
-		fontWeight: '700',
+		color: Colors.lightGray,
+		fontFamily: SECONDARY_FONT_FAMILY_SEMI_BOLD,
 		fontSize: 26,
 		paddingTop: 10,
 	},
@@ -40,29 +41,29 @@ export const styles = StyleSheet.create({
 		height: 60,
 		width: 60,
 		borderRadius: 30,
-		backgroundColor: Colors.primary,
+		backgroundColor: Colors.primaryMuted,
 		alignItems: 'center',
 		justifyContent: 'center',
 	},
 	cashbackTitle: {
 		color: Colors.white,
-		fontWeight: '700',
+		fontFamily: SECONDARY_FONT_FAMILY_SEMI_BOLD,
 		fontSize: 18,
 	},
 	cashbackSubtitle: {
-		color: Colors.gray,
-		fontWeight: '700',
+		color: Colors.lightGray,
+		fontFamily: SECONDARY_FONT_FAMILY_SEMI_BOLD,
 		fontSize: 18,
 	},
 	noTransactions: {
-		color: Colors.gray,
-		fontWeight: '700',
+		color: Colors.lightGray,
+		fontFamily: SECONDARY_FONT_FAMILY_SEMI_BOLD,
 		fontSize: 18,
 		paddingTop: 10,
 	},
 	transactionAmount: {
-		color: Colors.darkBackground,
-		fontWeight: '700',
+		color: Colors.lightGray,
+		fontFamily: SECONDARY_FONT_FAMILY_SEMI_BOLD,
 		fontSize: 18,
 		paddingVertical: 10,
 	},
@@ -70,13 +71,13 @@ export const styles = StyleSheet.create({
 		color: Colors.success,
 	},
 	transactionTitle: {
-		color: Colors.gray,
-		fontWeight: '700',
+		color: Colors.lightGray,
+		fontFamily: SECONDARY_FONT_FAMILY_SEMI_BOLD,
 		fontSize: 16,
 	},
 	cardsTitle: {
-		color: Colors.gray,
-		fontWeight: '500',
+		color: Colors.lightGray,
+		fontFamily: SECONDARY_FONT_FAMILY,
 		fontSize: 16,
 	},
 	cardsIcon: {
