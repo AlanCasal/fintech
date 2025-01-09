@@ -1,18 +1,19 @@
 import { StyleSheet } from 'react-native';
 import Colors from '@/constants/Colors';
+import { PRIMARY_FONT_FAMILY } from '@/constants/Utils';
 
 export const styles = StyleSheet.create({
 	editRow: {
 		flexDirection: 'row',
 		gap: 12,
-		alignItems: 'center',
-		justifyContent: 'center',
 		marginTop: 20,
 	},
 	title: {
 		fontSize: 26,
-		fontWeight: 'bold',
-		color: Colors.white,
+		lineHeight: 26,
+		fontFamily: PRIMARY_FONT_FAMILY,
+		textTransform: 'uppercase',
+		color: Colors.lightGray,
 	},
 	nameWrapper: {
 		flexDirection: 'row',
@@ -25,6 +26,6 @@ export const styles = StyleSheet.create({
 		borderColor: Colors.gray,
 		padding: 10,
 		borderRadius: 10,
-		backgroundColor: Colors.white,
+		backgroundColor: Colors.lightGray,
 	},
 });

@@ -25,22 +25,26 @@ const Name = () => {
 		}
 	};
 
+	const iconSize = 24;
+
 	return (
 		<View style={styles.nameWrapper}>
 			{!isEditing && (
 				<View style={styles.editRow}>
+					<View style={{ width: iconSize }} />
 					<Text style={styles.title}>
 						{firstName} {lastName}
 					</Text>
 					<TouchableOpacity onPress={() => setIsEditing(true)}>
 						<Ionicons
 							name="ellipsis-horizontal"
-							size={24}
+							size={iconSize}
 							color={Colors.white}
 						/>
 					</TouchableOpacity>
 				</View>
 			)}
+
 			{isEditing && (
 				<View style={styles.editRow}>
 					<TextInput
