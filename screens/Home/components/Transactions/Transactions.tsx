@@ -1,10 +1,11 @@
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import React, { useMemo } from 'react';
 import { styles } from './styles';
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
 import { defaultStyles } from '@/constants/Styles';
 import { useBalanceStore } from '@/store/balanceStore';
+import BoxCorners from '@/components/BoxCorners';
 
 const Transactions = () => {
 	const { transactions } = useBalanceStore();
@@ -55,6 +56,14 @@ const Transactions = () => {
 						</View>
 					);
 				})}
+				<BoxCorners
+					cornerTopLeft
+					cornerBottomRight
+					width={30}
+					height={100}
+					borderColor={Colors.primaryMuted}
+					borderWidth={StyleSheet.hairlineWidth}
+				/>
 			</View>
 		</View>
 	);

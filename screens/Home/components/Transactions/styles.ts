@@ -10,7 +10,6 @@ export const styles = StyleSheet.create({
 		marginHorizontal: 20,
 		padding: 14,
 		backgroundColor: Colors.blackTransparent02,
-		borderRadius: 16,
 		gap: 20,
 	},
 	noTransactions: {

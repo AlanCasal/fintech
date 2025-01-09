@@ -11,6 +11,7 @@ interface BoxCornersProps {
 	width?: number;
 	height?: number;
 	borderColor?: string;
+	borderWidth?: number;
 }
 
 const BoxCorners = ({
@@ -21,23 +22,48 @@ const BoxCorners = ({
 	width = 20,
 	height = 20,
 	borderColor = Colors.primary,
+	borderWidth = 2,
 }: BoxCornersProps) => {
 	const cornerBaseStyle = [styles.cornerBase, { width, height, borderColor }];
 
 	return (
 		<>
 			{cornerTopLeft && (
-				<View style={[cornerBaseStyle, styles.cornerTopLeft]} />
+				<View
+					style={[
+						cornerBaseStyle,
+						styles.cornerTopLeft,
+						{ borderTopWidth: borderWidth, borderLeftWidth: borderWidth },
+					]}
+				/>
 			)}
 			{cornerBottomLeft && (
-				<View style={[cornerBaseStyle, styles.cornerBottomLeft]} />
+				<View
+					style={[
+						cornerBaseStyle,
+						styles.cornerBottomLeft,
+						{ borderBottomWidth: borderWidth, borderLeftWidth: borderWidth },
+					]}
+				/>
 			)}
 
 			{cornerTopRight && (
-				<View style={[cornerBaseStyle, styles.cornerTopRight]} />
+				<View
+					style={[
+						cornerBaseStyle,
+						styles.cornerTopRight,
+						{ borderTopWidth: borderWidth, borderRightWidth: borderWidth },
+					]}
+				/>
 			)}
 			{cornerBottomRight && (
-				<View style={[cornerBaseStyle, styles.cornerBottomRight]} />
+				<View
+					style={[
+						cornerBaseStyle,
+						styles.cornerBottomRight,
+						{ borderBottomWidth: borderWidth, borderRightWidth: borderWidth },
+					]}
+				/>
 			)}
 		</>
 	);
