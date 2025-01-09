@@ -41,7 +41,7 @@ export const defaultStyles = StyleSheet.create({
 		fontFamily: SECONDARY_FONT_FAMILY_SEMI_BOLD,
 		color: Colors.primary,
 		fontSize: 18,
-		fontWeight: '500',
+		lineHeight: 22,
 	},
 	descriptionText: {
 		fontSize: 18,

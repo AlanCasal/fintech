@@ -2,8 +2,9 @@ import {
 	View,
 	Text,
 	TouchableOpacity,
-	KeyboardAvoidingView,
 	Alert,
+	TouchableWithoutFeedback,
+	Keyboard,
 } from 'react-native';
 import React, { useState } from 'react';
 import { defaultStyles } from '@/constants/Styles';
@@ -12,7 +13,6 @@ import Colors from '@/constants/Colors';
 import { Link, Stack, useRouter } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { isClerkAPIResponseError, useSignUp } from '@clerk/clerk-expo';
-import { KEYBOARD_VERTICAL_OFFSET } from '@/constants/Utils';
 import BackButton from '@/components/Buttons/BackButton';
 import {
 	Country,
@@ -70,12 +70,18 @@ const Signup = () => {
 		}
 	};
 
+	const containerStyles = [
+		defaultStyles.container,
+		defaultStyles.darkBackground,
+		styles.container,
+		{
+			paddingTop: headerHeight + 10,
+			paddingBottom: bottom + 10,
+		},
+	];
+
 	return (
-		<KeyboardAvoidingView
-			behavior="padding"
-			style={[defaultStyles.darkBackground, { flex: 1 }]}
-			keyboardVerticalOffset={KEYBOARD_VERTICAL_OFFSET}
-		>
+		<View style={{ flex: 1 }}>
 			<Stack.Screen
 				name="signup"
 				options={{
@@ -97,61 +103,73 @@ const Signup = () => {
 					),
 				}}
 			/>
-			<CyberDots position="top" height="20%" />
-			<CyberDots position="bottom" height="30%" />
 
-			<View
-				style={[
-					defaultStyles.container,
-					styles.container,
-					{ paddingTop: headerHeight + 20, paddingBottom: bottom + 20 },
-				]}
-			>
-				<View>
-					<Text style={[defaultStyles.header, styles.header]}>
-						Let's get you started
-					</Text>
+			<TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+				<View style={containerStyles}>
+					<CyberDots position="top" height="20%" rotate={180} />
+					<CyberDots position="bottom" height="30%" />
 
-					<BoxCorners cornerBottomRight cornerTopLeft />
-				</View>
+					<View style={styles.gap20}>
+						<View style={styles.titleContainer}>
+							<Text
+								style={[
+									defaultStyles.secondaryFontFamilySemiBold,
+									defaultStyles.header,
+									styles.header,
+								]}
+							>
+								Let's get you started
+							</Text>
 
-				<Text style={defaultStyles.descriptionText}>
-					{`Enter your phone number.${'\n'}We'll send you a verification code.`}
-				</Text>
+							<BoxCorners cornerBottomRight cornerTopLeft />
+						</View>
 
-				<GlobalPhoneInputs
-					callingCode={countryCode.callingCode}
-					countryCode={countryCode.countryCode}
-					mobileNumber={mobileNumber}
-					handleCountryCodeChange={handleCountryCodeChange}
-					handleMobileNumberChange={setMobileNumber}
-				/>
-
-				<Link href={'/signin'} replace asChild>
-					<TouchableOpacity>
 						<Text style={defaultStyles.descriptionText}>
-							Already have an account?{' '}
-							<Text style={defaultStyles.textLink}>Sign In instead</Text>
+							{`Enter your phone number.${'\n'}We'll send you a verification code.`}
 						</Text>
-					</TouchableOpacity>
-				</Link>
 
-				<View style={{ flex: 1 }} />
+						<GlobalPhoneInputs
+							callingCode={countryCode.callingCode}
+							countryCode={countryCode.countryCode}
+							mobileNumber={mobileNumber}
+							handleCountryCodeChange={handleCountryCodeChange}
+							handleMobileNumberChange={setMobileNumber}
+						/>
 
-				<View style={styles.logoContainer}>
-					<Logo />
-					<BoxCorners cornerBottomRight cornerTopLeft width={10} height={10} />
+						<View style={styles.signInContainer}>
+							<Text style={defaultStyles.descriptionText}>
+								Already have an account?{' '}
+							</Text>
+							<Link href={'/signin'} replace asChild>
+								<TouchableOpacity>
+									<Text style={defaultStyles.textLink}>Sign In instead</Text>
+								</TouchableOpacity>
+							</Link>
+						</View>
+					</View>
+
+					<View style={{ flex: 1 }} />
+
+					<View style={styles.logoContainer}>
+						<Logo />
+						<BoxCorners
+							cornerBottomRight
+							cornerTopLeft
+							width={10}
+							height={10}
+						/>
+					</View>
+
+					<CyberButtonLarge
+						buttonText="Sign Up"
+						steepPosition="top-left"
+						buttonTextColor={Colors.darkBackground}
+						handleOnPress={handleSignup}
+						disabled={!mobileNumber}
+					/>
 				</View>
-
-				<CyberButtonLarge
-					buttonText="Sign Up"
-					steepPosition="top-left"
-					buttonTextColor={Colors.darkBackground}
-					handleOnPress={handleSignup}
-					disabled={!mobileNumber}
-				/>
-			</View>
-		</KeyboardAvoidingView>
+			</TouchableWithoutFeedback>
+		</View>
 	);
 };
 
