@@ -4,8 +4,7 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
 	account: {
 		marginTop: 20,
-		paddingTop: 60,
-		paddingBottom: 20,
+		paddingVertical: 60,
 		marginHorizontal: 20,
 		alignItems: 'center',
 	},
