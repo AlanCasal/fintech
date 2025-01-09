@@ -1,3 +1,5 @@
+import Colors from '@/constants/Colors';
+import { PRIMARY_FONT_FAMILY } from '@/constants/Utils';
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
@@ -13,10 +15,12 @@ export const styles = StyleSheet.create({
 	},
 	balanceAmount: {
 		fontSize: 50,
-		fontWeight: '700',
+		fontFamily: PRIMARY_FONT_FAMILY,
+		color: Colors.lightGray,
 	},
 	balanceCurrency: {
 		fontSize: 30,
-		fontWeight: '500',
+		fontFamily: PRIMARY_FONT_FAMILY,
+		color: Colors.lightGray,
 	},
 });

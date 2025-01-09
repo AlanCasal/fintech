@@ -9,7 +9,7 @@ const Balance = () => {
 	return (
 		<View style={styles.account}>
 			<View style={styles.balanceRow}>
-				<Text style={styles.balanceAmount}>${balance()}</Text>
+				<Text style={styles.balanceAmount}>{balance()}</Text>
 				<Text style={styles.balanceCurrency}>€</Text>
 			</View>
 		</View>
