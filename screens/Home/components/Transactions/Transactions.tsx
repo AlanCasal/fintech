@@ -26,13 +26,11 @@ const Transactions = () => {
 
 					return (
 						<View style={styles.transaction} key={transaction.id}>
-							<View style={styles.circle}>
-								<Ionicons
-									name={isPositive ? 'arrow-down' : 'arrow-up'}
-									size={20}
-									color={Colors.darkBackground}
-								/>
-							</View>
+							<Ionicons
+								name={isPositive ? 'caret-down' : 'caret-up'}
+								size={20}
+								color={Colors.lightGray}
+							/>
 							<View style={styles.transactionDetails}>
 								<Text style={styles.transactionTitle}>{transaction.title}</Text>
 								<Text style={styles.transactionDate}>
