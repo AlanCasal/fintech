@@ -10,13 +10,13 @@ const Searchbar = () => {
 			<Ionicons
 				name="search"
 				size={20}
-				color={Colors.darkBackground}
+				color={Colors.lightGray}
 				style={styles.searchIcon}
 			/>
 			<TextInput
 				placeholder="Search"
 				style={styles.searchInput}
-				placeholderTextColor={Colors.darkBackground}
+				placeholderTextColor={Colors.lightGray}
 			/>
 		</View>
 	);

@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
 	searchWrapper: {
 		flex: 1,
 		flexDirection: 'row',
-		backgroundColor: Colors.lightGray,
+		backgroundColor: Colors.blackTransparent05,
 		borderRadius: 30,
 		alignItems: 'center',
 		justifyContent: 'center',
@@ -15,11 +15,10 @@ export const styles = StyleSheet.create({
 	},
 	searchInput: {
 		flex: 1,
-		borderColor: Colors.gray,
 		paddingTop: 10,
 		paddingRight: 10,
 		paddingBottom: 10,
 		paddingLeft: 0,
-		color: Colors.darkBackground,
+		color: Colors.lightGray,
 	},
 });

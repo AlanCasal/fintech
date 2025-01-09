@@ -1,7 +1,6 @@
 import { View } from 'react-native';
 import React from 'react';
 import { styles } from './styles';
-import { BlurView } from 'expo-blur';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import HeaderAvatar from './components/HeaderAvatar';
@@ -12,15 +11,13 @@ const CustomHeader = () => {
 	const { top } = useSafeAreaInsets();
 
 	return (
-		<BlurView intensity={80} tint="extraLight" style={{ paddingTop: top }}>
-			<View style={styles.content}>
-				<HeaderAvatar />
+		<View style={[styles.content, { paddingTop: top + 10 }]}>
+			<HeaderAvatar />
 
-				<Searchbar />
+			<Searchbar />
 
-				<ActionButtons />
-			</View>
-		</BlurView>
+			<ActionButtons />
+		</View>
 	);
 };
 
