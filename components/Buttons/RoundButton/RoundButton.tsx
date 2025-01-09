@@ -14,7 +14,7 @@ const RoundButton = ({ label, icon, onPress }: Props) => {
 	return (
 		<TouchableOpacity style={styles.container} onPress={onPress}>
 			<View style={styles.circle}>
-				<Ionicons name={icon} size={30} color={Colors.darkBackground} />
+				<Ionicons name={icon} size={30} color={Colors.gray} />
 			</View>
 			<Text style={styles.label}>{label}</Text>
 		</TouchableOpacity>

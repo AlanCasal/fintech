@@ -1,4 +1,5 @@
 import Colors from '@/constants/Colors';
+import { SECONDARY_FONT_FAMILY_SEMI_BOLD } from '@/constants/Utils';
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
@@ -10,13 +11,13 @@ export const styles = StyleSheet.create({
 		width: 60,
 		height: 60,
 		borderRadius: 30,
-		backgroundColor: Colors.lightGray,
+		backgroundColor: Colors.blackTransparent05,
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
 	label: {
 		fontSize: 16,
-		fontWeight: '500',
-		color: Colors.darkBackground,
+		fontFamily: SECONDARY_FONT_FAMILY_SEMI_BOLD,
+		color: Colors.gray,
 	},
 });
