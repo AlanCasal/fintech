@@ -1,9 +1,12 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import RoundButton from '@/components/Buttons/RoundButton';
 import Dropdown from '@/components/Dropdown';
 import { useBalanceStore } from '@/store/balanceStore';
 import { styles } from './styles';
+import CyberButtonSquare from '@/components/Buttons/CyberButtonSquare';
+import { Ionicons } from '@expo/vector-icons';
+import Colors from '@/constants/Colors';
 
 const ActionButtons = () => {
 	const { runTransaction, clearTransactions } = useBalanceStore();
@@ -26,14 +29,57 @@ const ActionButtons = () => {
 
 	return (
 		<View style={styles.actionRow}>
-			<RoundButton icon={'add'} label="Add Money" onPress={handleAddMoney} />
-			<RoundButton
-				icon={'refresh'}
-				label="Exchange"
-				onPress={handleClearTransactions}
+			<View style={styles.buttonContainer}>
+				<CyberButtonSquare
+					handlePress={handleAddMoney}
+					width={60}
+					rotate={180}
+					icon={<Ionicons name={'add'} size={30} color={Colors.primaryMuted} />}
+				/>
+				<Text style={styles.label}>Add Money</Text>
+			</View>
+
+			<View style={styles.buttonContainer}>
+				<CyberButtonSquare
+					handlePress={handleClearTransactions}
+					width={60}
+					rotate={180}
+					icon={
+						<Ionicons name={'refresh'} size={30} color={Colors.primaryMuted} />
+					}
+				/>
+				<Text style={styles.label}>Exchange</Text>
+			</View>
+
+			<View style={styles.buttonContainer}>
+				<CyberButtonSquare
+					rotate={180}
+					width={60}
+					icon={
+						<Ionicons name={'list'} size={30} color={Colors.primaryMuted} />
+					}
+				/>
+				<Text style={styles.label}>Details</Text>
+			</View>
+
+			<Dropdown
+				button={
+					<View style={styles.buttonContainer}>
+						<CyberButtonSquare
+							rotate={180}
+							width={60}
+							icon={
+								<Ionicons
+									name={'ellipsis-horizontal'}
+									size={30}
+									color={Colors.primaryMuted}
+								/>
+							}
+						/>
+						<Text style={styles.label}>More</Text>
+					</View>
+				}
 			/>
-			<RoundButton icon={'list'} label="Details" />
-			<Dropdown />
 		</View>
 	);
 };

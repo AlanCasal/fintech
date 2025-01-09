@@ -1,13 +1,14 @@
 import React from 'react';
 import * as DropdownMenu from 'zeego/dropdown-menu';
-import RoundButton from '../Buttons/RoundButton';
 
-const Dropdown = () => {
+interface DropdownProps {
+	button: React.ReactNode;
+}
+
+const Dropdown = ({ button }: DropdownProps) => {
 	return (
 		<DropdownMenu.Root>
-			<DropdownMenu.Trigger>
-				<RoundButton icon={'ellipsis-horizontal'} label="More" />
-			</DropdownMenu.Trigger>
+			<DropdownMenu.Trigger>{button}</DropdownMenu.Trigger>
 
 			<DropdownMenu.Content>
 				<DropdownMenu.Item key="statement">

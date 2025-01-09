@@ -14,6 +14,8 @@ interface CyberButtonSquareProps {
 	icon?: React.ReactNode;
 	fillColor?: string;
 	strokeColor?: string;
+	width?: number;
+	rotate?: number;
 	handlePress?: () => void;
 }
 
@@ -21,18 +23,22 @@ const CyberButtonSquare = ({
 	icon,
 	fillColor = BUTTON_COLOR,
 	strokeColor = BUTTON_STROKE_COLOR,
+	width = 40,
+	rotate = 0,
 	handlePress,
 }: CyberButtonSquareProps) => {
 	return (
-		<View style={styles.buttonContainer}>
+		<View style={{ width, height: width }}>
 			<TouchableOpacity onPress={handlePress}>
 				<Suspense fallback={null}>
-					<CyberButton
-						width={40}
-						height={40}
-						fill={fillColor}
-						stroke={strokeColor}
-					/>
+					<View style={{ transform: [{ rotate: `${rotate}deg` }] }}>
+						<CyberButton
+							width={width}
+							height={width}
+							fill={fillColor}
+							stroke={strokeColor}
+						/>
+					</View>
 				</Suspense>
 				{icon && <View style={styles.iconContainer}>{icon}</View>}
 			</TouchableOpacity>
