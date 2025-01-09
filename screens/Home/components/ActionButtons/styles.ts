@@ -15,8 +15,10 @@ export const styles = StyleSheet.create({
 		gap: 10,
 	},
 	label: {
+		textAlign: 'center',
 		color: Colors.primaryMuted,
 		fontFamily: SECONDARY_FONT_FAMILY_SEMI_BOLD,
-		fontSize: 16,
+		textTransform: 'uppercase',
+		fontSize: 12,
 	},
 });

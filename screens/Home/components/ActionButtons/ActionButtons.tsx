@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import RoundButton from '@/components/Buttons/RoundButton';
 import Dropdown from '@/components/Dropdown';
 import { useBalanceStore } from '@/store/balanceStore';
 import { styles } from './styles';

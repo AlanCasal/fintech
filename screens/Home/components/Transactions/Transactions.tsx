@@ -21,15 +21,21 @@ const Transactions = () => {
 				{!sortedTransactions.length && (
 					<Text style={styles.noTransactions}>No transactions</Text>
 				)}
-				{sortedTransactions.map(transaction => {
+				{sortedTransactions.map((transaction, index) => {
 					const isPositive = transaction.amount > 0;
 
 					return (
-						<View style={styles.transaction} key={transaction.id}>
+						<View
+							style={[
+								styles.transaction,
+								transactions.length - 1 !== index && styles.transactionDivider,
+							]}
+							key={transaction.id}
+						>
 							<Ionicons
 								name={isPositive ? 'caret-down' : 'caret-up'}
 								size={20}
-								color={Colors.lightGray}
+								color={isPositive ? Colors.success : Colors.lightGray}
 							/>
 							<View style={styles.transactionDetails}>
 								<Text style={styles.transactionTitle}>{transaction.title}</Text>

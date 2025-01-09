@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
 	transactions: {
 		marginHorizontal: 20,
 		padding: 14,
-		backgroundColor: Colors.blackTransparent05,
+		backgroundColor: Colors.blackTransparent02,
 		borderRadius: 16,
 		gap: 20,
 	},
@@ -23,6 +23,12 @@ export const styles = StyleSheet.create({
 		alignItems: 'center',
 		gap: 16,
 	},
+	transactionDivider: {
+		borderBottomWidth: StyleSheet.hairlineWidth,
+		borderBottomColor: Colors.gray,
+		paddingBottom: 16,
+		borderBottomLeftRadius: 40,
+	},
 	circle: {
 		width: 40,
 		height: 40,
@@ -33,6 +39,7 @@ export const styles = StyleSheet.create({
 	},
 	transactionDetails: {
 		flex: 1,
+		gap: 4,
 	},
 	transactionTitle: {
 		fontSize: 16,
