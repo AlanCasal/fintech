@@ -6,7 +6,8 @@ export const styles = StyleSheet.create({
 	actionRow: {
 		flexDirection: 'row',
 		justifyContent: 'space-between',
-		padding: 20,
+		paddingHorizontal: 20,
+		paddingTop: 20,
 		backgroundColor: Colors.darkBackground,
 	},
 	buttonContainer: {

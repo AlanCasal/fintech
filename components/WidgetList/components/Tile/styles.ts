@@ -1,13 +1,16 @@
 import { StyleSheet } from 'react-native';
 import Colors from '@/constants/Colors';
 import { SIZE } from '../Config';
-import { SECONDARY_FONT_FAMILY, SECONDARY_FONT_FAMILY_SEMI_BOLD } from '@/constants/Utils';
+import {
+	SECONDARY_FONT_FAMILY,
+	SECONDARY_FONT_FAMILY_SEMI_BOLD,
+} from '@/constants/Utils';
 
 export const styles = StyleSheet.create({
 	container: {
 		width: SIZE - 20,
 		height: 150,
-		backgroundColor: Colors.blackTransparent05,
+		backgroundColor: Colors.blackTransparent02,
 		borderRadius: 20,
 		shadowColor: '#000',
 		shadowOffset: { width: 0, height: 1 },
