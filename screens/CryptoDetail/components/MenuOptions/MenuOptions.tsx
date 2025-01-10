@@ -1,4 +1,4 @@
-import { Text, ScrollView, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import React, { useState } from 'react';
 import { styles } from './styles';
 
@@ -8,11 +8,7 @@ const MenuOptions = () => {
 	const [activeIndex, setActiveIndex] = useState(0);
 
 	return (
-		<ScrollView
-			horizontal
-			showsHorizontalScrollIndicator={false}
-			contentContainerStyle={styles.menuWrapper}
-		>
+		<View style={styles.menuWrapper}>
 			{CATEGORIES.map((menu, index) => {
 				const isActive = index === activeIndex;
 
@@ -20,15 +16,15 @@ const MenuOptions = () => {
 					<TouchableOpacity
 						onPress={() => setActiveIndex(index)}
 						key={menu}
-						style={isActive ? styles.menuButtonActive : styles.menuButton}
+						style={[styles.menuButton, isActive && styles.menuButtonActive]}
 					>
-						<Text style={isActive ? styles.menuTextActive : styles.menuText}>
+						<Text style={[styles.menuText, isActive && styles.menuTextActive]}>
 							{menu}
 						</Text>
 					</TouchableOpacity>
 				);
 			})}
-		</ScrollView>
+		</View>
 	);
 };
 

@@ -1,41 +1,36 @@
 import { StyleSheet } from 'react-native';
 import Colors from '@/constants/Colors';
-import { SECONDARY_FONT_FAMILY } from '@/constants/Utils';
+import { SECONDARY_FONT_FAMILY_SEMI_BOLD } from '@/constants/Utils';
 
 export const styles = StyleSheet.create({
 	menuWrapper: {
-		width: '100%',
+		flexDirection: 'row',
 		alignItems: 'center',
-		justifyContent: 'space-between',
 		paddingHorizontal: 16,
-		gap: 10,
-		paddingBottom: 8,
+		gap: 15,
+		height: 30,
+		marginBottom: 20,
 		backgroundColor: Colors.darkBackground,
 		borderBottomColor: Colors.gray,
 	},
 	menuButton: {
-		padding: 10,
-		paddingHorizontal: 14,
 		alignItems: 'center',
 		justifyContent: 'center',
-		borderRadius: 20,
+		height: '100%',
 	},
 	menuButtonActive: {
-		padding: 10,
-		paddingHorizontal: 14,
-		alignItems: 'center',
-		justifyContent: 'center',
-		borderRadius: 20,
-		backgroundColor: Colors.lightGray,
+		borderBottomWidth: 3,
+		borderBottomColor: Colors.primary,
 	},
 	menuText: {
-		fontSize: 14,
-		color: Colors.gray,
-		fontFamily: SECONDARY_FONT_FAMILY,
+		fontSize: 16,
+		lineHeight: 16,
+		color: Colors.lightGray,
+		fontFamily: SECONDARY_FONT_FAMILY_SEMI_BOLD,
+		textAlign: 'center',
 	},
 	menuTextActive: {
-		fontSize: 14,
-		color: Colors.darkBackground,
-		fontFamily: SECONDARY_FONT_FAMILY,
+		fontFamily: SECONDARY_FONT_FAMILY_SEMI_BOLD,
+		color: Colors.primary,
 	},
 });
