@@ -5,8 +5,6 @@ import ChartCartesian from '@/components/ChartCartesian';
 import ScreenHeader from './components/ScreenHeader';
 import Details from './components/Details';
 import MenuOptions from './components/MenuOptions';
-import Actions from './components/Actions';
-import SymbolLogo from './components/SymbolLogo';
 import { styles } from './styles';
 import { useGetCryptoInfo } from './api/hooks/useGetCryptoInfo';
 import LoadingBackground from '@/components/LoadingBackground';
@@ -18,24 +16,18 @@ const Crypto = () => {
 
 	return (
 		<>
-			<ScreenHeader title={data?.name} />
+			<ScreenHeader title={data?.name} logoUrl={data?.logo} />
 
 			{isLoading && <LoadingBackground />}
 
-			{error && <ErrorBackground />}
+			{error && <ErrorBackground subtitle={error.message} />}
 
-			{data && (
+			{!isLoading && !error && data && (
 				<SectionList
 					style={styles.container}
 					contentInsetAdjustmentBehavior="automatic"
 					keyExtractor={(item, index) => item.title + index}
 					sections={[{ data: [{ title: 'Section 1' }] }]}
-					ListHeaderComponent={() => (
-						<>
-							<SymbolLogo symbol={data.symbol} logo={data.logo} />
-							<Actions />
-						</>
-					)}
 					renderSectionHeader={() => <MenuOptions />}
 					renderItem={() => (
 						<>
