@@ -11,7 +11,7 @@ const CustomHeader = () => {
 	const { top } = useSafeAreaInsets();
 
 	return (
-		<View style={[styles.content, { paddingTop: top + 10 }]}>
+		<View style={[styles.content, { paddingTop: top + 10, paddingBottom: 10 }]}>
 			<HeaderAvatar />
 
 			<Searchbar />

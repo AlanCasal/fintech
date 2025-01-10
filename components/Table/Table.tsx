@@ -2,8 +2,8 @@ import { View, Text, StyleSheet } from 'react-native';
 import React from 'react';
 import BoxCorners from '../BoxCorners';
 import Colors from '@/constants/Colors';
-import { Ionicons } from '@expo/vector-icons';
 import { styles } from './styles';
+import TransactionItem from './components/TransactionItem';
 
 interface TableProps {
 	items: any[];
@@ -13,42 +13,6 @@ interface TableProps {
 const Table = ({ items, emptyMessage }: TableProps) => {
 	return (
 		<View style={styles.tableContainer}>
-			{!items.length && <Text style={styles.emptyMessage}>{emptyMessage}</Text>}
-
-			{items.map((item, index) => {
-				const isPositive = item.amount > 0;
-
-				return (
-					<View
-						style={[
-							styles.tableItem,
-							items.length - 1 !== index && styles.itemDivider,
-						]}
-						key={item.id}
-					>
-						<Ionicons
-							name={isPositive ? 'caret-down' : 'caret-up'}
-							size={20}
-							color={isPositive ? Colors.success : Colors.lightGray}
-						/>
-						<View style={styles.itemContent}>
-							<Text style={styles.itemTitle}>{item.title}</Text>
-							<Text style={styles.itemSubtitle}>
-								{new Date(item.date).toLocaleDateString()}
-							</Text>
-						</View>
-						<Text
-							style={{
-								...styles.text,
-								...(isPositive && styles.textSuccess),
-							}}
-						>
-							{isPositive && '+ '}
-							{item.amount}€
-						</Text>
-					</View>
-				);
-			})}
 			<BoxCorners
 				cornerTopLeft
 				cornerBottomRight
@@ -57,6 +21,20 @@ const Table = ({ items, emptyMessage }: TableProps) => {
 				borderColor={Colors.primaryMuted}
 				borderWidth={StyleSheet.hairlineWidth}
 			/>
+
+			{!items.length && <Text style={styles.emptyMessage}>{emptyMessage}</Text>}
+
+			{items.map((item, index) => {
+				const withDivider = items.length - 1 !== index;
+
+				return (
+					<TransactionItem
+						item={item}
+						withDivider={withDivider}
+						key={item.id}
+					/>
+				);
+			})}
 		</View>
 	);
 };
