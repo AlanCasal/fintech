@@ -24,14 +24,14 @@ const ErrorBackground = ({
 			<CyberDots position="top" height="25%" rotate={180} />
 			<CyberDots position="bottom" height="25%" />
 
-			<View />
-
 			<View style={styles.contentContainer}>
 				<Text style={styles.title}>{title}</Text>
 				<Text style={styles.subtitle}>{subtitle}</Text>
 			</View>
 
-			<Logo />
+			<View style={{ marginBottom: bottom + 20 }}>
+				<Logo />
+			</View>
 		</View>
 	);
 };

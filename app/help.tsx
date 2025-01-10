@@ -1,6 +1,11 @@
 import React from 'react';
-import HelpScreen from '@/screens/Help';
+import { View } from 'react-native';
+import ErrorBackground from '@/components/ErrorBackground';
 
-const Help = () => <HelpScreen />;
+const Help = () => (
+	<View style={{ flex: 1 }}>
+		<ErrorBackground title="Help" subtitle="Screen not available yet" />
+	</View>
+);
 
 export default Help;

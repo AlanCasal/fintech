@@ -1,10 +1,11 @@
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import React from 'react';
+import ErrorBackground from '@/components/ErrorBackground';
 
 const Transfers = () => {
 	return (
-		<View>
-			<Text>Transfers</Text>
+		<View style={{ flex: 1 }}>
+			<ErrorBackground title="Transfers" subtitle="Screen not available yet" />
 		</View>
 	);
 };
