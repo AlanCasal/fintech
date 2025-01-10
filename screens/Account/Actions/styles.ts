@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
 		fontSize: 18,
 		fontFamily: SECONDARY_FONT_FAMILY,
 		flex: 1,
-		color: Colors.white,
+		color: Colors.lightGray,
 		textTransform: 'capitalize',
 	},
 	activeText: {

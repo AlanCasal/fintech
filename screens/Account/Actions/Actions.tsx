@@ -91,7 +91,7 @@ const Actions = () => {
 						<Ionicons
 							name={option.icon as keyof typeof Ionicons.glyphMap}
 							size={18}
-							color={Colors.white}
+							color={Colors.lightGray}
 						/>
 						<Text style={styles.actionText}>{option.name}</Text>
 					</TouchableOpacity>

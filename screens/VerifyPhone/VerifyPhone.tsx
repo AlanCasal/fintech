@@ -8,7 +8,7 @@ import {
 	useSignUp,
 } from '@clerk/clerk-expo';
 import { defaultStyles } from '@/constants/Styles';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import Colors from '@/constants/Colors';
 import {
 	CodeField,
 	Cursor,
