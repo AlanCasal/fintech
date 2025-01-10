@@ -62,7 +62,7 @@ export const defaultStyles = StyleSheet.create({
 	buttonText: {
 		color: Colors.white,
 		fontSize: 18,
-		fontWeight: '500',
+		fontFamily: SECONDARY_FONT_FAMILY,
 	},
 	pillButtonSmall: {
 		paddingHorizontal: 20,
@@ -74,7 +74,7 @@ export const defaultStyles = StyleSheet.create({
 	buttonTextSmall: {
 		color: Colors.white,
 		fontSize: 16,
-		fontWeight: '500',
+		fontFamily: SECONDARY_FONT_FAMILY,
 	},
 	sectionHeader: {
 		fontSize: 20,

@@ -1,16 +1,16 @@
 import { useLocalSearchParams } from 'expo-router';
 import React from 'react';
-import { SectionList, View, Text } from 'react-native';
+import { SectionList } from 'react-native';
 import ChartCartesian from '@/components/ChartCartesian';
 import ScreenHeader from './components/ScreenHeader';
 import Details from './components/Details';
 import MenuOptions from './components/MenuOptions';
 import Actions from './components/Actions';
 import SymbolLogo from './components/SymbolLogo';
-import LoadingSpinner from '@/components/LoadingSpinner';
 import { styles } from './styles';
-import { ERROR_MESSAGE_FETCHING_DATA } from '@/constants/Utils';
 import { useGetCryptoInfo } from './api/hooks/useGetCryptoInfo';
+import LoadingBackground from '@/components/LoadingBackground';
+import ErrorBackground from '@/components/ErrorBackground';
 
 const Crypto = () => {
 	const { id } = useLocalSearchParams();
@@ -20,20 +20,9 @@ const Crypto = () => {
 		<>
 			<ScreenHeader title={data?.name} />
 
-			{isLoading && (
-				<View style={styles.centerContent}>
-					<LoadingSpinner />
-				</View>
-			)}
+			{isLoading && <LoadingBackground />}
 
-			{error && (
-				<View style={styles.centerContent}>
-					<Text style={styles.errorTitle}>Error</Text>
-					<Text style={styles.errorMessage}>
-						{error?.message || ERROR_MESSAGE_FETCHING_DATA}
-					</Text>
-				</View>
-			)}
+			{error && <ErrorBackground />}
 
 			{data && (
 				<SectionList

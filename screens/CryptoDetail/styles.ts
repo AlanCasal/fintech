@@ -6,22 +6,6 @@ const STICKY_HEADER_PADDING_FIX = 100;
 export const styles = StyleSheet.create({
 	container: {
 		marginTop: STICKY_HEADER_PADDING_FIX,
-		backgroundColor: Colors.lightBackground,
-	},
-	centerContent: {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
-		gap: 10,
-	},
-	errorTitle: {
-		fontSize: 24,
-		fontWeight: 'bold',
-		color: Colors.darkBackground,
-	},
-	errorMessage: {
-		fontSize: 16,
-		color: Colors.gray,
-		textAlign: 'center',
+		backgroundColor: Colors.darkBackground,
 	},
 });

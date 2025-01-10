@@ -5,6 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
 import { styles } from './styles';
 import BackButton from '@/components/Buttons/BackButton';
+import { PRIMARY_FONT_FAMILY } from '@/constants/Utils';
 
 const ScreenHeader = ({ title = '' }: { title?: string }) => {
 	return (
@@ -12,10 +13,18 @@ const ScreenHeader = ({ title = '' }: { title?: string }) => {
 			name="(authenticated)/(tabs)/[id]"
 			options={{
 				headerStyle: {
-					backgroundColor: Colors.lightBackground,
+					backgroundColor: Colors.darkBackground,
 				},
 				title,
+				headerTitleStyle: {
+					fontFamily: PRIMARY_FONT_FAMILY,
+					color: Colors.lightGray,
+				},
 				headerLargeTitle: true,
+				headerLargeTitleStyle: {
+					fontFamily: PRIMARY_FONT_FAMILY,
+					color: Colors.lightGray,
+				},
 				headerTransparent: true,
 				headerLeft: () => <BackButton />,
 				headerRight: () =>

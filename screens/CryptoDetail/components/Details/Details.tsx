@@ -1,7 +1,9 @@
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import React from 'react';
 import { styles } from './styles';
 import { defaultStyles } from '@/constants/Styles';
+import BoxCorners from '@/components/BoxCorners';
+import Colors from '@/constants/Colors';
 
 const Details = ({ description }: { description?: string }) => {
 	return (
@@ -11,7 +13,17 @@ const Details = ({ description }: { description?: string }) => {
 			) : (
 				<>
 					<Text style={styles.subtitle}>Details</Text>
-					<Text style={styles.description}>{description}</Text>
+					<View style={styles.detailsContainer}>
+						<BoxCorners
+							cornerTopLeft
+							cornerBottomRight
+							borderWidth={StyleSheet.hairlineWidth}
+							borderColor={Colors.primaryMuted}
+							width={'40%'}
+							height={30}
+						/>
+						<Text style={styles.description}>{description}</Text>
+					</View>
 				</>
 			)}
 		</View>

@@ -1,16 +1,26 @@
 import { StyleSheet } from 'react-native';
 import Colors from '@/constants/Colors';
+import { PRIMARY_FONT_FAMILY, SECONDARY_FONT_FAMILY } from '@/constants/Utils';
 
 export const styles = StyleSheet.create({
 	overview: {
-		marginTop: 20,
+		marginTop: 50,
+		gap: 10,
+	},
+	detailsContainer: {
+		backgroundColor: Colors.blackTransparent02,
+		padding: 20,
 	},
 	subtitle: {
+		fontFamily: PRIMARY_FONT_FAMILY,
+		textTransform: 'uppercase',
 		fontSize: 20,
-		fontWeight: 'bold',
-		color: Colors.gray,
+		color: Colors.lightGray,
 	},
 	description: {
-		color: Colors.gray,
+		fontFamily: SECONDARY_FONT_FAMILY,
+		fontSize: 16,
+		lineHeight: 20,
+		color: Colors.lightGray,
 	},
 });

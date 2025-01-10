@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import Colors from '@/constants/Colors';
+import { SECONDARY_FONT_FAMILY } from '@/constants/Utils';
 
 export const styles = StyleSheet.create({
 	menuWrapper: {
@@ -9,7 +10,7 @@ export const styles = StyleSheet.create({
 		paddingHorizontal: 16,
 		gap: 10,
 		paddingBottom: 8,
-		backgroundColor: Colors.lightBackground,
+		backgroundColor: Colors.darkBackground,
 		borderBottomColor: Colors.gray,
 	},
 	menuButton: {
@@ -25,14 +26,16 @@ export const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		borderRadius: 20,
-		backgroundColor: Colors.white,
+		backgroundColor: Colors.lightGray,
 	},
 	menuText: {
 		fontSize: 14,
 		color: Colors.gray,
+		fontFamily: SECONDARY_FONT_FAMILY,
 	},
 	menuTextActive: {
 		fontSize: 14,
 		color: Colors.darkBackground,
+		fontFamily: SECONDARY_FONT_FAMILY,
 	},
 });
