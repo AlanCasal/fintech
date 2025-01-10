@@ -1,25 +1,25 @@
 import { TouchableOpacity } from 'react-native';
 import React from 'react';
-import { Ionicons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
 import { useRouter } from 'expo-router';
 
 interface BackButtonProps {
 	size?: number;
 	color?: string;
-	icon?: keyof typeof Ionicons.glyphMap;
+	icon?: keyof typeof MaterialCommunityIcons.glyphMap;
 }
 
 const BackButton = ({
-	size = 34,
+	size = 24,
 	color = Colors.white,
-	icon = 'arrow-back',
+	icon = 'chevron-left-box-outline',
 }: BackButtonProps) => {
 	const router = useRouter();
 
 	return (
 		<TouchableOpacity onPress={router.back}>
-			<Ionicons name={icon} size={size} color={color} />
+			<MaterialCommunityIcons name={icon} size={size} color={color} />
 		</TouchableOpacity>
 	);
 };
