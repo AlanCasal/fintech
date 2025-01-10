@@ -2,7 +2,7 @@ import { View, TouchableOpacity, Image } from 'react-native';
 import React from 'react';
 import { Link } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import Colors from '@/constants/Colors';
 import { useUser } from '@clerk/clerk-expo';
 import { styles } from './styles';
 
