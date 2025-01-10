@@ -60,7 +60,7 @@ export const defaultStyles = StyleSheet.create({
 		fontFamily: SECONDARY_FONT_FAMILY,
 	},
 	buttonText: {
-		color: '#fff',
+		color: Colors.white,
 		fontSize: 18,
 		fontWeight: '500',
 	},
@@ -72,7 +72,7 @@ export const defaultStyles = StyleSheet.create({
 		alignItems: 'center',
 	},
 	buttonTextSmall: {
-		color: '#fff',
+		color: Colors.white,
 		fontSize: 16,
 		fontWeight: '500',
 	},

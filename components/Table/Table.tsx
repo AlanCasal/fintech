@@ -5,15 +5,27 @@ import Colors from '@/constants/Colors';
 import { styles } from './styles';
 import TransactionItem from './components/TransactionItem';
 import CryptoItem from './components/CryptoItem';
+import { Transaction } from '@/store/balanceStore';
+import { CurrencyData, Cryptocurrency } from '@/interfaces/crypto';
 
-interface TableProps {
-	items: any[];
-	extraData?: any;
-	tableType: 'transaction' | 'crypto';
+type TableTypes = {
+	transaction: Transaction;
+	crypto: CurrencyData;
+};
+
+interface TableProps<T extends keyof TableTypes> {
+	items: TableTypes[T][];
+	extraData?: T extends 'crypto' ? Cryptocurrency[] : never;
+	tableType: T;
 	emptyMessage: string;
 }
 
-const Table = ({ items, tableType, emptyMessage, extraData }: TableProps) => {
+const Table = <T extends keyof TableTypes>({
+	items,
+	tableType,
+	emptyMessage,
+	extraData,
+}: TableProps<T>) => {
 	return (
 		<View style={styles.tableContainer}>
 			<BoxCorners
@@ -33,7 +45,7 @@ const Table = ({ items, tableType, emptyMessage, extraData }: TableProps) => {
 				if (tableType === 'transaction') {
 					return (
 						<TransactionItem
-							item={item}
+							item={item as Transaction}
 							withBottomDivider={withBottomDivider}
 							key={item.id}
 						/>
@@ -42,10 +54,10 @@ const Table = ({ items, tableType, emptyMessage, extraData }: TableProps) => {
 
 				return (
 					<CryptoItem
-						item={item}
+						item={item as CurrencyData}
 						withBottomDivider={withBottomDivider}
 						key={item.id}
-						currenciesData={extraData}
+						currenciesData={extraData as Cryptocurrency[]}
 					/>
 				);
 			})}

@@ -1,16 +1,13 @@
-import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 import React from 'react';
 import { defaultStyles } from '@/constants/Styles';
 import { CurrencyData } from '@/interfaces/crypto';
 import { styles } from './styles';
 import LoadingSpinner from '@/components/LoadingSpinner';
-import { Link } from 'expo-router';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useHeaderHeight } from '@react-navigation/elements';
-import { Ionicons } from '@expo/vector-icons';
 import { useGetCryptoList } from './api/hooks/useGetCryptoList';
 import { useGetCryptoInfo } from './api/hooks/useGetCryptoInfo';
-import Colors from '@/constants/Colors';
 import Table from '@/components/Table';
 
 const Crypto = () => {
