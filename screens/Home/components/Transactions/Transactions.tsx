@@ -17,7 +17,11 @@ const Transactions = () => {
 			<Text style={defaultStyles.sectionHeader}>Transactions</Text>
 
 			<View style={styles.tableContainer}>
-				<Table items={sortedTransactions} emptyMessage="No transactions" />
+				<Table
+					items={sortedTransactions}
+					tableType="transaction"
+					emptyMessage="No transactions"
+				/>
 			</View>
 		</View>
 	);

@@ -62,3 +62,59 @@ interface Status {
 	notice: null;
 	total_count: number;
 }
+
+export interface Cryptocurrency {
+	id: number;
+	name: string;
+	symbol: string;
+	category: string;
+	description: string;
+	slug: string;
+	logo: string;
+	subreddit: string;
+	notice: string;
+	tags: string[];
+	tagNames: string[];
+	tagGroups: string[];
+	urls: Urls;
+	platform: null | string;
+	dateAdded: string;
+	twitterUsername: string;
+	isHidden: number;
+	dateLaunched: null | string;
+	contractAddress: ContractAddress[];
+	selfReportedCirculatingSupply: null | number;
+	selfReportedTags: null | string[];
+	selfReportedMarketCap: null | number;
+	infiniteSupply: boolean;
+}
+
+interface Urls {
+	website: string[];
+	twitter: string[];
+	messageBoard: string[];
+	chat: string[];
+	facebook: string[];
+	explorer: string[];
+	reddit: string[];
+	technicalDoc: string[];
+	sourceCode: string[];
+	announcement: string[];
+}
+
+interface ContractAddress {
+	contractAddress: string;
+	platform: Platform;
+}
+
+interface Platform {
+	name: string;
+	coin: Coin;
+}
+
+interface Coin {
+	id: string;
+	name: string;
+	symbol: string;
+	slug: string;
+}

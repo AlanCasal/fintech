@@ -38,17 +38,4 @@ export const styles = StyleSheet.create({
 		fontFamily: SECONDARY_FONT_FAMILY,
 		color: Colors.gray,
 	},
-	currencyPriceWrapper: {
-		gap: 4,
-		alignItems: 'flex-end',
-	},
-	numbers: {
-		fontFamily: SECONDARY_FONT_FAMILY_SEMI_BOLD,
-		color: Colors.lightGray,
-	},
-	priceChangeWraper: {
-		flexDirection: 'row',
-		gap: 4,
-		alignItems: 'center',
-	},
 });

@@ -7,12 +7,15 @@ import Colors from '@/constants/Colors';
 
 interface TransactionItemProps {
 	item: Transaction;
-	withDivider?: boolean;
+	withBottomDivider?: boolean;
 }
 
-const TransactionItem = ({ item, withDivider }: TransactionItemProps) => {
+const TransactionItem = ({ item, withBottomDivider }: TransactionItemProps) => {
 	const isPositive = item.amount > 0;
-	const tableItemStyle = [styles.tableItem, withDivider && styles.itemDivider];
+	const tableItemStyle = [
+		styles.tableItem,
+		withBottomDivider && styles.itemDivider,
+	];
 
 	return (
 		<View style={tableItemStyle}>

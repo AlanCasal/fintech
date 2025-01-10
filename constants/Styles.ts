@@ -86,8 +86,5 @@ export const defaultStyles = StyleSheet.create({
 	},
 	tableContainer: {
 		marginHorizontal: 20,
-		padding: 14,
-		backgroundColor: Colors.blackTransparent02,
-		gap: 20,
 	},
 });
