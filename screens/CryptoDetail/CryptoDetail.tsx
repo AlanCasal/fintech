@@ -27,7 +27,10 @@ const Crypto = () => {
 		{
 			name: 'Overview',
 			content: (
-				<ScrollView showsVerticalScrollIndicator={false}>
+				<ScrollView
+					showsVerticalScrollIndicator={false}
+					style={{ marginTop: 20 }}
+				>
 					<ChartCartesian />
 					<Details description={data?.description} />
 				</ScrollView>
