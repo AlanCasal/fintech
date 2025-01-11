@@ -1,5 +1,5 @@
 import { TouchableOpacity, View, Text, Image } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import { Stack } from 'expo-router';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
@@ -24,6 +24,21 @@ const Title = ({ title = '', logoUrl }: TitleProps) => (
 );
 
 const ScreenHeader = ({ title = '', logoUrl = '' }: ScreenHeaderProps) => {
+	const [isFavorite, setIsFavorite] = useState(false);
+
+	const handleToggleFavorite = () => {
+		setIsFavorite(prev => !prev);
+	};
+
+	let favIconName: keyof typeof MaterialCommunityIcons.glyphMap =
+		'star-outline';
+	let favIconColor = Colors.lightGray;
+
+	if (isFavorite) {
+		favIconName = 'star-face';
+		favIconColor = Colors.primary;
+	}
+
 	return (
 		<Stack.Screen
 			name="(authenticated)/(tabs)/[id]"
@@ -45,11 +60,11 @@ const ScreenHeader = ({ title = '', logoUrl = '' }: ScreenHeaderProps) => {
 									color={Colors.lightGray}
 								/>
 							</TouchableOpacity>
-							<TouchableOpacity>
+							<TouchableOpacity onPress={handleToggleFavorite}>
 								<MaterialCommunityIcons
-									name="star-box-outline"
+									name={favIconName}
 									size={24}
-									color={Colors.lightGray}
+									color={favIconColor}
 								/>
 							</TouchableOpacity>
 							<TouchableOpacity>

@@ -25,10 +25,12 @@ const Balance = () => {
 				</View>
 
 				<BoxCorners
-					cornerTopLeft
-					cornerBottomRight
+					cornerBottomLeft
+					cornerTopRight
 					borderColor={Colors.primaryMuted}
 					borderWidth={1}
+					width={'30%'}
+					height={'50%'}
 				/>
 			</View>
 		</>
