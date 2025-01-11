@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import Colors from '@/constants/Colors';
+import { PRIMARY_FONT_FAMILY } from '@/constants/Utils';
 
 export const styles = StyleSheet.create({
 	numbersView: {
@@ -13,13 +14,11 @@ export const styles = StyleSheet.create({
 		justifyContent: 'center',
 		width: 60,
 		height: 60,
-		borderRadius: 30,
-		backgroundColor: Colors.lightGray,
 		marginVertical: 20,
 	},
 	number: {
 		fontSize: 32,
-		fontWeight: '700',
-		color: Colors.darkBackground,
+		fontFamily: PRIMARY_FONT_FAMILY,
+		color: Colors.lightGray,
 	},
 });

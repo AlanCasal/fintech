@@ -1,7 +1,9 @@
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import React from 'react';
 import { styles } from './styles';
 import DeleteKey from './components/DeleteKey';
+import BoxCorners from '@/components/BoxCorners';
+import Colors from '@/constants/Colors';
 
 const renderColumn = (
 	column: string[],
@@ -12,7 +14,16 @@ const renderColumn = (
 			onPress={() => handleNumberPress(number)}
 			key={number}
 			style={styles.buttonNumber}
+			activeOpacity={0.5}
 		>
+			<BoxCorners
+				cornerTopLeft
+				cornerBottomRight
+				width={'80%'}
+				height={'40%'}
+				borderWidth={StyleSheet.hairlineWidth}
+				borderColor={Colors.primary}
+			/>
 			<Text style={styles.number}>{number}</Text>
 		</TouchableOpacity>
 	));
