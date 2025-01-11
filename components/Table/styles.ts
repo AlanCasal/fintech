@@ -48,7 +48,7 @@ export const styles = StyleSheet.create({
 		color: Colors.gray,
 	},
 	textSuccess: {
-		color: Colors.success,
+		color: Colors.positive,
 		fontFamily: SECONDARY_FONT_FAMILY_SEMI_BOLD,
 	},
 });

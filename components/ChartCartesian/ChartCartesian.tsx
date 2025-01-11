@@ -57,7 +57,7 @@ const ChartCartesian = () => {
 		<View
 			style={{
 				...defaultStyles.tableContainer,
-				...(data && !isLoading && !error && { height: 500 }),
+				...(data && !isLoading && !error && { height: 400 }),
 			}}
 		>
 			{isLoading && (
@@ -108,7 +108,8 @@ const ChartCartesian = () => {
 							font,
 							tickCount: 5,
 							labelOffset: { x: -2, y: 0 },
-							labelColor: Colors.gray,
+							labelColor: Colors.primary,
+							lineColor: Colors.primaryMuted,
 							formatYLabel: label => `${label}€`,
 							formatXLabel: ms => format(new Date(ms), 'MMM'),
 						}}

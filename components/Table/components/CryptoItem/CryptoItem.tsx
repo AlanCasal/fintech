@@ -18,12 +18,13 @@ const CryptoItem = ({
 	currenciesData,
 }: CryptoItemProps) => {
 	const { percent_change_1h: percentChange, price } = item.quote.EUR;
+
 	const isPositive = percentChange > 0;
 	const isNegative = percentChange < 0;
 
 	let color = Colors.lightGray;
-	if (isPositive) color = Colors.success;
-	else if (isNegative) color = Colors.error;
+	if (isPositive) color = Colors.positive;
+	else if (isNegative) color = Colors.negative;
 
 	const tableItemStyle = {
 		...styles.tableItem,

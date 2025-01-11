@@ -5,7 +5,7 @@ export default {
 
 	black: '#000000',
 	darkBackground: '#141518',
-	gray: '#626D77',
+	gray: '#a1a1a1',
 	lightGray: '#D8DCE2',
 	lightBackground: '#F5F5F5',
 	white: '#FFFFFF',
@@ -15,9 +15,11 @@ export default {
 
 	whiteGlow: 'rgba(255, 255, 255, 0.5)',
 
-	success: '#228B22',
-	error: '#FF0000',
+	positive: '#1dc46e',
+	negative: '#f24b4b',
 
-	green: '#00FF00',
-	darkRed: '#8B0000',
+	success: '#00FF00',
+	successDark: '#228B22',
+	error: '#FF0000',
+	errorDark: '#8B0000',
 };

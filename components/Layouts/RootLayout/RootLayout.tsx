@@ -113,8 +113,8 @@ const RootLayout = () => {
 					animation: 'slide_from_bottom',
 					title: '',
 					headerTransparent: true,
-					headerLeft: () => (
-						<BackButton icon="close-outline" color={Colors.white} />
+					headerRight: () => (
+						<BackButton icon="close-box-outline" color={Colors.lightGray} />
 					),
 				}}
 			/>

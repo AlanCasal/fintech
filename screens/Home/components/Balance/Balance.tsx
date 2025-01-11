@@ -9,7 +9,7 @@ import CyberDots from '@/components/CyberDots';
 const Balance = () => {
 	const { balance } = useBalanceStore();
 
-	const balanceColor = balance() > 0 ? Colors.lightGray : Colors.error;
+	const balanceColor = balance() > 0 ? Colors.lightGray : Colors.negative;
 
 	return (
 		<>

@@ -22,7 +22,7 @@ const TransactionItem = ({ item, withBottomDivider }: TransactionItemProps) => {
 			<Ionicons
 				name={isPositive ? 'caret-down' : 'caret-up'}
 				size={20}
-				color={isPositive ? Colors.success : Colors.lightGray}
+				color={isPositive ? Colors.positive : Colors.lightGray}
 			/>
 
 			<View style={styles.itemContent}>

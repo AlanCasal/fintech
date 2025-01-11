@@ -72,7 +72,7 @@ export const styles = StyleSheet.create({
 		paddingVertical: 10,
 	},
 	textSuccess: {
-		color: Colors.success,
+		color: Colors.positive,
 	},
 	transactionTitle: {
 		color: Colors.lightGray,

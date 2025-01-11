@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
 		alignItems: 'center',
 	},
 	errorText: {
-		color: Colors.gray,
+		color: Colors.lightGray,
 		fontFamily: SECONDARY_FONT_FAMILY,
 	},
 	chartTodayTextPrice: {
@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
 		fontSize: 30,
 	},
 	chartTodayText: {
-		color: Colors.gray,
+		color: Colors.lightGray,
 		fontSize: 18,
 		fontFamily: SECONDARY_FONT_FAMILY,
 	},
