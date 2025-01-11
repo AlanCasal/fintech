@@ -40,20 +40,27 @@ const Crypto = () => {
 		},
 		{
 			name: 'News',
-			content: <ErrorBackground subtitle="Crypto Detail" title="News" />,
+			content: (
+				<ErrorBackground subtitle="Screen not available yet" title="News" />
+			),
 			ref: createRef<View>(),
 			index: 1,
 		},
 		{
 			name: 'Orders',
-			content: <ErrorBackground subtitle="Crypto Detail" title="Orders" />,
+			content: (
+				<ErrorBackground subtitle="Screen not available yet" title="Orders" />
+			),
 			ref: createRef<View>(),
 			index: 2,
 		},
 		{
 			name: 'Transactions',
 			content: (
-				<ErrorBackground subtitle="Crypto Detail" title="Transactions" />
+				<ErrorBackground
+					subtitle="Screen not available yet"
+					title="Transactions"
+				/>
 			),
 			ref: createRef<View>(),
 			index: 3,

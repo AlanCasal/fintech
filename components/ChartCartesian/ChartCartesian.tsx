@@ -107,7 +107,7 @@ const ChartCartesian = () => {
 						axisOptions={{
 							font,
 							tickCount: 5,
-							labelOffset: { x: -2, y: 0 },
+							labelOffset: { x: -4, y: 0 },
 							labelColor: Colors.primary,
 							lineColor: Colors.primaryMuted,
 							formatYLabel: label => `${label}€`,
