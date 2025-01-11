@@ -1,6 +1,6 @@
 import { useLocalSearchParams } from 'expo-router';
 import React, { createRef, useCallback, useRef } from 'react';
-import { Animated, Dimensions, SectionList, View } from 'react-native';
+import { Animated, Dimensions, View, ScrollView } from 'react-native';
 import ChartCartesian from '@/components/ChartCartesian';
 import ScreenHeader from './components/ScreenHeader';
 import Details from './components/Details';
@@ -27,18 +27,10 @@ const Crypto = () => {
 		{
 			name: 'Overview',
 			content: (
-				<SectionList
-					style={styles.container}
-					contentInsetAdjustmentBehavior="automatic"
-					keyExtractor={(item, index) => item.title + index}
-					sections={[{ data: [{ title: 'Section 1' }] }]}
-					renderItem={() => (
-						<>
-							<ChartCartesian />
-							<Details description={data?.description} />
-						</>
-					)}
-				/>
+				<ScrollView showsVerticalScrollIndicator={false}>
+					<ChartCartesian />
+					<Details description={data?.description} />
+				</ScrollView>
 			),
 			ref: createRef<View>(),
 			index: 0,
@@ -46,13 +38,13 @@ const Crypto = () => {
 		{
 			name: 'News',
 			content: <ErrorBackground subtitle="Crypto Detail" title="News" />,
-			ref: createRef(),
+			ref: createRef<View>(),
 			index: 1,
 		},
 		{
 			name: 'Orders',
 			content: <ErrorBackground subtitle="Crypto Detail" title="Orders" />,
-			ref: createRef(),
+			ref: createRef<View>(),
 			index: 2,
 		},
 		{
@@ -60,7 +52,7 @@ const Crypto = () => {
 			content: (
 				<ErrorBackground subtitle="Crypto Detail" title="Transactions" />
 			),
-			ref: createRef(),
+			ref: createRef<View>(),
 			index: 3,
 		},
 	];
@@ -74,7 +66,13 @@ const Crypto = () => {
 			{error && <ErrorBackground subtitle={error.message} />}
 
 			{!isLoading && !error && data && (
-				<>
+				<View style={styles.container}>
+					<TabsIndicator
+						scrollX={scrollX}
+						data={DATA}
+						onItemPress={onItemPress}
+					/>
+
 					<Animated.FlatList
 						ref={ref}
 						data={DATA}
@@ -99,13 +97,7 @@ const Crypto = () => {
 							</View>
 						)}
 					/>
-
-					<TabsIndicator
-						scrollX={scrollX}
-						data={DATA}
-						onItemPress={onItemPress}
-					/>
-				</>
+				</View>
 			)}
 		</>
 	);

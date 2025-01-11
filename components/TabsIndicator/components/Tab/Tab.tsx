@@ -9,7 +9,7 @@ interface TabProps {
 
 const Tab = forwardRef(({ item, onItemPress }: TabProps, ref) => {
 	return (
-		<TouchableOpacity onPress={onItemPress}>
+		<TouchableOpacity onPress={onItemPress} style={styles.container}>
 			<View ref={ref as React.RefObject<View>}>
 				<Text style={styles.text}>{item.name}</Text>
 			</View>

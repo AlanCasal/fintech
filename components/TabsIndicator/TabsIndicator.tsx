@@ -8,10 +8,12 @@ interface TabsIndicatorProps {
 	scrollX: Animated.Value;
 	data: {
 		name: string;
+		content: React.ReactNode;
 		ref: React.RefObject<View>;
 		index: number;
 	}[];
 	onItemPress: (index: number) => void;
+	tabHeight?: number;
 }
 
 type Measure = {
@@ -21,7 +23,12 @@ type Measure = {
 	height: number;
 };
 
-const TabsIndicator = ({ scrollX, data, onItemPress }: TabsIndicatorProps) => {
+const TabsIndicator = ({
+	scrollX,
+	data,
+	onItemPress,
+	tabHeight = 30,
+}: TabsIndicatorProps) => {
 	const [measures, setMeasures] = useState<Measure[]>([]);
 	const containerRef = useRef<View | null>(null);
 
@@ -40,7 +47,7 @@ const TabsIndicator = ({ scrollX, data, onItemPress }: TabsIndicatorProps) => {
 	}, [data]);
 
 	return (
-		<View style={styles.container}>
+		<View style={{ height: tabHeight }}>
 			<View
 				ref={containerRef as React.RefObject<View>}
 				style={styles.tabsContainer}

@@ -27,6 +27,7 @@ export const styles = StyleSheet.create({
 		color: Colors.primary,
 	},
 	container: {
+		flex: 1,
 		backgroundColor: Colors.darkBackground,
 	},
 });
