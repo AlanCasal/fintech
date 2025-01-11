@@ -82,7 +82,7 @@ const RootLayout = () => {
 
 		// is in signIn screen and signed in
 		if (isSignedIn && !inAuthGroup)
-			router.replace('/(authenticated)/(tabs)/crypto');
+			router.replace('/(authenticated)/(tabs)/home');
 		else if (!isSignedIn) router.replace('/');
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isSignedIn]);
@@ -93,7 +93,6 @@ const RootLayout = () => {
 	return (
 		<Stack>
 			<StatusBar style="light" />
-			<Stack.Screen name="(authenticated)" options={{ headerShown: false }} />
 			<Stack.Screen
 				name="help"
 				options={{
@@ -106,6 +105,7 @@ const RootLayout = () => {
 					),
 				}}
 			/>
+			<Stack.Screen name="(authenticated)" options={{ headerShown: false }} />
 			<Stack.Screen
 				name="(authenticated)/(modals)/account"
 				options={{

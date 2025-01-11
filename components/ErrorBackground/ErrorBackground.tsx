@@ -21,7 +21,7 @@ const ErrorBackground = ({
 
 	return (
 		<View style={[styles.container, safePadding]}>
-			<CyberDots position="top" height="25%" rotate={180} />
+			<CyberDots position="top" height="25%" />
 			<CyberDots position="bottom" height="25%" />
 
 			<View style={styles.contentContainer}>

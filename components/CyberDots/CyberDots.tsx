@@ -6,24 +6,18 @@ interface CyberDotsProps {
 	position: 'top' | 'bottom';
 	height: `${number}%`;
 	scale?: number;
-	rotate?: number;
 }
 
-const CyberDots = ({
-	position,
-	height,
-	scale = 1.5,
-	rotate = 0,
-}: CyberDotsProps) => {
-	const extraStyles = [
-		{ height, [position]: 0 },
-		{ transform: [{ scale }, { rotate: `${rotate}deg` }] },
-	];
-
+const CyberDots = ({ position, height, scale = 1.5 }: CyberDotsProps) => {
+	const extraStyles = {
+		height,
+		[position]: 0,
+		transform: [{ scale }, { rotate: position === 'top' ? '180deg' : '0deg' }],
+	};
 	return (
 		<Image
 			source={require('@/assets/images/cyber-dots-primary.png')}
-			style={[styles.cyberDots, ...extraStyles]}
+			style={[styles.cyberDots, extraStyles]}
 			resizeMode="repeat"
 		/>
 	);

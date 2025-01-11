@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { Text, SafeAreaView, TouchableOpacity } from 'react-native';
-import { Stack } from 'expo-router';
 import { styles } from './styles';
 import { useUser } from '@clerk/clerk-expo';
 import * as Haptics from 'expo-haptics';
 import Biometrics from './components/Biometrics';
 import Bubbles from './components/Bubbles';
 import Numpad from './components/Numpad';
+import CyberDots from '@/components/CyberDots';
+import { Stack } from 'expo-router';
 
 const Lock = () => {
 	const { user } = useUser();
 
-	const [firstName, setFirstName] = useState(user?.firstName);
 	const [code, setCode] = useState<string[]>([]);
 
 	const handleNumberPress = (number: string) => {
@@ -28,7 +28,20 @@ const Lock = () => {
 
 	return (
 		<SafeAreaView style={styles.container}>
-			<Text style={styles.greeting}>Welcome back, {firstName}</Text>
+			<Stack.Screen
+				name="(authenticated)/(modals)/lock"
+				options={{
+					headerShown: false,
+					animation: 'fade',
+				}}
+			/>
+
+			<CyberDots position="top" height="25%" />
+			<CyberDots position="bottom" height="25%" />
+
+			<Text style={styles.greeting}>
+				Welcome back, <Text style={styles.name}>{user?.firstName}</Text>
+			</Text>
 
 			<Biometrics />
 

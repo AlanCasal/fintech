@@ -106,7 +106,7 @@ const Signup = () => {
 
 			<TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
 				<View style={containerStyles}>
-					<CyberDots position="top" height="20%" rotate={180} />
+					<CyberDots position="top" height="20%" />
 					<CyberDots position="bottom" height="30%" />
 
 					<View style={styles.gap20}>
