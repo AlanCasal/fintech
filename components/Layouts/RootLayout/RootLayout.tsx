@@ -100,6 +100,10 @@ const RootLayout = () => {
 					title: 'Help',
 					presentation: 'modal',
 					animation: 'slide_from_bottom',
+					headerTransparent: true,
+					headerRight: () => (
+						<BackButton icon="close-box-outline" color={Colors.lightGray} />
+					),
 				}}
 			/>
 			<Stack.Screen
