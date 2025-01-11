@@ -1,4 +1,3 @@
-import { View } from 'react-native';
 import React, { useEffect } from 'react';
 import { useRouter } from 'expo-router';
 import Animated, {
@@ -11,6 +10,7 @@ import Animated, {
 import * as Haptics from 'expo-haptics';
 import { styles } from './styles';
 import Colors from '@/constants/Colors';
+import CyberButtonSquare from '@/components/Buttons/CyberButtonSquare';
 
 const FAKE_CODE = [1, 2, 3, 4, 5, 6];
 const HARDCODED_CODE = '111111';
@@ -44,14 +44,12 @@ const Bubbles = ({ code }: { code: string[] }) => {
 	return (
 		<Animated.View style={[styles.animatedView, style]}>
 			{FAKE_CODE.map((_, index) => (
-				<View
+				<CyberButtonSquare
 					key={index}
-					style={[
-						styles.bubbleEmpty,
-						{
-							backgroundColor: code[index] ? Colors.primary : Colors.lightGray,
-						},
-					]}
+					width={20}
+					fillColor={code[index] ? Colors.primary : Colors.gray}
+					strokeColor={code[index] ? Colors.primaryMuted : Colors.gray}
+					disabled
 				/>
 			))}
 		</Animated.View>

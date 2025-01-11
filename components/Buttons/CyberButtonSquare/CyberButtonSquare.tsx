@@ -17,6 +17,7 @@ interface CyberButtonSquareProps {
 	width?: number;
 	rotate?: number;
 	handlePress?: () => void;
+	disabled?: boolean;
 }
 
 const CyberButtonSquare = ({
@@ -26,10 +27,11 @@ const CyberButtonSquare = ({
 	width = 40,
 	rotate = 0,
 	handlePress,
+	disabled = false,
 }: CyberButtonSquareProps) => {
 	return (
 		<View style={{ width, height: width }}>
-			<TouchableOpacity onPress={handlePress}>
+			<TouchableOpacity onPress={handlePress} disabled={disabled}>
 				<Suspense fallback={null}>
 					<View style={{ transform: [{ rotate: `${rotate}deg` }] }}>
 						<CyberButton

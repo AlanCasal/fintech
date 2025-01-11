@@ -27,29 +27,23 @@ const Lock = () => {
 	};
 
 	return (
-		<>
-			<Stack.Screen
-				name="(authenticated)/(modals)/lock"
-				options={{ headerShown: false, animation: 'none' }}
+		<SafeAreaView style={styles.container}>
+			<Text style={styles.greeting}>Welcome back, {firstName}</Text>
+
+			<Biometrics />
+
+			<Bubbles code={code} />
+
+			<Numpad
+				code={code}
+				handleNumberPress={handleNumberPress}
+				handleDeletePress={handleDeletePress}
 			/>
-			<SafeAreaView style={styles.container}>
-				<Text style={styles.greeting}>Welcome back, {firstName}</Text>
 
-				<Biometrics />
-
-				<Bubbles code={code} />
-
-				<Numpad
-					code={code}
-					handleNumberPress={handleNumberPress}
-					handleDeletePress={handleDeletePress}
-				/>
-
-				<TouchableOpacity style={styles.forgotPassword}>
-					<Text style={styles.forgotPasswordText}>Forgot Password?</Text>
-				</TouchableOpacity>
-			</SafeAreaView>
-		</>
+			<TouchableOpacity style={styles.forgotPassword}>
+				<Text style={styles.forgotPasswordText}>Forgot Password?</Text>
+			</TouchableOpacity>
+		</SafeAreaView>
 	);
 };
 
