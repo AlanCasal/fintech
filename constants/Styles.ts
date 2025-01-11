@@ -28,7 +28,9 @@ export const defaultStyles = StyleSheet.create({
 	},
 	header: {
 		fontSize: 40,
+		lineHeight: 40,
 		color: Colors.primary,
+		fontFamily: SECONDARY_FONT_FAMILY_SEMI_BOLD,
 	},
 	pillButton: {
 		padding: 10,

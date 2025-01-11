@@ -118,6 +118,13 @@ const RootLayout = () => {
 					),
 				}}
 			/>
+			<Stack.Screen
+				name="(authenticated)/(modals)/lock"
+				options={{
+					headerShown: false,
+					animation: 'fade',
+				}}
+			/>
 		</Stack>
 	);
 };

@@ -7,7 +7,6 @@ import Biometrics from './components/Biometrics';
 import Bubbles from './components/Bubbles';
 import Numpad from './components/Numpad';
 import CyberDots from '@/components/CyberDots';
-import { Stack } from 'expo-router';
 
 const Lock = () => {
 	const { user } = useUser();
@@ -28,14 +27,6 @@ const Lock = () => {
 
 	return (
 		<SafeAreaView style={styles.container}>
-			<Stack.Screen
-				name="(authenticated)/(modals)/lock"
-				options={{
-					headerShown: false,
-					animation: 'fade',
-				}}
-			/>
-
 			<CyberDots position="top" height="25%" />
 			<CyberDots position="bottom" height="25%" />
 

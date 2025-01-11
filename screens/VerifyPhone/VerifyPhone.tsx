@@ -16,6 +16,11 @@ import {
 	useClearByFocusCell,
 } from 'react-native-confirmation-code-field';
 import BackButton from '@/components/Buttons/BackButton';
+import CyberDots from '@/components/CyberDots';
+import Logo from '@/components/Logo';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import CyberButtonSquare from '@/components/Buttons/CyberButtonSquare';
+import BoxCorners from '@/components/BoxCorners';
 
 const CELL_COUNT = 6;
 
@@ -28,6 +33,7 @@ const VerifyPhone = () => {
 		phoneNumber: string;
 		signIn: string;
 	}>();
+	const { bottom } = useSafeAreaInsets();
 
 	const ref = useBlurOnFulfill({ value: code, cellCount: CELL_COUNT });
 	const [props, getCellOnLayoutHandler] = useClearByFocusCell({
@@ -69,7 +75,13 @@ const VerifyPhone = () => {
 	}, [code]);
 
 	return (
-		<View style={[defaultStyles.container, styles.container]}>
+		<View
+			style={[
+				defaultStyles.container,
+				styles.container,
+				{ paddingBottom: bottom },
+			]}
+		>
 			<Stack.Screen
 				name="verify/[phoneNumber]"
 				options={{
@@ -77,15 +89,22 @@ const VerifyPhone = () => {
 					headerBackTitle: '',
 					headerShadowVisible: false,
 					headerStyle: {
-						backgroundColor: Colors.lightBackground,
+						backgroundColor: Colors.darkBackground,
 					},
 					headerLeft: () => <BackButton />,
 				}}
 			/>
+			<CyberDots position="top" height="20%" />
+			<CyberDots position="bottom" height="30%" />
 
-			<Text style={defaultStyles.header}>6-digit code</Text>
+			<View style={styles.titleContainer}>
+				<Text style={defaultStyles.header}>6-digit code</Text>
+				<BoxCorners cornerTopLeft cornerBottomRight />
+			</View>
+
 			<Text style={defaultStyles.descriptionText}>
-				Code sent to {phoneNumber} unless you already have an account
+				Code sent to <Text style={styles.phoneNumber}>{phoneNumber}</Text>{' '}
+				unless you already have an account
 			</Text>
 
 			<CodeField
@@ -103,28 +122,54 @@ const VerifyPhone = () => {
 					default: 'one-time-code',
 				})}
 				testID="my-code-input"
-				renderCell={({ index, symbol, isFocused }) => (
-					<Fragment key={index}>
-						<View
-							onLayout={getCellOnLayoutHandler(index)}
-							style={[styles.cellRoot, isFocused && styles.focusCell]}
-						>
-							<Text style={styles.cellText}>
-								{symbol || (isFocused ? <Cursor /> : null)}
-							</Text>
-						</View>
-						{index === 2 ? (
-							<View key={`separator-${index}`} style={styles.separator} />
-						) : null}
-					</Fragment>
-				)}
+				renderCell={({ index, symbol, isFocused }) => {
+					let boxColor = Colors.gray;
+					const separatorColor =
+						code.length > index ? Colors.primary : Colors.gray;
+
+					if (code.length >= index) boxColor = Colors.primary;
+
+					return (
+						<Fragment key={index}>
+							<View
+								onLayout={getCellOnLayoutHandler(index)}
+								style={styles.cellRoot}
+							>
+								<CyberButtonSquare
+									fillColor={boxColor}
+									strokeColor={boxColor}
+									disabled
+								/>
+								<Text style={styles.cellText}>
+									{symbol || (isFocused ? <Cursor /> : null)}
+								</Text>
+							</View>
+							{index === 2 ? (
+								<View
+									key={`separator-${index}`}
+									style={[
+										styles.separator,
+										{ backgroundColor: separatorColor },
+									]}
+								/>
+							) : null}
+						</Fragment>
+					);
+				}}
 			/>
 
-			<Link href="/signin" replace asChild>
-				<Text style={defaultStyles.textLink}>
-					Already have an account? Sign In
-				</Text>
-			</Link>
+			<Text style={defaultStyles.descriptionText}>
+				Already have an account?{' '}
+				<Link href="/signin" replace asChild>
+					<Text style={defaultStyles.textLink}>Sign In</Text>
+				</Link>
+			</Text>
+
+			<View style={{ flex: 1 }} />
+
+			<View style={styles.logoContainer}>
+				<Logo />
+			</View>
 		</View>
 	);
 };
