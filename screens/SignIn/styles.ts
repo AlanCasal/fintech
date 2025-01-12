@@ -7,13 +7,6 @@ export const styles = StyleSheet.create({
 	gap20: {
 		gap: 20,
 	},
-	titleContainer: {
-		alignItems: 'center',
-		paddingVertical: 10,
-	},
-	headerBorder: {
-		margin: 10,
-	},
 	dividerContainer: {
 		marginVertical: 10,
 	},

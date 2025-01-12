@@ -7,15 +7,6 @@ import {
 } from './Utils';
 
 export const defaultStyles = StyleSheet.create({
-	primaryFontFamily: {
-		fontFamily: PRIMARY_FONT_FAMILY,
-	},
-	secondaryFontFamily: {
-		fontFamily: SECONDARY_FONT_FAMILY,
-	},
-	secondaryFontFamilySemiBold: {
-		fontFamily: SECONDARY_FONT_FAMILY_SEMI_BOLD,
-	},
 	container: {
 		flex: 1,
 		padding: 16,
@@ -25,19 +16,6 @@ export const defaultStyles = StyleSheet.create({
 	},
 	darkBackground: {
 		backgroundColor: Colors.darkBackground,
-	},
-	header: {
-		fontSize: 40,
-		lineHeight: 40,
-		color: Colors.primary,
-		fontFamily: SECONDARY_FONT_FAMILY_SEMI_BOLD,
-	},
-	pillButton: {
-		padding: 10,
-		height: 60,
-		borderRadius: 40,
-		justifyContent: 'center',
-		alignItems: 'center',
 	},
 	textLink: {
 		fontFamily: SECONDARY_FONT_FAMILY_SEMI_BOLD,
@@ -59,23 +37,6 @@ export const defaultStyles = StyleSheet.create({
 	inputText: {
 		fontSize: 16,
 		color: Colors.lightGray,
-		fontFamily: SECONDARY_FONT_FAMILY,
-	},
-	buttonText: {
-		color: Colors.white,
-		fontSize: 18,
-		fontFamily: SECONDARY_FONT_FAMILY,
-	},
-	pillButtonSmall: {
-		paddingHorizontal: 20,
-		height: 40,
-		borderRadius: 20,
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-	buttonTextSmall: {
-		color: Colors.white,
-		fontSize: 16,
 		fontFamily: SECONDARY_FONT_FAMILY,
 	},
 	sectionHeader: {

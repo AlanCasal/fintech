@@ -1,6 +1,5 @@
 import {
 	View,
-	Text,
 	TouchableOpacity,
 	Alert,
 	TouchableWithoutFeedback,
@@ -30,6 +29,7 @@ import BoxCorners from '@/components/BoxCorners';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Logo from '@/components/Logo';
 import CyberDots from '@/components/CyberDots';
+import CyberHeaderTitle from '@/components/CyberHeaderTitle';
 
 const DEFAULT_COUNTRY_CALLING_CODE = '54';
 const DEFAULT_COUNTRY_CODE = 'AR';
@@ -131,25 +131,10 @@ const SignIn = () => {
 					<CyberDots position="top" height="20%" />
 					<CyberDots position="bottom" height="30%" />
 
-					<View style={styles.gap20}>
-						<View style={styles.titleContainer}>
-							<Text
-								style={[
-									defaultStyles.secondaryFontFamilySemiBold,
-									defaultStyles.header,
-									styles.headerBorder,
-								]}
-							>
-								{'>'} Welcome Back !
-							</Text>
-
-							<BoxCorners cornerBottomRight cornerTopLeft />
-						</View>
-
-						<Text style={defaultStyles.descriptionText}>
-							Enter the phone number associated with your account
-						</Text>
-					</View>
+					<CyberHeaderTitle
+						title="> Welcome Back !"
+						subtitle="Enter the phone number associated with your account"
+					/>
 
 					<View style={styles.gap20}>
 						<GlobalPhoneInputs

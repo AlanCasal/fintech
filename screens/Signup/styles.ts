@@ -7,10 +7,6 @@ export const styles = StyleSheet.create({
 	gap20: {
 		gap: 20,
 	},
-	titleContainer: {
-		alignItems: 'center',
-		paddingVertical: 10,
-	},
 	header: {
 		fontSize: 30,
 		paddingVertical: 20,

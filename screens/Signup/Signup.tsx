@@ -27,6 +27,7 @@ import CyberButtonLarge from '@/components/Buttons/CyberButtons/components/Cyber
 import CyberDots from '@/components/CyberDots';
 import Logo from '@/components/Logo';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import CyberHeaderTitle from '@/components/CyberHeaderTitle';
 
 const DEFAULT_COUNTRY_CALLING_CODE = '54';
 const DEFAULT_COUNTRY_CODE = 'AR';
@@ -110,23 +111,11 @@ const Signup = () => {
 					<CyberDots position="bottom" height="30%" />
 
 					<View style={styles.gap20}>
-						<View style={styles.titleContainer}>
-							<Text
-								style={[
-									defaultStyles.secondaryFontFamilySemiBold,
-									defaultStyles.header,
-									styles.header,
-								]}
-							>
-								Let's get you started
-							</Text>
-
-							<BoxCorners cornerBottomRight cornerTopLeft />
-						</View>
-
-						<Text style={defaultStyles.descriptionText}>
-							{`Enter your phone number.${'\n'}We'll send you a verification code.`}
-						</Text>
+						<CyberHeaderTitle
+							title="> Let's get you started"
+							subtitle={`Enter your phone number.${'\n'}We'll send you a verification code.`}
+							titleStyle={styles.header}
+						/>
 
 						<GlobalPhoneInputs
 							callingCode={countryCode.callingCode}

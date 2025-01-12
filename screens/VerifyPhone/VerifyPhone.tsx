@@ -20,7 +20,7 @@ import CyberDots from '@/components/CyberDots';
 import Logo from '@/components/Logo';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import CyberButtonSquare from '@/components/Buttons/CyberButtonSquare';
-import BoxCorners from '@/components/BoxCorners';
+import CyberHeaderTitle from '@/components/CyberHeaderTitle';
 
 const CELL_COUNT = 6;
 
@@ -97,15 +97,15 @@ const VerifyPhone = () => {
 			<CyberDots position="top" height="20%" />
 			<CyberDots position="bottom" height="30%" />
 
-			<View style={styles.titleContainer}>
-				<Text style={defaultStyles.header}>6-digit code</Text>
-				<BoxCorners cornerTopLeft cornerBottomRight />
-			</View>
-
-			<Text style={defaultStyles.descriptionText}>
-				Code sent to <Text style={styles.phoneNumber}>{phoneNumber}</Text>{' '}
-				unless you already have an account
-			</Text>
+			<CyberHeaderTitle
+				title="6-digit code"
+				subtitle={
+					<>
+						Code sent to <Text style={styles.phoneNumber}>{phoneNumber}</Text>{' '}
+						unless you already have an account
+					</>
+				}
+			/>
 
 			<CodeField
 				ref={ref}
