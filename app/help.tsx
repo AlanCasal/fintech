@@ -4,7 +4,7 @@ import ErrorBackground from '@/components/ErrorBackground';
 
 const Help = () => (
 	<View style={{ flex: 1 }}>
-		<ErrorBackground title="Help" subtitle="Screen not available yet" />
+		<ErrorBackground title="Screen not available" subtitle="Help" />
 	</View>
 );
 

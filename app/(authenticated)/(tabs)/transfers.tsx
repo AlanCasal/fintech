@@ -11,7 +11,7 @@ const Transfers = () => {
 					headerShown: false,
 				}}
 			/>
-			<ErrorBackground title="Transfers" subtitle="Screen not available yet" />
+			<ErrorBackground title="Screen not available" subtitle="Transfers" />
 		</View>
 	);
 };

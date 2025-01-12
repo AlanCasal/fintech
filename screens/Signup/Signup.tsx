@@ -20,13 +20,13 @@ import {
 	CallingCode,
 } from '@/components/Inputs/GlobalPhoneInputs/api/types';
 import GlobalPhoneInputs from '@/components/Inputs/GlobalPhoneInputs';
-import Ionicons from '@expo/vector-icons/build/Ionicons';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useHeaderHeight } from '@react-navigation/elements';
 import BoxCorners from '@/components/BoxCorners';
 import CyberButtonLarge from '@/components/Buttons/CyberButtons/components/CyberButtonLarge';
 import CyberDots from '@/components/CyberDots';
 import Logo from '@/components/Logo';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const DEFAULT_COUNTRY_CALLING_CODE = '54';
 const DEFAULT_COUNTRY_CODE = 'AR';
@@ -93,9 +93,9 @@ const Signup = () => {
 					headerRight: () => (
 						<Link href="/help" asChild>
 							<TouchableOpacity>
-								<Ionicons
+								<MaterialCommunityIcons
 									name="help-circle-outline"
-									size={34}
+									size={24}
 									color={Colors.white}
 								/>
 							</TouchableOpacity>

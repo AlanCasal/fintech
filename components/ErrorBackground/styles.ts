@@ -15,7 +15,15 @@ export const styles = StyleSheet.create({
 		alignItems: 'center',
 		gap: 10,
 	},
+	iconFrameContainer: {
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
+	iconContainer: {
+		position: 'absolute',
+	},
 	title: {
+		marginTop: 10,
 		fontSize: 24,
 		lineHeight: 24,
 		fontFamily: PRIMARY_FONT_FAMILY,

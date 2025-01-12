@@ -4,10 +4,19 @@ import { styles } from './styles';
 import { defaultStyles } from '@/constants/Styles';
 import BoxCorners from '@/components/BoxCorners';
 import Colors from '@/constants/Colors';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const Details = ({ description }: { description?: string }) => {
+	const { bottom } = useSafeAreaInsets();
+
 	return (
-		<View style={[defaultStyles.tableContainer, styles.overview]}>
+		<View
+			style={[
+				defaultStyles.tableContainer,
+				styles.overview,
+				{ paddingBottom: bottom + 50 },
+			]}
+		>
 			{!description ? (
 				<Text style={styles.description}>No description available</Text>
 			) : (

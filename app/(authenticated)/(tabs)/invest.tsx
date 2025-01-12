@@ -11,7 +11,7 @@ const Invest = () => {
 					headerShown: false,
 				}}
 			/>
-			<ErrorBackground title="Invest" subtitle="Screen not available yet" />
+			<ErrorBackground title="Screen not available" subtitle="Invest" />
 		</View>
 	);
 };

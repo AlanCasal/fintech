@@ -29,5 +29,6 @@ export const styles = StyleSheet.create({
 		color: Colors.lightGray,
 		fontSize: 18,
 		fontFamily: SECONDARY_FONT_FAMILY,
+		marginBottom: 20,
 	},
 });

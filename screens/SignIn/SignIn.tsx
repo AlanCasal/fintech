@@ -11,7 +11,7 @@ import { defaultStyles } from '@/constants/Styles';
 import { styles } from './styles';
 import Colors from '@/constants/Colors';
 import { Link, Stack, useRouter } from 'expo-router';
-import { Ionicons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { isClerkAPIResponseError, useSignIn } from '@clerk/clerk-expo';
 import BackButton from '@/components/Buttons/BackButton';
 import SignInButtons from '@/components/Buttons/SignInButtons';
@@ -115,9 +115,9 @@ const SignIn = () => {
 					headerRight: () => (
 						<Link href="/help" asChild>
 							<TouchableOpacity>
-								<Ionicons
-									name="help-circle-outline"
-									size={34}
+								<MaterialCommunityIcons
+									name="help-circle"
+									size={24}
 									color={Colors.white}
 								/>
 							</TouchableOpacity>

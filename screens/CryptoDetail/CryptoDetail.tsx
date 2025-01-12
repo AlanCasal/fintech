@@ -1,7 +1,7 @@
 import { useLocalSearchParams } from 'expo-router';
-import React, { createRef, useCallback, useRef } from 'react';
+import React, { createRef, useCallback, useRef, useMemo } from 'react';
 import { Animated, Dimensions, View, ScrollView } from 'react-native';
-import ChartCartesian from '@/components/ChartCartesian';
+import ChartCartesian from './components/ChartCartesian';
 import ScreenHeader from './components/ScreenHeader';
 import Details from './components/Details';
 import { styles } from './styles';
@@ -10,62 +10,65 @@ import LoadingBackground from '@/components/LoadingBackground';
 import ErrorBackground from '@/components/ErrorBackground';
 import TabsIndicator from '@/components/TabsIndicator';
 
-const { width, height } = Dimensions.get('screen');
+const { width } = Dimensions.get('screen');
 
 const Crypto = () => {
 	const { id } = useLocalSearchParams();
 	const { data, isLoading, error } = useGetCryptoInfo(id as string);
-	const ref = useRef<Animated.FlatList>(null);
 
+	const ref = useRef<Animated.FlatList>(null);
 	const scrollX = useRef(new Animated.Value(0)).current;
 
 	const onItemPress = useCallback((itemIndex: number) => {
 		ref.current?.scrollToOffset({ offset: itemIndex * width });
 	}, []);
 
-	const DATA = [
-		{
-			name: 'Overview',
-			content: (
-				<ScrollView
-					showsVerticalScrollIndicator={false}
-					style={{ marginTop: 20 }}
-				>
-					<ChartCartesian />
-					<Details description={data?.description} />
-				</ScrollView>
-			),
-			ref: createRef<View>(),
-			index: 0,
-		},
-		{
-			name: 'News',
-			content: (
-				<ErrorBackground subtitle="Screen not available yet" title="News" />
-			),
-			ref: createRef<View>(),
-			index: 1,
-		},
-		{
-			name: 'Orders',
-			content: (
-				<ErrorBackground subtitle="Screen not available yet" title="Orders" />
-			),
-			ref: createRef<View>(),
-			index: 2,
-		},
-		{
-			name: 'Transactions',
-			content: (
-				<ErrorBackground
-					subtitle="Screen not available yet"
-					title="Transactions"
-				/>
-			),
-			ref: createRef<View>(),
-			index: 3,
-		},
-	];
+	const DATA = useMemo(
+		() => [
+			{
+				name: 'Overview',
+				content: (
+					<ScrollView
+						showsVerticalScrollIndicator={false}
+						style={{ marginTop: 20 }}
+					>
+						<ChartCartesian />
+						<Details description={data?.description} />
+					</ScrollView>
+				),
+				ref: createRef<View>(),
+				index: 0,
+			},
+			{
+				name: 'News',
+				content: (
+					<ErrorBackground title="Screen not available" subtitle="News" />
+				),
+				ref: createRef<View>(),
+				index: 1,
+			},
+			{
+				name: 'Orders',
+				content: (
+					<ErrorBackground title="Screen not available" subtitle="Orders" />
+				),
+				ref: createRef<View>(),
+				index: 2,
+			},
+			{
+				name: 'Transactions',
+				content: (
+					<ErrorBackground
+						title="Screen not available"
+						subtitle="Transactions"
+					/>
+				),
+				ref: createRef<View>(),
+				index: 3,
+			},
+		],
+		[data]
+	);
 
 	return (
 		<>
@@ -96,15 +99,7 @@ const Crypto = () => {
 						)}
 						bounces={false}
 						renderItem={({ item }) => (
-							<View
-								style={{
-									paddingBottom: height * 0.1,
-									width,
-									height,
-								}}
-							>
-								{item.content}
-							</View>
+							<View style={{ width }}>{item.content}</View>
 						)}
 					/>
 				</View>

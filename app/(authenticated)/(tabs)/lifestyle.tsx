@@ -11,7 +11,7 @@ const Lifestyle = () => {
 					headerShown: false,
 				}}
 			/>
-			<ErrorBackground title="Lifestyle" subtitle="Screen not available yet" />
+			<ErrorBackground title="Screen not available" subtitle="Lifestyle" />
 		</View>
 	);
 };
