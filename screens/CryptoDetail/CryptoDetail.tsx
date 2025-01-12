@@ -9,6 +9,7 @@ import { useGetCryptoInfo } from './api/hooks/useGetCryptoInfo';
 import LoadingBackground from '@/components/LoadingBackground';
 import ErrorBackground from '@/components/ErrorBackground';
 import TabsIndicator from '@/components/TabsIndicator';
+import CyberDots from '@/components/CyberDots';
 
 const { width } = Dimensions.get('screen');
 
@@ -28,13 +29,17 @@ const Crypto = () => {
 			{
 				name: 'Overview',
 				content: (
-					<ScrollView
-						showsVerticalScrollIndicator={false}
-						style={{ marginTop: 20 }}
-					>
-						<ChartCartesian />
-						<Details description={data?.description} />
-					</ScrollView>
+					<>
+						<CyberDots position="top" height="20%" />
+						<CyberDots position="bottom" height="20%" />
+						<ScrollView
+							showsVerticalScrollIndicator={false}
+							style={{ marginTop: 20 }}
+						>
+							<ChartCartesian />
+							<Details description={data?.description} />
+						</ScrollView>
+					</>
 				),
 				ref: createRef<View>(),
 				index: 0,
