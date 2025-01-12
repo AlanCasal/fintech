@@ -1,4 +1,4 @@
-import React, { Suspense, useMemo, lazy } from 'react';
+import React, { Suspense, lazy } from 'react';
 import {
 	StyleProp,
 	Text,
@@ -18,7 +18,7 @@ type CyberButtonProps = {
 	buttonTextStyle?: StyleProp<TextStyle>;
 	buttonTextColor?: string;
 	withTextGlitch?: boolean;
-	steepPosition?: 'top-left' | 'bottom-right';
+	steepPosition?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
 	disabled?: boolean;
 	disabledButtonBackgroundColor?: string;
 	disabledButtonBorderColor?: string;
@@ -34,21 +34,15 @@ const CyberButtonLarge = ({
 	buttonText = '',
 	buttonTextStyle,
 	withTextGlitch = false,
-	steepPosition = 'top-left',
+	steepPosition = 'bottom-right',
 	disabled = false,
 	disabledButtonBackgroundColor = Colors.primaryMuted,
 	disabledButtonBorderColor = Colors.primaryMuted,
 	disabledButtonTextColor = Colors.darkBackground,
 	icon,
 }: CyberButtonProps) => {
-	const ButtonShape = useMemo(
-		() =>
-			lazy(() =>
-				steepPosition === 'top-left'
-					? import('@/assets/images/cyber-button-top-left-large.svg')
-					: import('@/assets/images/cyber-button-bot-right-large.svg')
-			),
-		[steepPosition]
+	const ButtonShape = lazy(
+		() => import('@/assets/images/cyber-button-large.svg')
 	);
 
 	const backgroundColor = disabled
@@ -57,19 +51,28 @@ const CyberButtonLarge = ({
 	const borderColor = disabled ? disabledButtonBorderColor : buttonBorderColor;
 	const textColor = disabled ? disabledButtonTextColor : buttonTextColor;
 
+	const steepPositionStyle = {
+		'top-left': () => ({ transform: [{ rotate: '180deg' }] }),
+		'top-right': () => ({ transform: [{ rotate: '180deg' }, { scaleX: -1 }] }),
+		'bottom-left': () => ({ transform: [{ rotate: '0deg' }, { scaleX: -1 }] }),
+		'bottom-right': () => ({ transform: [{ rotate: '0deg' }] }),
+	}[steepPosition]();
+
 	return (
 		<TouchableOpacity
 			disabled={disabled}
 			onPress={handleOnPress}
 			style={styles.button}
 		>
-			<Suspense fallback={null}>
-				<ButtonShape
-					width={'100%'}
-					fill={backgroundColor}
-					stroke={borderColor}
-				/>
-			</Suspense>
+			<View style={[styles.svgWrapper, steepPositionStyle]}>
+				<Suspense fallback={null}>
+					<ButtonShape
+						width={'100%'}
+						fill={backgroundColor}
+						stroke={borderColor}
+					/>
+				</Suspense>
+			</View>
 			<View style={styles.contentContainer}>
 				{icon && <View>{icon}</View>}
 				{withTextGlitch ? (

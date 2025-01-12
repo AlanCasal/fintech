@@ -1,8 +1,10 @@
-import React, { Suspense, useMemo, lazy } from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import React, { Suspense, lazy } from 'react';
+import { Text, TouchableOpacity, View } from 'react-native';
 import Colors from '@/constants/Colors';
 import GlitchText from '@/components/Animations/GlitchText';
 import { styles } from '../../styles';
+
+const ButtonShape = lazy(() => import('@/assets/images/cyber-button.svg'));
 
 type CyberButtonProps = {
 	handleOnPress: VoidFunction;
@@ -11,7 +13,7 @@ type CyberButtonProps = {
 	buttonText?: string;
 	buttonTextColor?: string;
 	withTextGlitch?: boolean;
-	steepPosition?: 'top-left' | 'bottom-right';
+	steepPosition?: 'top-left' | 'bottom-right' | 'top-right' | 'bottom-left';
 };
 
 const CyberButton = ({
@@ -23,25 +25,24 @@ const CyberButton = ({
 	withTextGlitch = false,
 	steepPosition = 'top-left',
 }: CyberButtonProps) => {
-	const ButtonShape = useMemo(
-		() =>
-			lazy(() =>
-				steepPosition === 'top-left'
-					? import('@/assets/images/cyber-button-top-left.svg')
-					: import('@/assets/images/cyber-button-bot-right.svg')
-			),
-		[steepPosition]
-	);
+	const steepPositionStyle = {
+		'top-left': () => ({ transform: [{ rotate: '180deg' }] }),
+		'top-right': () => ({ transform: [{ rotate: '180deg' }, { scaleX: -1 }] }),
+		'bottom-left': () => ({ transform: [{ rotate: '0deg' }, { scaleX: -1 }] }),
+		'bottom-right': () => ({ transform: [{ rotate: '0deg' }] }),
+	}[steepPosition]();
 
 	return (
 		<TouchableOpacity onPress={handleOnPress} style={styles.button}>
-			<Suspense fallback={null}>
-				<ButtonShape
-					width={170}
-					fill={buttonBackgroundColor}
-					stroke={buttonBorderColor}
-				/>
-			</Suspense>
+			<View style={steepPositionStyle}>
+				<Suspense fallback={null}>
+					<ButtonShape
+						width={170}
+						fill={buttonBackgroundColor}
+						stroke={buttonBorderColor}
+					/>
+				</Suspense>
+			</View>
 			{withTextGlitch ? (
 				<GlitchText
 					text={buttonText}

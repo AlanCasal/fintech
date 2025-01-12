@@ -7,11 +7,13 @@ const ActionButtons = () => {
 	return (
 		<>
 			<CyberButtonSquare
+				steepPosition="top-left"
 				icon={
 					<Ionicons name="stats-chart" size={15} color={Colors.primaryMuted} />
 				}
 			/>
 			<CyberButtonSquare
+				steepPosition="bottom-right"
 				icon={<Ionicons name="card" size={15} color={Colors.primaryMuted} />}
 			/>
 		</>

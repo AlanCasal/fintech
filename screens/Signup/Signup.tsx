@@ -151,7 +151,7 @@ const Signup = () => {
 
 					<CyberButtonLarge
 						buttonText="Sign Up"
-						steepPosition="top-left"
+						steepPosition="bottom-right"
 						buttonTextColor={Colors.darkBackground}
 						handleOnPress={handleSignup}
 						disabled={!mobileNumber}

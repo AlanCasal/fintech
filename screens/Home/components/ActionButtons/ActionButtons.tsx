@@ -31,8 +31,8 @@ const ActionButtons = () => {
 			<View style={styles.buttonContainer}>
 				<CyberButtonSquare
 					handlePress={handleAddMoney}
+					steepPosition="top-left"
 					width={60}
-					rotate={180}
 					icon={<Ionicons name={'add'} size={30} color={Colors.primaryMuted} />}
 				/>
 				<Text style={styles.label}>Add Money</Text>
@@ -42,7 +42,7 @@ const ActionButtons = () => {
 				<CyberButtonSquare
 					handlePress={handleClearTransactions}
 					width={60}
-					rotate={180}
+					steepPosition="top-left"
 					icon={
 						<Ionicons name={'refresh'} size={30} color={Colors.primaryMuted} />
 					}
@@ -52,8 +52,8 @@ const ActionButtons = () => {
 
 			<View style={styles.buttonContainer}>
 				<CyberButtonSquare
-					rotate={180}
 					width={60}
+					steepPosition="top-left"
 					icon={
 						<Ionicons name={'list'} size={30} color={Colors.primaryMuted} />
 					}
@@ -65,8 +65,8 @@ const ActionButtons = () => {
 				button={
 					<View style={styles.buttonContainer}>
 						<CyberButtonSquare
-							rotate={180}
 							width={60}
+							steepPosition="top-right"
 							icon={
 								<Ionicons
 									name={'ellipsis-horizontal'}

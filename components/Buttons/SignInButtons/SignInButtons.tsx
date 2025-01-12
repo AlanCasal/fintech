@@ -2,7 +2,7 @@ import React from 'react';
 import Colors from '@/constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
 import { SignInType } from '@/enums';
-import CyberButtonLarge from '../CyberButtons/components/CyberButtonLarge/CyberButtonLarge';
+import CyberButtonLarge from '../CyberButtons/components/CyberButtonLarge';
 import { styles } from './styles';
 
 const SIGN_IN_LIST = [

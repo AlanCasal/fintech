@@ -6,6 +6,9 @@ export const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 	},
+	svgWrapper: {
+		width: '100%',
+	},
 	contentContainer: {
 		position: 'absolute',
 		flexDirection: 'row',

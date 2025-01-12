@@ -4,7 +4,7 @@ import { styles } from './styles';
 import Colors from '@/constants/Colors';
 
 const CyberButton = lazy(
-	() => import('@/assets/images/cyber-button-square-bot-right.svg')
+	() => import('@/assets/images/cyber-button-square.svg')
 );
 
 const BUTTON_COLOR = Colors.blackTransparent05;
@@ -15,7 +15,7 @@ interface CyberButtonSquareProps {
 	fillColor?: string;
 	strokeColor?: string;
 	width?: number;
-	rotate?: number;
+	steepPosition?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
 	handlePress?: () => void;
 	disabled?: boolean;
 }
@@ -25,23 +25,30 @@ const CyberButtonSquare = ({
 	fillColor = BUTTON_COLOR,
 	strokeColor = BUTTON_STROKE_COLOR,
 	width = 40,
-	rotate = 0,
+	steepPosition = 'bottom-right',
 	handlePress,
 	disabled = false,
 }: CyberButtonSquareProps) => {
+	const steepPositionStyle = {
+		'top-left': () => ({ transform: [{ rotate: '180deg' }] }),
+		'top-right': () => ({ transform: [{ rotate: '180deg' }, { scaleX: -1 }] }),
+		'bottom-left': () => ({ transform: [{ rotate: '0deg' }, { scaleX: -1 }] }),
+		'bottom-right': () => ({ transform: [{ rotate: '0deg' }] }),
+	}[steepPosition]();
+
 	return (
 		<View style={{ width, height: width }}>
 			<TouchableOpacity onPress={handlePress} disabled={disabled}>
-				<Suspense fallback={null}>
-					<View style={{ transform: [{ rotate: `${rotate}deg` }] }}>
+				<View style={steepPositionStyle}>
+					<Suspense fallback={null}>
 						<CyberButton
 							width={width}
 							height={width}
 							fill={fillColor}
 							stroke={strokeColor}
 						/>
-					</View>
-				</Suspense>
+					</Suspense>
+				</View>
 				{icon && <View style={styles.iconContainer}>{icon}</View>}
 			</TouchableOpacity>
 		</View>
