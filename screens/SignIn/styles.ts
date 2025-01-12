@@ -10,8 +10,4 @@ export const styles = StyleSheet.create({
 	dividerContainer: {
 		marginVertical: 10,
 	},
-	logoContainer: {
-		alignSelf: 'center',
-		padding: 10,
-	},
 });

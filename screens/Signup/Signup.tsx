@@ -22,7 +22,6 @@ import {
 import GlobalPhoneInputs from '@/components/Inputs/GlobalPhoneInputs';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useHeaderHeight } from '@react-navigation/elements';
-import BoxCorners from '@/components/BoxCorners';
 import CyberButtonLarge from '@/components/Buttons/CyberButtons/components/CyberButtonLarge';
 import CyberDots from '@/components/CyberDots';
 import Logo from '@/components/Logo';
@@ -139,15 +138,7 @@ const Signup = () => {
 
 					<View style={{ flex: 1 }} />
 
-					<View style={styles.logoContainer}>
-						<Logo />
-						<BoxCorners
-							cornerBottomRight
-							cornerTopLeft
-							width={10}
-							height={10}
-						/>
-					</View>
+					<Logo containerStyle={styles.logoContainer} />
 
 					<CyberButtonLarge
 						buttonText="Sign Up"

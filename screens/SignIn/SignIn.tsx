@@ -25,7 +25,6 @@ import {
 import CyberButtonLarge from '@/components/Buttons/CyberButtons/components/CyberButtonLarge';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useHeaderHeight } from '@react-navigation/elements';
-import BoxCorners from '@/components/BoxCorners';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Logo from '@/components/Logo';
 import CyberDots from '@/components/CyberDots';
@@ -158,15 +157,7 @@ const SignIn = () => {
 
 					<SignInButtons handleSignIn={handleSignIn} />
 
-					<View style={styles.logoContainer}>
-						<Logo />
-						<BoxCorners
-							cornerBottomRight
-							cornerTopLeft
-							width={10}
-							height={10}
-						/>
-					</View>
+					<Logo />
 				</View>
 			</TouchableWithoutFeedback>
 		</View>
