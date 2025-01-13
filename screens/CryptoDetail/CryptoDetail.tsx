@@ -28,9 +28,9 @@ const { width } = Dimensions.get('screen');
 
 enum TabName {
 	Overview = 'Overview',
-	News = 'News',
-	Orders = 'Orders',
-	Transactions = 'Transactions',
+	Info = 'Info',
+	TradingData = 'Trading Data',
+	Square = 'Square',
 }
 
 const Crypto = () => {
@@ -80,28 +80,28 @@ const Crypto = () => {
 				index: 0,
 			},
 			{
-				name: TabName.News,
+				name: TabName.Info,
 				content: (
-					<ErrorBackground title="Screen not available" subtitle="News" />
+					<ErrorBackground title="Screen not available" subtitle="Info" />
 				),
 				ref: createRef<View>(),
 				index: 1,
 			},
 			{
-				name: TabName.Orders,
+				name: TabName.TradingData,
 				content: (
-					<ErrorBackground title="Screen not available" subtitle="Orders" />
+					<ErrorBackground
+						title="Screen not available"
+						subtitle="Trading Data"
+					/>
 				),
 				ref: createRef<View>(),
 				index: 2,
 			},
 			{
-				name: TabName.Transactions,
+				name: TabName.Square,
 				content: (
-					<ErrorBackground
-						title="Screen not available"
-						subtitle="Transactions"
-					/>
+					<ErrorBackground title="Screen not available" subtitle="Square" />
 				),
 				ref: createRef<View>(),
 				index: 3,
