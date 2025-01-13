@@ -50,7 +50,6 @@ const Intro = () => {
 			<View style={styles.buttonsContainer}>
 				<View style={styles.logoContainer}>
 					<Logo />
-					<BoxCorners cornerBottomRight cornerTopLeft />
 				</View>
 
 				<CyberButtons
