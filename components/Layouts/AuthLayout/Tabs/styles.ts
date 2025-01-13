@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import Colors from '@/constants/Colors';
+import { PRIMARY_FONT_FAMILY } from '@/constants/Utils';
 
 export const styles = StyleSheet.create({
 	blurView: {
@@ -13,5 +14,10 @@ export const styles = StyleSheet.create({
 		right: 0,
 		borderTopWidth: 0,
 		elevation: 0,
+	},
+	tabBarLabelStyle: {
+		fontFamily: PRIMARY_FONT_FAMILY,
+		textTransform: 'uppercase',
+		lineHeight: 10,
 	},
 });

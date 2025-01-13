@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import Colors from '@/constants/Colors';
+import { SECONDARY_FONT_FAMILY } from '@/constants/Utils';
 
 export const styles = StyleSheet.create({
 	searchWrapper: {
@@ -21,5 +22,6 @@ export const styles = StyleSheet.create({
 		paddingBottom: 10,
 		paddingLeft: 0,
 		color: Colors.lightGray,
+		fontFamily: SECONDARY_FONT_FAMILY,
 	},
 });

@@ -16,43 +16,45 @@ const Balance = () => {
 		!isVisible || balance() > 0 ? Colors.lightGray : Colors.negative;
 
 	return (
-		<View style={styles.container}>
+		<>
 			<CyberDots position="top" height="70%" />
 
-			<MaterialCommunityIcons
-				name={isVisible ? 'eye' : 'eye-off'}
-				size={30}
-				color={Colors.primaryMuted}
-				onPress={() => setIsVisible(prev => !prev)}
-				style={styles.eyeIcon}
-			/>
+			<View style={styles.container}>
+				<MaterialCommunityIcons
+					name={isVisible ? 'eye' : 'eye-off'}
+					size={30}
+					color={Colors.primaryMuted}
+					onPress={() => setIsVisible(prev => !prev)}
+					style={styles.eyeIcon}
+				/>
 
-			<View style={styles.balanceRow}>
-				<Text
-					style={[styles.balanceAmount, { color: balanceColor }]}
-					numberOfLines={1}
-					adjustsFontSizeToFit
-				>
-					{isVisible ? balance() : '****'}
+				<View style={styles.balanceRow}>
 					<Text
-						style={[styles.balanceCurrency, { color: balanceColor }]}
+						style={[styles.balanceAmount, { color: balanceColor }]}
 						numberOfLines={1}
 						adjustsFontSizeToFit
 					>
-						{' €'}
+						{isVisible ? balance() : '****'}
+						<Text
+							style={[styles.balanceCurrency, { color: balanceColor }]}
+							numberOfLines={1}
+							adjustsFontSizeToFit
+						>
+							{' €'}
+						</Text>
 					</Text>
-				</Text>
-			</View>
+				</View>
 
-			<BoxCorners
-				cornerBottomLeft
-				cornerTopRight
-				borderColor={Colors.primaryMuted}
-				borderWidth={1}
-				width={'30%'}
-				height={'50%'}
-			/>
-		</View>
+				<BoxCorners
+					cornerBottomLeft
+					cornerTopRight
+					borderColor={Colors.primaryMuted}
+					borderWidth={1}
+					width={'30%'}
+					height={'50%'}
+				/>
+			</View>
+		</>
 	);
 };
 

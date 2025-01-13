@@ -8,19 +8,17 @@ import Balance from './components/Balance';
 import ActionButtons from './components/ActionButtons';
 import Transactions from './components/Transactions';
 
-const Home = () => {
-	return (
-		<SectionList
-			style={styles.container}
-			contentInsetAdjustmentBehavior="automatic"
-			keyExtractor={(item, index) => item.title + index}
-			sections={[{ data: [{ title: 'Section 1' }] }]}
-			ListHeaderComponent={() => <Balance />}
-			renderSectionHeader={() => <ActionButtons />}
-			renderItem={() => <Transactions />}
-			renderSectionFooter={() => <WidgetList />}
-		/>
-	);
-};
+const Home = () => (
+	<SectionList
+		style={styles.container}
+		contentInsetAdjustmentBehavior="automatic"
+		keyExtractor={(item, index) => item.title + index}
+		sections={[{ data: [{ title: 'Section 1' }] }]}
+		ListHeaderComponent={() => <Balance />}
+		renderSectionHeader={() => <ActionButtons />}
+		renderItem={() => <Transactions />}
+		renderSectionFooter={() => <WidgetList />}
+	/>
+);
 
 export default Home;

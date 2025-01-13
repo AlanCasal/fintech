@@ -15,6 +15,7 @@ const CustomTabs = () => {
 					<BlurView intensity={85} tint="dark" style={styles.blurView} />
 				),
 				tabBarStyle: styles.tabBarStyle,
+				tabBarLabelStyle: styles.tabBarLabelStyle,
 			}}
 		>
 			<Tabs.Screen
