@@ -27,7 +27,15 @@ const ToolTip = ({
 	y: SharedValue<number>;
 }) => <Circle cx={x} cy={y} r={8} color={Colors.primary} />;
 
-const ChartCartesian = () => {
+interface ChartCartesianProps {
+	priceRef?: React.RefObject<View>;
+	handleSetCurrentPrice?: (price: string) => void;
+}
+
+const ChartCartesian = ({
+	priceRef,
+	handleSetCurrentPrice,
+}: ChartCartesianProps) => {
 	const { data, isLoading, error } = useGetTickers();
 
 	const font = useFont(SpaceMonoRegular, 12);
@@ -53,6 +61,13 @@ const ChartCartesian = () => {
 		}
 	}, [isActive]);
 
+	const currentPrice = data?.at(-1)?.price.toFixed(2);
+	useEffect(() => {
+		if (currentPrice) {
+			handleSetCurrentPrice?.(currentPrice);
+		}
+	}, [currentPrice, handleSetCurrentPrice]);
+
 	return (
 		<View
 			style={{
@@ -74,63 +89,59 @@ const ChartCartesian = () => {
 				</View>
 			)}
 
-			{data && !isLoading && (
-				<>
-					<View>
-						{!isActive ? (
-							<>
-								<Text style={styles.chartTodayTextPrice}>
-									{data.at(-1)?.price.toFixed(2)} €
-								</Text>
-								<Text style={styles.chartTodayText}>Today</Text>
-							</>
-						) : (
-							<>
-								<AnimatedTextInput
-									editable={false}
-									underlineColorAndroid="transparent"
-									style={styles.chartTodayTextPrice}
-									animatedProps={animatedPriceText}
-								/>
-								<AnimatedTextInput
-									editable={false}
-									underlineColorAndroid="transparent"
-									style={styles.chartTodayText}
-									animatedProps={animatedDateText}
-								/>
-							</>
-						)}
-					</View>
+			<View ref={priceRef}>
+				{!isActive ? (
+					<>
+						<Text style={styles.chartTodayTextPrice}>{currentPrice} €</Text>
+						<Text style={styles.chartTodayText}>Today</Text>
+					</>
+				) : (
+					<>
+						<AnimatedTextInput
+							editable={false}
+							underlineColorAndroid="transparent"
+							style={styles.chartTodayTextPrice}
+							animatedProps={animatedPriceText}
+						/>
+						<AnimatedTextInput
+							editable={false}
+							underlineColorAndroid="transparent"
+							style={styles.chartTodayText}
+							animatedProps={animatedDateText}
+						/>
+					</>
+				)}
+			</View>
 
-					<CartesianChart
-						chartPressState={state}
-						axisOptions={{
-							font,
-							tickCount: 5,
-							labelOffset: { x: -4, y: 0 },
-							labelColor: Colors.primary,
-							lineColor: Colors.primaryMuted,
-							formatYLabel: label => `${label}€`,
-							formatXLabel: ms => format(new Date(ms), 'MMM'),
-						}}
-						data={data}
-						xKey="timestamp"
-						yKeys={['price'] as const}
-					>
-						{({ points }) => (
-							<>
-								{isActive && (
-									<ToolTip x={state.x.position} y={state.y.price.position} />
-								)}
-								<Line
-									points={points.price}
-									color={Colors.primary}
-									strokeWidth={3}
-								/>
-							</>
-						)}
-					</CartesianChart>
-				</>
+			{data && !isLoading && (
+				<CartesianChart
+					chartPressState={state}
+					axisOptions={{
+						font,
+						tickCount: 5,
+						labelOffset: { x: -4, y: 0 },
+						labelColor: Colors.primary,
+						lineColor: Colors.primaryMuted,
+						formatYLabel: label => `${label}€`,
+						formatXLabel: ms => format(new Date(ms), 'MMM'),
+					}}
+					data={data}
+					xKey="timestamp"
+					yKeys={['price'] as const}
+				>
+					{({ points }) => (
+						<>
+							{isActive && (
+								<ToolTip x={state.x.position} y={state.y.price.position} />
+							)}
+							<Line
+								points={points.price}
+								color={Colors.primary}
+								strokeWidth={3}
+							/>
+						</>
+					)}
+				</CartesianChart>
 			)}
 		</View>
 	);

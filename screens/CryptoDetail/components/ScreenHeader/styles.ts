@@ -1,4 +1,7 @@
-import { PRIMARY_FONT_FAMILY } from '@/constants/Utils';
+import {
+	PRIMARY_FONT_FAMILY,
+	SECONDARY_FONT_FAMILY_SEMI_BOLD,
+} from '@/constants/Utils';
 import { StyleSheet } from 'react-native';
 import Colors from '@/constants/Colors';
 
@@ -13,6 +16,11 @@ export const styles = StyleSheet.create({
 		alignItems: 'center',
 		gap: 10,
 	},
+	headerCriptoContainer: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		gap: 10,
+	},
 	logo: {
 		width: 24,
 		height: 24,
@@ -22,6 +30,12 @@ export const styles = StyleSheet.create({
 		textTransform: 'uppercase',
 		fontSize: 16,
 		color: Colors.lightGray,
+		top: 2,
+	},
+	headerPriceStyle: {
+		fontFamily: SECONDARY_FONT_FAMILY_SEMI_BOLD,
+		fontSize: 12,
+		color: Colors.positive,
 		top: 2,
 	},
 	headerLargeTitleStyle: {

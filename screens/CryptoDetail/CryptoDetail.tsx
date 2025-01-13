@@ -1,5 +1,11 @@
 import { useLocalSearchParams } from 'expo-router';
-import React, { createRef, useCallback, useRef, useMemo } from 'react';
+import React, {
+	createRef,
+	useCallback,
+	useRef,
+	useMemo,
+	useState,
+} from 'react';
 import { Animated, Dimensions, View, ScrollView } from 'react-native';
 import ChartCartesian from './components/ChartCartesian';
 import ScreenHeader from './components/ScreenHeader';
@@ -10,12 +16,22 @@ import LoadingBackground from '@/components/LoadingBackground';
 import ErrorBackground from '@/components/ErrorBackground';
 import TabsIndicator from '@/components/TabsIndicator';
 import CyberDots from '@/components/CyberDots';
+import useIsVisibleOnScroll from '@/hooks/useIsVisibleOnScroll';
 
 const { width } = Dimensions.get('screen');
 
 const Crypto = () => {
 	const { id } = useLocalSearchParams();
 	const { data, isLoading, error } = useGetCryptoInfo(id as string);
+	const {
+		isVisible: isPriceVisible,
+		viewRef,
+		handleOnScroll,
+	} = useIsVisibleOnScroll({
+		headerHeight: 125,
+	});
+
+	const [currentPrice, setCurrentPrice] = useState('');
 
 	const ref = useRef<Animated.FlatList>(null);
 	const scrollX = useRef(new Animated.Value(0)).current;
@@ -35,8 +51,13 @@ const Crypto = () => {
 						<ScrollView
 							showsVerticalScrollIndicator={false}
 							style={{ marginTop: 20 }}
+							onScroll={handleOnScroll}
+							scrollEventThrottle={16}
 						>
-							<ChartCartesian />
+							<ChartCartesian
+								priceRef={viewRef}
+								handleSetCurrentPrice={setCurrentPrice}
+							/>
 							<Details description={data?.description} />
 						</ScrollView>
 					</>
@@ -72,12 +93,30 @@ const Crypto = () => {
 				index: 3,
 			},
 		],
-		[data]
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+		[data, isPriceVisible]
 	);
+
+	/**********************************************************************/
+
+	const viewabilityConfig = {
+		itemVisiblePercentThreshold: 50,
+	};
+
+	const onViewableItemsChanged = useCallback(({ viewableItems }) => {
+		// console.log(
+		// 	'\x1b[33m\x1b[42m\x1b[1m[onViewableItemsChanged]\x1b[0m',
+		// 	viewableItems
+		// );
+	}, []);
 
 	return (
 		<>
-			<ScreenHeader title={data?.name} logoUrl={data?.logo} />
+			<ScreenHeader
+				title={data?.name}
+				logoUrl={data?.logo}
+				currentPrice={!isPriceVisible ? currentPrice : ''}
+			/>
 
 			{isLoading && <LoadingBackground />}
 
@@ -94,6 +133,8 @@ const Crypto = () => {
 					<Animated.FlatList
 						ref={ref}
 						data={DATA}
+						onViewableItemsChanged={onViewableItemsChanged}
+						viewabilityConfig={viewabilityConfig}
 						keyExtractor={item => item.name}
 						horizontal
 						showsHorizontalScrollIndicator={false}

@@ -9,21 +9,32 @@ import BackButton from '@/components/Buttons/BackButton';
 interface ScreenHeaderProps {
 	title?: string;
 	logoUrl?: string;
+	currentPrice?: string;
 }
 
 interface TitleProps {
 	title?: string;
 	logoUrl?: string;
+	currentPrice?: string;
 }
 
-const Title = ({ title = '', logoUrl }: TitleProps) => (
+const Title = ({ title = '', logoUrl, currentPrice }: TitleProps) => (
 	<View style={styles.headerTitleContainer}>
 		<Image source={{ uri: logoUrl }} style={styles.logo} />
-		<Text style={styles.headerTitleStyle}>{title}</Text>
+		<View>
+			<Text style={styles.headerTitleStyle}>{title}</Text>
+			{currentPrice && (
+				<Text style={styles.headerPriceStyle}>{currentPrice} €</Text>
+			)}
+		</View>
 	</View>
 );
 
-const ScreenHeader = ({ title = '', logoUrl = '' }: ScreenHeaderProps) => {
+const ScreenHeader = ({
+	title = '',
+	logoUrl = '',
+	currentPrice,
+}: ScreenHeaderProps) => {
 	const [isFavorite, setIsFavorite] = useState(false);
 
 	const handleToggleFavorite = () => {
@@ -46,7 +57,9 @@ const ScreenHeader = ({ title = '', logoUrl = '' }: ScreenHeaderProps) => {
 				headerStyle: { backgroundColor: Colors.darkBackground },
 				headerShadowVisible: false,
 				title: 'Loading name...',
-				headerTitle: () => <Title title={title} logoUrl={logoUrl} />,
+				headerTitle: () => (
+					<Title title={title} logoUrl={logoUrl} currentPrice={currentPrice} />
+				),
 				headerTitleStyle: styles.headerTitleStyle,
 				headerTitleAlign: 'left',
 				headerLeft: () => <BackButton />,
