@@ -4,12 +4,15 @@ import { PRIMARY_FONT_FAMILY } from '@/constants/Utils';
 
 export const styles = StyleSheet.create({
 	editRow: {
+		flex: 1,
 		flexDirection: 'row',
-		gap: 12,
+		gap: 20,
 		marginTop: 20,
+		marginHorizontal: 20,
 		alignItems: 'center',
+		justifyContent: 'center',
 	},
-	title: {
+	fullName: {
 		fontSize: 26,
 		fontFamily: PRIMARY_FONT_FAMILY,
 		textTransform: 'uppercase',
@@ -23,10 +26,14 @@ export const styles = StyleSheet.create({
 	nameInput: {
 		width: 140,
 		height: 40,
-		borderWidth: 1,
-		borderColor: Colors.gray,
+		fontFamily: PRIMARY_FONT_FAMILY,
 		padding: 10,
-		borderRadius: 10,
-		backgroundColor: Colors.lightGray,
+	},
+	buttonsContainer: {
+		height: 40,
+		flexDirection: 'row',
+		gap: 10,
+		alignItems: 'center',
+		justifyContent: 'center',
 	},
 });
