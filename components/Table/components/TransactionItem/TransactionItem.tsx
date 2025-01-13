@@ -38,7 +38,7 @@ const TransactionItem = ({ item, withBottomDivider }: TransactionItemProps) => {
 					...(isPositive && styles.textSuccess),
 				}}
 			>
-				{isPositive && '+ '}
+				{isPositive && '+'}
 				{item.amount}€
 			</Text>
 		</View>

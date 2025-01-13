@@ -8,16 +8,40 @@ import BoxCorners from '@/components/BoxCorners';
 import Colors from '@/constants/Colors';
 import CustomModal from '@/components/CustomModal';
 
+const SeeMoreButton = ({ handleSeeMore }: { handleSeeMore: () => void }) => (
+	<TouchableOpacity onPress={handleSeeMore}>
+		<View style={styles.seeMoreContainer}>
+			<Text style={styles.seeMoreText}>See More</Text>
+			<BoxCorners
+				cornerBottomLeft
+				cornerTopRight
+				width={'60%'}
+				height={'100%'}
+				borderWidth={StyleSheet.hairlineWidth}
+				borderColor={Colors.primary}
+			/>
+		</View>
+	</TouchableOpacity>
+);
+
+interface ContentProps {
+	sortedTransactions: Transaction[];
+	maxHeight?: boolean;
+	marginHorizontal?: boolean;
+	tableWithSolidColor?: boolean;
+	maxItems?: number;
+	handleSeeMore?: () => void;
+}
+
 const Content = ({
 	sortedTransactions,
 	maxHeight = false,
 	marginHorizontal = false,
-}: {
-	sortedTransactions: Transaction[];
-	maxHeight?: boolean;
-	marginHorizontal?: boolean;
-}) => {
-	return (
+	tableWithSolidColor = false,
+	maxItems = 0,
+	handleSeeMore,
+}: ContentProps) => (
+	<>
 		<View
 			style={{
 				...styles.tableContainer,
@@ -29,11 +53,16 @@ const Content = ({
 				items={sortedTransactions}
 				tableType="transaction"
 				emptyMessage="No transactions"
-				solidColor
+				solidColor={tableWithSolidColor}
+				maxItems={maxItems}
 			/>
 		</View>
-	);
-};
+
+		{sortedTransactions.length > 3 && !!handleSeeMore && (
+			<SeeMoreButton handleSeeMore={handleSeeMore} />
+		)}
+	</>
+);
 
 const Transactions = () => {
 	const { transactions } = useBalanceStore();
@@ -52,30 +81,16 @@ const Transactions = () => {
 				sortedTransactions={sortedTransactions}
 				maxHeight
 				marginHorizontal
+				maxItems={3}
+				handleSeeMore={() => setIsExpanded(true)}
 			/>
-
-			{transactions.length > 3 && (
-				<TouchableOpacity onPress={() => setIsExpanded(true)}>
-					<View style={styles.seeMoreContainer}>
-						<Text style={styles.seeMoreText}>See More</Text>
-						<BoxCorners
-							cornerBottomLeft
-							cornerTopRight
-							width={'60%'}
-							height={'100%'}
-							borderWidth={StyleSheet.hairlineWidth}
-							borderColor={Colors.primary}
-						/>
-					</View>
-				</TouchableOpacity>
-			)}
 
 			<CustomModal
 				isModalVisible={isExpanded}
 				handleModal={() => setIsExpanded(false)}
 				title="> Transactions"
 			>
-				<Content sortedTransactions={sortedTransactions} />
+				<Content sortedTransactions={sortedTransactions} tableWithSolidColor />
 			</CustomModal>
 		</View>
 	);

@@ -19,6 +19,7 @@ interface TableProps<T extends keyof TableTypes> {
 	tableType: T;
 	emptyMessage: string;
 	solidColor?: boolean;
+	maxItems?: number;
 }
 
 const Table = <T extends keyof TableTypes>({
@@ -27,6 +28,7 @@ const Table = <T extends keyof TableTypes>({
 	emptyMessage,
 	extraData,
 	solidColor = false,
+	maxItems = 0,
 }: TableProps<T>) => {
 	return (
 		<View
@@ -47,7 +49,9 @@ const Table = <T extends keyof TableTypes>({
 			{!items.length && <Text style={styles.emptyMessage}>{emptyMessage}</Text>}
 
 			{items.map((item, index) => {
-				const withBottomDivider = items.length - 1 !== index;
+				const isNotLastItem = items.length - 1 !== index;
+				const isMaxItems = !maxItems || index + 1 < maxItems;
+				const withBottomDivider = isNotLastItem && isMaxItems;
 
 				if (tableType === 'transaction') {
 					return (

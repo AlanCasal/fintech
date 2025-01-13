@@ -14,6 +14,7 @@ export const styles = StyleSheet.create({
 		paddingVertical: 10,
 		alignItems: 'center',
 		justifyContent: 'center',
+		backgroundColor: Colors.blackTransparent02,
 	},
 	seeMoreText: {
 		color: Colors.primary,
