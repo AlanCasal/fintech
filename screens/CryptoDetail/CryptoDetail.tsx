@@ -50,7 +50,7 @@ const Crypto = () => {
 	const currentTabRef = useRef<Animated.FlatList>(null);
 	const scrollX = useRef(new Animated.Value(0)).current;
 
-	const onItemPress = useCallback((itemIndex: number) => {
+	const handleScrollToTab = useCallback((itemIndex: number) => {
 		currentTabRef.current?.scrollToOffset({ offset: itemIndex * width });
 	}, []);
 
@@ -145,7 +145,7 @@ const Crypto = () => {
 					<TabsIndicator
 						scrollX={scrollX}
 						data={DATA}
-						onItemPress={onItemPress}
+						onItemPress={handleScrollToTab}
 					/>
 
 					<Animated.FlatList
