@@ -105,7 +105,10 @@ const RootLayout = () => {
 					),
 				}}
 			/>
-			<Stack.Screen name="(authenticated)" options={{ headerShown: false }} />
+			<Stack.Screen
+				name="(authenticated)/(tabs)"
+				options={{ headerShown: false }}
+			/>
 			<Stack.Screen
 				name="(authenticated)/(modals)/account"
 				options={{
@@ -123,6 +126,14 @@ const RootLayout = () => {
 				options={{
 					headerShown: false,
 					animation: 'fade',
+				}}
+			/>
+			<Stack.Screen
+				name="(authenticated)/crypto/[id]"
+				options={{
+					headerStyle: { backgroundColor: Colors.darkBackground },
+					headerShadowVisible: false,
+					headerLeft: () => <BackButton />,
 				}}
 			/>
 		</Stack>

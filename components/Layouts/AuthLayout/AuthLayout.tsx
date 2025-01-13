@@ -1,17 +1,6 @@
 import React from 'react';
-import { Stack } from 'expo-router';
-import CustomTabs from './Tabs';
+import BottomTabs from './BottomTabs';
 
-const AuthLayout = () => {
-	return (
-		<>
-			<Stack.Screen
-				name="(authenticated)/(tabs)"
-				options={{ headerShown: false }}
-			/>
-			<CustomTabs />
-		</>
-	);
-};
+const AuthLayout = () => <BottomTabs />;
 
 export default AuthLayout;

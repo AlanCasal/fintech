@@ -6,17 +6,30 @@ import LoadingSpinner from '../LoadingSpinner';
 import Logo from '../Logo';
 import CyberDots from '../CyberDots';
 
-const LoadingBackground = () => {
+interface LoadingBackgroundProps {
+	additionalPaddingBottom?: number;
+}
+
+const LoadingBackground = ({
+	additionalPaddingBottom = 0,
+}: LoadingBackgroundProps) => {
 	const { bottom } = useSafeAreaInsets();
 
 	return (
-		<View style={[styles.container, { padding: bottom + 10 }]}>
+		<>
 			<CyberDots position="top" height="30%" />
-			<View />
-			<LoadingSpinner />
-			<Logo />
 			<CyberDots position="bottom" height="30%" />
-		</View>
+			<View
+				style={[
+					styles.container,
+					{ padding: bottom + additionalPaddingBottom },
+				]}
+			>
+				<View />
+				<LoadingSpinner />
+				<Logo />
+			</View>
+		</>
 	);
 };
 

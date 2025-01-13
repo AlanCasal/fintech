@@ -128,6 +128,10 @@ const Crypto = () => {
 			: '';
 	}, [currentPrice, isPriceVisible, currentTab]);
 
+	if (isLoading) return <LoadingBackground />;
+
+	if (error || (!isLoading && !data)) return <ErrorBackground />;
+
 	return (
 		<>
 			<ScreenHeader
@@ -135,39 +139,32 @@ const Crypto = () => {
 				logoUrl={data?.logo}
 				currentPrice={currentPriceMemo}
 			/>
+			<View style={styles.container}>
+				<TabsIndicator
+					scrollX={scrollX}
+					data={DATA}
+					onItemPress={handleScrollToTab}
+				/>
 
-			{isLoading && <LoadingBackground />}
-
-			{error && <ErrorBackground subtitle={error.message} />}
-
-			{!isLoading && !error && data && (
-				<View style={styles.container}>
-					<TabsIndicator
-						scrollX={scrollX}
-						data={DATA}
-						onItemPress={handleScrollToTab}
-					/>
-
-					<Animated.FlatList
-						ref={currentTabRef}
-						data={DATA}
-						onViewableItemsChanged={onViewableItemsChanged}
-						viewabilityConfig={viewabilityConfig}
-						keyExtractor={item => item.name}
-						horizontal
-						showsHorizontalScrollIndicator={false}
-						pagingEnabled
-						onScroll={Animated.event(
-							[{ nativeEvent: { contentOffset: { x: scrollX } } }],
-							{ useNativeDriver: false }
-						)}
-						bounces={false}
-						renderItem={({ item }) => (
-							<View style={{ width }}>{item.content}</View>
-						)}
-					/>
-				</View>
-			)}
+				<Animated.FlatList
+					ref={currentTabRef}
+					data={DATA}
+					onViewableItemsChanged={onViewableItemsChanged}
+					viewabilityConfig={viewabilityConfig}
+					keyExtractor={item => item.name}
+					horizontal
+					showsHorizontalScrollIndicator={false}
+					pagingEnabled
+					onScroll={Animated.event(
+						[{ nativeEvent: { contentOffset: { x: scrollX } } }],
+						{ useNativeDriver: false }
+					)}
+					bounces={false}
+					renderItem={({ item }) => (
+						<View style={{ width }}>{item.content}</View>
+					)}
+				/>
+			</View>
 		</>
 	);
 };

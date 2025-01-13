@@ -7,5 +7,6 @@ export const styles = StyleSheet.create({
 		backgroundColor: Colors.darkBackground,
 		justifyContent: 'space-between',
 		alignItems: 'center',
+		zIndex: -1,
 	},
 });

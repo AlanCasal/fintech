@@ -6,7 +6,7 @@ import { BlurView } from 'expo-blur';
 import CustomHeader from '@/components/CustomHeader';
 import { styles } from './styles';
 
-const CustomTabs = () => {
+const BottomTabs = () => {
 	return (
 		<Tabs
 			screenOptions={{
@@ -71,4 +71,4 @@ const CustomTabs = () => {
 	);
 };
 
-export default CustomTabs;
+export default BottomTabs;
