@@ -6,7 +6,13 @@ import React, {
 	useMemo,
 	useState,
 } from 'react';
-import { Animated, Dimensions, View, ScrollView } from 'react-native';
+import {
+	Animated,
+	Dimensions,
+	View,
+	ScrollView,
+	ViewToken,
+} from 'react-native';
 import ChartCartesian from './components/ChartCartesian';
 import ScreenHeader from './components/ScreenHeader';
 import Details from './components/Details';
@@ -20,6 +26,13 @@ import useIsVisibleOnScroll from '@/hooks/useIsVisibleOnScroll';
 
 const { width } = Dimensions.get('screen');
 
+enum TabName {
+	Overview = 'Overview',
+	News = 'News',
+	Orders = 'Orders',
+	Transactions = 'Transactions',
+}
+
 const Crypto = () => {
 	const { id } = useLocalSearchParams();
 	const { data, isLoading, error } = useGetCryptoInfo(id as string);
@@ -32,18 +45,19 @@ const Crypto = () => {
 	});
 
 	const [currentPrice, setCurrentPrice] = useState('');
+	const [currentTab, setCurrentTab] = useState(TabName.Overview);
 
-	const ref = useRef<Animated.FlatList>(null);
+	const currentTabRef = useRef<Animated.FlatList>(null);
 	const scrollX = useRef(new Animated.Value(0)).current;
 
 	const onItemPress = useCallback((itemIndex: number) => {
-		ref.current?.scrollToOffset({ offset: itemIndex * width });
+		currentTabRef.current?.scrollToOffset({ offset: itemIndex * width });
 	}, []);
 
 	const DATA = useMemo(
 		() => [
 			{
-				name: 'Overview',
+				name: TabName.Overview,
 				content: (
 					<>
 						<CyberDots position="top" height="20%" />
@@ -66,7 +80,7 @@ const Crypto = () => {
 				index: 0,
 			},
 			{
-				name: 'News',
+				name: TabName.News,
 				content: (
 					<ErrorBackground title="Screen not available" subtitle="News" />
 				),
@@ -74,7 +88,7 @@ const Crypto = () => {
 				index: 1,
 			},
 			{
-				name: 'Orders',
+				name: TabName.Orders,
 				content: (
 					<ErrorBackground title="Screen not available" subtitle="Orders" />
 				),
@@ -82,7 +96,7 @@ const Crypto = () => {
 				index: 2,
 			},
 			{
-				name: 'Transactions',
+				name: TabName.Transactions,
 				content: (
 					<ErrorBackground
 						title="Screen not available"
@@ -97,25 +111,29 @@ const Crypto = () => {
 		[data, isPriceVisible]
 	);
 
-	/**********************************************************************/
-
 	const viewabilityConfig = {
 		itemVisiblePercentThreshold: 50,
 	};
 
-	const onViewableItemsChanged = useCallback(({ viewableItems }) => {
-		// console.log(
-		// 	'\x1b[33m\x1b[42m\x1b[1m[onViewableItemsChanged]\x1b[0m',
-		// 	viewableItems
-		// );
-	}, []);
+	const onViewableItemsChanged = useCallback(
+		({ viewableItems }: { viewableItems: ViewToken[] }) => {
+			setCurrentTab(viewableItems[0].item.name as TabName);
+		},
+		[]
+	);
+
+	const currentPriceMemo = useMemo(() => {
+		return !isPriceVisible || currentTab !== TabName.Overview
+			? currentPrice
+			: '';
+	}, [currentPrice, isPriceVisible, currentTab]);
 
 	return (
 		<>
 			<ScreenHeader
 				title={data?.name}
 				logoUrl={data?.logo}
-				currentPrice={!isPriceVisible ? currentPrice : ''}
+				currentPrice={currentPriceMemo}
 			/>
 
 			{isLoading && <LoadingBackground />}
@@ -131,7 +149,7 @@ const Crypto = () => {
 					/>
 
 					<Animated.FlatList
-						ref={ref}
+						ref={currentTabRef}
 						data={DATA}
 						onViewableItemsChanged={onViewableItemsChanged}
 						viewabilityConfig={viewabilityConfig}

@@ -32,10 +32,21 @@ export const styles = StyleSheet.create({
 		color: Colors.lightGray,
 		top: 2,
 	},
+	headerPriceContainer: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		gap: 7,
+	},
 	headerPriceStyle: {
 		fontFamily: SECONDARY_FONT_FAMILY_SEMI_BOLD,
 		fontSize: 12,
 		color: Colors.positive,
+		top: 2,
+	},
+	headerVariationStyle: {
+		fontFamily: SECONDARY_FONT_FAMILY_SEMI_BOLD,
+		fontSize: 12,
+		color: Colors.negative,
 		top: 2,
 	},
 	headerLargeTitleStyle: {

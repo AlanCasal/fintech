@@ -24,7 +24,10 @@ const Title = ({ title = '', logoUrl, currentPrice }: TitleProps) => (
 		<View>
 			<Text style={styles.headerTitleStyle}>{title}</Text>
 			{currentPrice && (
-				<Text style={styles.headerPriceStyle}>{currentPrice} €</Text>
+				<View style={styles.headerPriceContainer}>
+					<Text style={styles.headerPriceStyle}>{currentPrice} €</Text>
+					<Text style={styles.headerVariationStyle}>-4.81 %</Text>
+				</View>
 			)}
 		</View>
 	</View>
