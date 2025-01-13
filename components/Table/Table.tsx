@@ -18,6 +18,7 @@ interface TableProps<T extends keyof TableTypes> {
 	extraData?: T extends 'crypto' ? Cryptocurrency[] : never;
 	tableType: T;
 	emptyMessage: string;
+	solidColor?: boolean;
 }
 
 const Table = <T extends keyof TableTypes>({
@@ -25,9 +26,15 @@ const Table = <T extends keyof TableTypes>({
 	tableType,
 	emptyMessage,
 	extraData,
+	solidColor = false,
 }: TableProps<T>) => {
 	return (
-		<View style={styles.tableContainer}>
+		<View
+			style={[
+				styles.tableContainer,
+				solidColor && { backgroundColor: Colors.darkBackground },
+			]}
+		>
 			<BoxCorners
 				cornerTopLeft
 				cornerBottomRight

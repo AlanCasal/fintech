@@ -62,16 +62,6 @@ const CryptoItem = ({
 			</TouchableOpacity>
 		</Link>
 	);
-
-	{
-		/* {currencies?.map((currency: CurrencyData, index: number) => {
-					
-
-					return (
-						
-					);
-				})} */
-	}
 };
 
 export default CryptoItem;
