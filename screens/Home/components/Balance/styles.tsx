@@ -2,17 +2,27 @@ import { PRIMARY_FONT_FAMILY } from '@/constants/Utils';
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-	account: {
+	container: {
 		marginTop: 20,
 		paddingVertical: 60,
 		marginHorizontal: 20,
 		alignItems: 'center',
 	},
-	balanceRow: {
+	eyeIcon: {
+		position: 'absolute',
+		right: 20,
+		top: 15,
+	},
+	balanceContainer: {
 		flexDirection: 'row',
 		justifyContent: 'space-between',
-		alignItems: 'flex-end',
-		gap: 10,
+		alignItems: 'center',
+		gap: 20,
+	},
+	balanceRow: {
+		width: '100%',
+		alignItems: 'center',
+		paddingHorizontal: 10,
 	},
 	balanceAmount: {
 		fontSize: 50,
