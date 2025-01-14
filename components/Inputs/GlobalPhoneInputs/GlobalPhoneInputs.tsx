@@ -16,7 +16,6 @@ LogBox.ignoreLogs([
 interface GlobalPhoneInputsProps {
 	callingCode: CallingCode;
 	countryCode: CountryCode;
-	mobileNumber: string;
 	handleCountryCodeChange: (country: Country) => void;
 	handleMobileNumberChange: (text: string) => void;
 }
@@ -24,7 +23,6 @@ interface GlobalPhoneInputsProps {
 const GlobalPhoneInputs = ({
 	callingCode,
 	countryCode,
-	mobileNumber,
 	handleCountryCodeChange,
 	handleMobileNumberChange,
 }: GlobalPhoneInputsProps) => {
@@ -60,7 +58,6 @@ const GlobalPhoneInputs = ({
 				placeholder="Mobile number"
 				placeholderTextColor={Colors.gray}
 				keyboardType="number-pad"
-				value={mobileNumber}
 				onChangeText={handleMobileNumberChange}
 				cursorColor={Colors.primary}
 				onFocus={handleFocus}

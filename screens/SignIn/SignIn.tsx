@@ -5,7 +5,7 @@ import {
 	TouchableWithoutFeedback,
 	Keyboard,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { defaultStyles } from '@/constants/Styles';
 import { styles } from './styles';
 import Colors from '@/constants/Colors';
@@ -44,11 +44,15 @@ const SignIn = () => {
 	const router = useRouter();
 	const { signIn } = useSignIn();
 
-	const [mobileNumber, setMobileNumber] = useState('');
+	const mobileNumberRef = useRef('');
 	const [countryCode, setCountryCode] = useState<PhoneCodes>({
 		callingCode: DEFAULT_COUNTRY_CALLING_CODE,
 		countryCode: DEFAULT_COUNTRY_CODE,
 	});
+
+	const handleMobileNumberChange = (value: string) => {
+		mobileNumberRef.current = value;
+	};
 
 	const handleCountryCodeChange = (selectedCountry: Country) => {
 		setCountryCode({
@@ -58,9 +62,14 @@ const SignIn = () => {
 	};
 
 	const handleSignIn = async (type: SignInType) => {
+		if (!mobileNumberRef.current) {
+			Alert.alert('Please enter a valid mobile number');
+			return;
+		}
+
 		if (type === SignInType.PHONE) {
 			try {
-				const phoneNumber = `+${countryCode.callingCode}${mobileNumber}`;
+				const phoneNumber = `+${countryCode.callingCode}${mobileNumberRef.current}`;
 
 				const { supportedFirstFactors } = await signIn!.create({
 					identifier: phoneNumber,
@@ -127,7 +136,7 @@ const SignIn = () => {
 
 			<TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
 				<View style={containerStyles}>
-					<CyberDots position="top" height="20%" />
+					<CyberDots position="top" height="35%" />
 					<CyberDots position="bottom" height="30%" />
 
 					<CyberHeaderTitle
@@ -139,9 +148,8 @@ const SignIn = () => {
 						<GlobalPhoneInputs
 							callingCode={countryCode.callingCode}
 							countryCode={countryCode.countryCode}
-							mobileNumber={mobileNumber}
 							handleCountryCodeChange={handleCountryCodeChange}
-							handleMobileNumberChange={setMobileNumber}
+							handleMobileNumberChange={handleMobileNumberChange}
 						/>
 
 						<CyberButtonLarge
@@ -149,7 +157,6 @@ const SignIn = () => {
 							buttonText="Continue"
 							buttonTextColor={Colors.darkBackground}
 							steepPosition="top-left"
-							disabled={!mobileNumber}
 						/>
 					</View>
 

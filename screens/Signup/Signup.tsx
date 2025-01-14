@@ -6,7 +6,7 @@ import {
 	TouchableWithoutFeedback,
 	Keyboard,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { defaultStyles } from '@/constants/Styles';
 import { styles } from './styles';
 import Colors from '@/constants/Colors';
@@ -37,7 +37,7 @@ const Signup = () => {
 	const { bottom } = useSafeAreaInsets();
 	const headerHeight = useHeaderHeight();
 
-	const [mobileNumber, setMobileNumber] = useState('');
+	const mobileNumberRef = useRef('');
 	const [countryCode, setCountryCode] = useState<{
 		callingCode: CallingCode;
 		countryCode: CountryCode;
@@ -53,10 +53,19 @@ const Signup = () => {
 		});
 	};
 
+	const handleMobileNumberChange = (value: string) => {
+		mobileNumberRef.current = value;
+	};
+
 	const handleSignup = async () => {
-		const phoneNumber = `+${countryCode.callingCode}${mobileNumber}`;
+		if (!mobileNumberRef.current) {
+			Alert.alert('Please enter a valid mobile number');
+			return;
+		}
 
 		try {
+			const phoneNumber = `+${countryCode.callingCode}${mobileNumberRef.current}`;
+
 			await signUp!.create({ phoneNumber });
 			signUp!.preparePhoneNumberVerification();
 
@@ -119,9 +128,8 @@ const Signup = () => {
 						<GlobalPhoneInputs
 							callingCode={countryCode.callingCode}
 							countryCode={countryCode.countryCode}
-							mobileNumber={mobileNumber}
 							handleCountryCodeChange={handleCountryCodeChange}
-							handleMobileNumberChange={setMobileNumber}
+							handleMobileNumberChange={handleMobileNumberChange}
 						/>
 
 						<View style={styles.signInContainer}>
@@ -145,7 +153,6 @@ const Signup = () => {
 						steepPosition="bottom-right"
 						buttonTextColor={Colors.darkBackground}
 						handleOnPress={handleSignup}
-						disabled={!mobileNumber}
 					/>
 				</View>
 			</TouchableWithoutFeedback>
