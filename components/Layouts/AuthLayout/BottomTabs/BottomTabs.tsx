@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tabs } from 'expo-router';
 import Colors from '@/constants/Colors';
-import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
 import CustomHeader from '@/components/CustomHeader';
 import { styles } from './styles';
@@ -12,7 +12,7 @@ const BottomTabs = () => {
 			screenOptions={{
 				tabBarActiveTintColor: Colors.primary,
 				tabBarBackground: () => (
-					<BlurView intensity={85} tint="dark" style={styles.blurView} />
+					<BlurView intensity={75} tint="dark" style={styles.blurView} />
 				),
 				tabBarStyle: styles.tabBarStyle,
 				tabBarLabelStyle: styles.tabBarLabelStyle,
@@ -30,20 +30,28 @@ const BottomTabs = () => {
 				}}
 			/>
 			<Tabs.Screen
-				name="invest"
+				name="markets"
 				options={{
-					title: 'Invest',
+					title: 'Markets',
 					tabBarIcon: ({ color, size }) => (
-						<FontAwesome name="line-chart" size={size} color={color} />
+						<MaterialCommunityIcons
+							name="chart-bar"
+							size={size}
+							color={color}
+						/>
 					),
 				}}
 			/>
 			<Tabs.Screen
-				name="transfers"
+				name="trade"
 				options={{
-					title: 'Transfers',
+					title: 'Trade',
 					tabBarIcon: ({ color, size }) => (
-						<FontAwesome name="exchange" size={size} color={color} />
+						<MaterialCommunityIcons
+							name="hand-coin"
+							size={size}
+							color={color}
+						/>
 					),
 				}}
 			/>
@@ -52,18 +60,18 @@ const BottomTabs = () => {
 				options={{
 					title: 'Crypto',
 					tabBarIcon: ({ color, size }) => (
-						<FontAwesome name="bitcoin" size={size} color={color} />
+						<MaterialCommunityIcons name="bitcoin" size={size} color={color} />
 					),
 					header: () => <CustomHeader />,
 					headerTransparent: true,
 				}}
 			/>
 			<Tabs.Screen
-				name="lifestyle"
+				name="wallets"
 				options={{
-					title: 'Lifestyle',
+					title: 'Wallets',
 					tabBarIcon: ({ color, size }) => (
-						<FontAwesome name="th" size={size} color={color} />
+						<MaterialCommunityIcons name="wallet" size={size} color={color} />
 					),
 				}}
 			/>

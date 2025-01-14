@@ -3,7 +3,7 @@ import React from 'react';
 import ErrorBackground from '@/components/ErrorBackground';
 import { Stack } from 'expo-router';
 
-const Lifestyle = () => {
+const Wallets = () => {
 	return (
 		<View style={{ flex: 1 }}>
 			<Stack.Screen
@@ -11,9 +11,9 @@ const Lifestyle = () => {
 					headerShown: false,
 				}}
 			/>
-			<ErrorBackground title="Screen not available" subtitle="Lifestyle" />
+			<ErrorBackground title="Screen not available" subtitle="Wallets" />
 		</View>
 	);
 };
 
-export default Lifestyle;
+export default Wallets;

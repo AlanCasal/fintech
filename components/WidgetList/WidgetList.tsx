@@ -12,12 +12,9 @@ const WidgetList = () => {
 	return (
 		<View style={styles.container}>
 			<CyberDots position="bottom" height="10%" />
-			<Text style={defaultStyles.sectionHeader}>Widgets</Text>
+			<Text style={[defaultStyles.sectionHeader, styles.header]}>Widgets</Text>
 
-			<SortableList
-				editing={true}
-				onDragEnd={positions => console.log(JSON.stringify(positions, null, 2))}
-			>
+			<SortableList editing={true} onDragEnd={() => true}>
 				{tiles.map((tile, index) => (
 					<Tile
 						onLongPress={() => true}

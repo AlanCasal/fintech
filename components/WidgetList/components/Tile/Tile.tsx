@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 
 import { useBalanceStore } from '@/store/balanceStore';
 import Colors from '@/constants/Colors';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { styles } from './styles';
 
 export const tiles = [
@@ -33,8 +33,16 @@ const Tile = ({ id }: TileProps) => {
 
 	if (id === 'spent') {
 		return (
-			<View style={styles.container} pointerEvents="none">
-				<Text style={styles.title}>Spent this month</Text>
+			<View style={[styles.container]} pointerEvents="none">
+				<Text style={[styles.title, { width: '70%' }]}>Spent this month</Text>
+
+				<MaterialCommunityIcons
+					name={'drag'}
+					size={20}
+					color={Colors.lightGray}
+					style={styles.dragIcon}
+				/>
+
 				<Text style={styles.subtitle}>1024€</Text>
 			</View>
 		);
@@ -46,6 +54,13 @@ const Tile = ({ id }: TileProps) => {
 				style={[styles.container, styles.cashbackContainer]}
 				pointerEvents="none"
 			>
+				<MaterialCommunityIcons
+					name={'drag'}
+					size={20}
+					color={Colors.lightGray}
+					style={styles.dragIcon}
+				/>
+
 				<View style={styles.cashbackTextContainer}>
 					<View style={styles.cashbackTitleContainer}>
 						<Text style={styles.cashbackTitle}>+5%</Text>
@@ -61,30 +76,33 @@ const Tile = ({ id }: TileProps) => {
 
 		return (
 			<View style={styles.container} pointerEvents="none">
-				<View>
-					<Text style={styles.title}>Recent transaction</Text>
+				<MaterialCommunityIcons
+					name={'drag'}
+					size={20}
+					color={Colors.lightGray}
+					style={styles.dragIcon}
+				/>
 
-					{!transactions.length && (
-						<Text style={styles.noTransactions}>No transactions</Text>
-					)}
+				<Text style={styles.title}>Recent transaction</Text>
 
-					{transactions.length > 0 && (
-						<>
-							<Text
-								style={{
-									...styles.transactionAmount,
-									...(lastTransaction.amount > 0 && styles.textSuccess),
-								}}
-							>
-								{lastTransaction.amount > 0 && '+ '}
-								{lastTransaction.amount}€
-							</Text>
-							<Text style={styles.transactionTitle}>
-								{lastTransaction.title}
-							</Text>
-						</>
-					)}
-				</View>
+				{!transactions.length && (
+					<Text style={styles.noTransactions}>No transactions</Text>
+				)}
+
+				{transactions.length > 0 && (
+					<>
+						<Text
+							style={{
+								...styles.transactionAmount,
+								...(lastTransaction.amount > 0 && styles.textSuccess),
+							}}
+						>
+							{lastTransaction.amount > 0 && '+ '}
+							{lastTransaction.amount}€
+						</Text>
+						<Text style={styles.transactionTitle}>{lastTransaction.title}</Text>
+					</>
+				)}
 			</View>
 		);
 	}
@@ -92,7 +110,15 @@ const Tile = ({ id }: TileProps) => {
 	if (id === 'cards') {
 		return (
 			<View style={styles.container} pointerEvents="none">
+				<MaterialCommunityIcons
+					name={'drag'}
+					size={20}
+					color={Colors.lightGray}
+					style={styles.dragIcon}
+				/>
+
 				<Text style={styles.cardsTitle}>Cards</Text>
+
 				<Ionicons
 					name="card"
 					size={50}

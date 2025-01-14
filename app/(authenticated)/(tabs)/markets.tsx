@@ -3,7 +3,7 @@ import React from 'react';
 import ErrorBackground from '@/components/ErrorBackground';
 import { Stack } from 'expo-router';
 
-const Transfers = () => {
+const Markets = () => {
 	return (
 		<View style={{ flex: 1 }}>
 			<Stack.Screen
@@ -11,9 +11,9 @@ const Transfers = () => {
 					headerShown: false,
 				}}
 			/>
-			<ErrorBackground title="Screen not available" subtitle="Transfers" />
+			<ErrorBackground title="Screen not available" subtitle="Markets" />
 		</View>
 	);
 };
 
-export default Transfers;
+export default Markets;

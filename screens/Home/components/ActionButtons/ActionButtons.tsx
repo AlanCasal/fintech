@@ -20,17 +20,6 @@ const DROPDOWN_OPTIONS = [
 		action: () => {},
 	},
 	{
-		name: 'Pay',
-		icon: (
-			<MaterialCommunityIcons
-				name={'hand-coin'}
-				size={20}
-				color={Colors.lightGray}
-			/>
-		),
-		action: () => {},
-	},
-	{
 		name: 'Your Address',
 		icon: (
 			<MaterialCommunityIcons
@@ -53,6 +42,9 @@ const DROPDOWN_OPTIONS = [
 		action: () => {},
 	},
 ];
+
+const CYBER_BUTTON_WIDTH = 40;
+const ICON_SIZE = 25;
 
 const ActionButtons = () => {
 	const { runTransaction, clearTransactions } = useBalanceStore();
@@ -92,17 +84,17 @@ const ActionButtons = () => {
 	};
 
 	return (
-		<View style={styles.actionRow}>
+		<View style={styles.container}>
 			<View style={styles.buttonContainer}>
 				<CyberButtonSquare
 					handlePress={handleAddMoney}
 					fillColor={Colors.primary}
 					steepPosition="top-left"
-					width={60}
+					width={CYBER_BUTTON_WIDTH}
 					icon={
 						<MaterialCommunityIcons
 							name={'cash-plus'}
-							size={30}
+							size={ICON_SIZE}
 							color={Colors.primaryMuted2}
 						/>
 					}
@@ -113,12 +105,12 @@ const ActionButtons = () => {
 			<View style={styles.buttonContainer}>
 				<CyberButtonSquare
 					handlePress={handleClearTransactions}
-					width={60}
+					width={CYBER_BUTTON_WIDTH}
 					steepPosition="top-left"
 					icon={
 						<MaterialCommunityIcons
 							name={'arrow-down-bold'}
-							size={30}
+							size={ICON_SIZE}
 							color={Colors.primaryMuted}
 						/>
 					}
@@ -128,12 +120,12 @@ const ActionButtons = () => {
 
 			<View style={styles.buttonContainer}>
 				<CyberButtonSquare
-					width={60}
+					width={CYBER_BUTTON_WIDTH}
 					steepPosition="top-left"
 					icon={
 						<MaterialCommunityIcons
 							name={'compare-horizontal'}
-							size={30}
+							size={ICON_SIZE}
 							color={Colors.primaryMuted}
 						/>
 					}
@@ -141,15 +133,30 @@ const ActionButtons = () => {
 				<Text style={styles.label}>Transfer</Text>
 			</View>
 
+			<View style={styles.buttonContainer}>
+				<CyberButtonSquare
+					width={CYBER_BUTTON_WIDTH}
+					steepPosition="top-left"
+					icon={
+						<MaterialCommunityIcons
+							name={'credit-card'}
+							size={20}
+							color={Colors.primaryMuted}
+						/>
+					}
+				/>
+				<Text style={styles.label}>Pay</Text>
+			</View>
+
 			<View style={styles.buttonContainer} ref={moreButtonRef}>
 				<CyberButtonSquare
-					width={60}
+					width={CYBER_BUTTON_WIDTH}
 					steepPosition="top-right"
 					handlePress={handleOpenDropdown}
 					icon={
 						<MaterialCommunityIcons
 							name={'dots-horizontal'}
-							size={30}
+							size={ICON_SIZE}
 							color={Colors.primaryMuted}
 						/>
 					}

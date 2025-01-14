@@ -40,7 +40,7 @@ const Crypto = () => {
 			style={styles.container}
 			contentContainerStyle={{ paddingTop: headerHeight }}
 		>
-			<Text style={defaultStyles.sectionHeader}>Latest Crypto</Text>
+			<Text style={defaultStyles.sectionHeader}>Latest</Text>
 
 			<View style={defaultStyles.tableContainer}>
 				<Table

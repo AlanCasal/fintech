@@ -13,13 +13,22 @@ export const styles = StyleSheet.create({
 		backgroundColor: Colors.blackTransparent02,
 		borderWidth: StyleSheet.hairlineWidth,
 		borderColor: Colors.primaryMuted,
-		shadowColor: '#000',
+		shadowColor: Colors.blackTransparent02,
 		shadowOffset: { width: 0, height: 1 },
 		shadowOpacity: 0.25,
 		shadowRadius: 2,
 		elevation: 5,
 		padding: 14,
 		alignSelf: 'center',
+	},
+	dragIcon: {
+		position: 'absolute',
+		right: 15,
+		top: 15,
+	},
+	spentTitleContainer: {
+		flexDirection: 'row',
+		justifyContent: 'space-between',
 	},
 	title: {
 		color: Colors.lightGray,
