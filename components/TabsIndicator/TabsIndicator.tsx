@@ -23,11 +23,13 @@ type Measure = {
 	height: number;
 };
 
+export const TABS_INDICATOR_HEIGHT = 30;
+
 const TabsIndicator = ({
 	scrollX,
 	data,
 	onItemPress,
-	tabHeight = 30,
+	tabHeight = TABS_INDICATOR_HEIGHT,
 }: TabsIndicatorProps) => {
 	const [measures, setMeasures] = useState<Measure[]>([]);
 	const containerRef = useRef<View | null>(null);

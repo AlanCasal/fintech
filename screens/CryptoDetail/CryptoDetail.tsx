@@ -23,6 +23,8 @@ import ErrorBackground from '@/components/ErrorBackground';
 import TabsIndicator from '@/components/TabsIndicator';
 import CyberDots from '@/components/CyberDots';
 import useIsVisibleOnScroll from '@/hooks/useIsVisibleOnScroll';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { TABS_INDICATOR_HEIGHT } from '@/components/TabsIndicator/TabsIndicator';
 
 const { width } = Dimensions.get('screen');
 
@@ -36,12 +38,17 @@ enum TabName {
 const Crypto = () => {
 	const { id } = useLocalSearchParams();
 	const { data, isLoading, error } = useGetCryptoInfo(id as string);
+	const { top } = useSafeAreaInsets();
+
+	const contentMarginTop = 20;
+	const headerHeight = top + TABS_INDICATOR_HEIGHT + contentMarginTop + 10;
+
 	const {
 		isVisible: isPriceVisible,
 		viewRef,
 		handleOnScroll,
 	} = useIsVisibleOnScroll({
-		headerHeight: 125,
+		headerHeight,
 	});
 
 	const [currentPrice, setCurrentPrice] = useState('');
@@ -64,7 +71,7 @@ const Crypto = () => {
 						<CyberDots position="bottom" height="20%" />
 						<ScrollView
 							showsVerticalScrollIndicator={false}
-							style={{ marginTop: 20 }}
+							style={{ marginTop: contentMarginTop }}
 							onScroll={handleOnScroll}
 							scrollEventThrottle={16}
 						>
