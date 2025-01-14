@@ -146,6 +146,7 @@ const Crypto = () => {
 				logoUrl={data?.logo}
 				currentPrice={currentPriceMemo}
 			/>
+
 			<View style={styles.container}>
 				<TabsIndicator
 					scrollX={scrollX}

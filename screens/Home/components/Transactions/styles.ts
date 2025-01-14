@@ -3,9 +3,6 @@ import { SECONDARY_FONT_FAMILY_SEMI_BOLD } from '@/constants/Utils';
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-	container: {
-		marginTop: 20,
-	},
 	tableContainer: {
 		overflow: 'hidden',
 	},

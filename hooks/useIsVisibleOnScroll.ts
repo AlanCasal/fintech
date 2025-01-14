@@ -3,7 +3,7 @@ import { NativeSyntheticEvent, NativeScrollEvent, View } from 'react-native';
 
 const useIsVisibleOnScroll = ({ headerHeight = 0 }) => {
 	const viewRef = useRef<View>(null);
-	const [isVisible, setIsVisible] = useState(false);
+	const [isVisible, setIsVisible] = useState(true);
 
 	const handleOnScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
 		if (!viewRef.current) return;

@@ -74,7 +74,7 @@ const Transactions = () => {
 	}, [transactions]);
 
 	return (
-		<View style={styles.container}>
+		<View>
 			<Text style={defaultStyles.sectionHeader}>Transactions</Text>
 
 			<Content

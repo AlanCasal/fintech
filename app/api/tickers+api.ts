@@ -951,3 +951,5 @@ export async function GET(request: Request) {
 
 	return Response.json(HARDCODED_DATA);
 }
+
+// OHLCV Historical Data (data para candlestick chart)
