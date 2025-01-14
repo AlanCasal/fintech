@@ -3,9 +3,56 @@ import { View, Text, findNodeHandle, UIManager } from 'react-native';
 import { useBalanceStore } from '@/store/balanceStore';
 import { styles } from './styles';
 import CyberButtonSquare from '@/components/Buttons/CyberButtonSquare';
-import { Ionicons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
 import DropdownModal from '@/components/Modals/DropdownModal';
+
+const DROPDOWN_OPTIONS = [
+	{
+		name: 'Earn',
+		icon: (
+			<MaterialCommunityIcons
+				name={'piggy-bank'}
+				size={20}
+				color={Colors.lightGray}
+			/>
+		),
+		action: () => {},
+	},
+	{
+		name: 'Pay',
+		icon: (
+			<MaterialCommunityIcons
+				name={'hand-coin'}
+				size={20}
+				color={Colors.lightGray}
+			/>
+		),
+		action: () => {},
+	},
+	{
+		name: 'Your Address',
+		icon: (
+			<MaterialCommunityIcons
+				name={'card-account-details'}
+				size={20}
+				color={Colors.lightGray}
+			/>
+		),
+		action: () => {},
+	},
+	{
+		name: 'Help',
+		icon: (
+			<MaterialCommunityIcons
+				name={'comment-question'}
+				size={20}
+				color={Colors.lightGray}
+			/>
+		),
+		action: () => {},
+	},
+];
 
 const ActionButtons = () => {
 	const { runTransaction, clearTransactions } = useBalanceStore();
@@ -49,11 +96,18 @@ const ActionButtons = () => {
 			<View style={styles.buttonContainer}>
 				<CyberButtonSquare
 					handlePress={handleAddMoney}
+					fillColor={Colors.primary}
 					steepPosition="top-left"
 					width={60}
-					icon={<Ionicons name={'add'} size={30} color={Colors.primaryMuted} />}
+					icon={
+						<MaterialCommunityIcons
+							name={'cash-plus'}
+							size={30}
+							color={Colors.primaryMuted}
+						/>
+					}
 				/>
-				<Text style={styles.label}>Add Money</Text>
+				<Text style={styles.label}>Deposit</Text>
 			</View>
 
 			<View style={styles.buttonContainer}>
@@ -62,10 +116,14 @@ const ActionButtons = () => {
 					width={60}
 					steepPosition="top-left"
 					icon={
-						<Ionicons name={'refresh'} size={30} color={Colors.primaryMuted} />
+						<MaterialCommunityIcons
+							name={'arrow-down-bold'}
+							size={30}
+							color={Colors.primaryMuted}
+						/>
 					}
 				/>
-				<Text style={styles.label}>Exchange</Text>
+				<Text style={styles.label}>Withdraw</Text>
 			</View>
 
 			<View style={styles.buttonContainer}>
@@ -73,10 +131,14 @@ const ActionButtons = () => {
 					width={60}
 					steepPosition="top-left"
 					icon={
-						<Ionicons name={'list'} size={30} color={Colors.primaryMuted} />
+						<MaterialCommunityIcons
+							name={'compare-horizontal'}
+							size={30}
+							color={Colors.primaryMuted}
+						/>
 					}
 				/>
-				<Text style={styles.label}>Details</Text>
+				<Text style={styles.label}>Transfer</Text>
 			</View>
 
 			<View style={styles.buttonContainer} ref={moreButtonRef}>
@@ -85,8 +147,8 @@ const ActionButtons = () => {
 					steepPosition="top-right"
 					handlePress={handleOpenDropdown}
 					icon={
-						<Ionicons
-							name={'ellipsis-horizontal'}
+						<MaterialCommunityIcons
+							name={'dots-horizontal'}
 							size={30}
 							color={Colors.primaryMuted}
 						/>
@@ -99,6 +161,7 @@ const ActionButtons = () => {
 				isModalVisible={isModalVisible}
 				onClose={() => setIsModalVisible(false)}
 				anchorPosition={dropdownPosition!}
+				options={DROPDOWN_OPTIONS}
 			/>
 		</View>
 	);

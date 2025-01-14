@@ -12,36 +12,16 @@ import { BlurView } from 'expo-blur';
 import { isIos } from '@/constants/Utils';
 import { styles } from './styles';
 import BoxCorners from '@/components/BoxCorners';
-import { Ionicons } from '@expo/vector-icons';
-import Colors from '@/constants/Colors';
 import Divider from '@/components/Divider';
-
-const MENU_OPTIONS = [
-	{
-		name: 'Account',
-		icon: 'person',
-		action: () => {},
-	},
-	{
-		name: 'Learn',
-		icon: 'bulb',
-		action: () => {},
-	},
-	{
-		name: 'Inbox',
-		icon: 'megaphone',
-		action: () => {},
-	},
-	{
-		name: 'Sign Out',
-		icon: 'log-out',
-		action: () => {},
-	},
-];
 
 type Props = {
 	isModalVisible: boolean;
 	onClose: () => void;
+	options: {
+		name: string;
+		icon: React.ReactNode;
+		action: () => void;
+	}[];
 	anchorPosition?: {
 		top: number;
 		right: number;
@@ -52,6 +32,7 @@ const DropdownModal = ({
 	isModalVisible = false,
 	onClose,
 	anchorPosition,
+	options,
 }: Props) => {
 	const { width: windowWidth } = useWindowDimensions();
 
@@ -89,18 +70,14 @@ const DropdownModal = ({
 					borderWidth={StyleSheet.hairlineWidth}
 				/>
 
-				{MENU_OPTIONS.map((option, index) => (
+				{options.map((option, index) => (
 					<Fragment key={option.name}>
 						<TouchableOpacity style={styles.tableItem} onPress={option.action}>
-							<Ionicons
-								name={option.icon as keyof typeof Ionicons.glyphMap}
-								size={18}
-								color={Colors.lightGray}
-							/>
+							{option.icon}
 							<Text style={styles.actionText}>{option.name}</Text>
 						</TouchableOpacity>
 
-						{index !== MENU_OPTIONS.length - 1 && (
+						{index !== options.length - 1 && (
 							<Divider marginLeft={45} marginRight={10} />
 						)}
 					</Fragment>
