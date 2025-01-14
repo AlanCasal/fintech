@@ -48,7 +48,7 @@ const Tile = ({ id }: TileProps) => {
 			>
 				<View style={styles.cashbackTextContainer}>
 					<View style={styles.cashbackTitleContainer}>
-						<Text style={styles.cashbackTitle}>5%</Text>
+						<Text style={styles.cashbackTitle}>+5%</Text>
 					</View>
 					<Text style={styles.cashbackSubtitle}>Cashback</Text>
 				</View>
