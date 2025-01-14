@@ -1,14 +1,20 @@
-import React from 'react';
-import { View, Text } from 'react-native';
-import Dropdown from '@/components/Dropdown';
+import React, { useState, useRef } from 'react';
+import { View, Text, findNodeHandle, UIManager } from 'react-native';
 import { useBalanceStore } from '@/store/balanceStore';
 import { styles } from './styles';
 import CyberButtonSquare from '@/components/Buttons/CyberButtonSquare';
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
+import DropdownModal from '@/components/Modals/DropdownModal';
 
 const ActionButtons = () => {
 	const { runTransaction, clearTransactions } = useBalanceStore();
+	const [isModalVisible, setIsModalVisible] = useState(false);
+	const [dropdownPosition, setDropdownPosition] = useState<{
+		top: number;
+		right: number;
+	} | null>(null);
+	const moreButtonRef = useRef(null);
 
 	const handleAddMoney = () => {
 		const amount =
@@ -24,6 +30,18 @@ const ActionButtons = () => {
 
 	const handleClearTransactions = () => {
 		clearTransactions();
+	};
+
+	const handleOpenDropdown = () => {
+		if (moreButtonRef.current) {
+			const handle = findNodeHandle(moreButtonRef.current);
+			if (handle) {
+				UIManager.measure(handle, (x, y, width, height, pageX, pageY) => {
+					setDropdownPosition({ top: pageY, right: 20 }); // Adjust right padding as needed
+				});
+			}
+		}
+		setIsModalVisible(true);
 	};
 
 	return (
@@ -61,23 +79,26 @@ const ActionButtons = () => {
 				<Text style={styles.label}>Details</Text>
 			</View>
 
-			<Dropdown
-				button={
-					<View style={styles.buttonContainer}>
-						<CyberButtonSquare
-							width={60}
-							steepPosition="top-right"
-							icon={
-								<Ionicons
-									name={'ellipsis-horizontal'}
-									size={30}
-									color={Colors.primaryMuted}
-								/>
-							}
+			<View style={styles.buttonContainer} ref={moreButtonRef}>
+				<CyberButtonSquare
+					width={60}
+					steepPosition="top-right"
+					handlePress={handleOpenDropdown}
+					icon={
+						<Ionicons
+							name={'ellipsis-horizontal'}
+							size={30}
+							color={Colors.primaryMuted}
 						/>
-						<Text style={styles.label}>More</Text>
-					</View>
-				}
+					}
+				/>
+				<Text style={styles.label}>More</Text>
+			</View>
+
+			<DropdownModal
+				isModalVisible={isModalVisible}
+				onClose={() => setIsModalVisible(false)}
+				anchorPosition={dropdownPosition!}
 			/>
 		</View>
 	);

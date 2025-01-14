@@ -17,14 +17,14 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 type Props = {
 	isModalVisible: boolean;
-	handleModal: () => void;
+	onClose: () => void;
 	children: React.ReactNode;
 	title?: string;
 };
 
 const CustomModal = ({
 	isModalVisible = false,
-	handleModal,
+	onClose,
 	children,
 	title,
 }: Props) => {
@@ -35,20 +35,20 @@ const CustomModal = ({
 			animationType="slide"
 			transparent={true}
 			visible={isModalVisible}
-			onRequestClose={handleModal}
+			onRequestClose={onClose}
 		>
 			{isIos && (
 				<BlurView intensity={20} style={StyleSheet.absoluteFill} tint="dark" />
 			)}
 
-			<TouchableWithoutFeedback onPress={handleModal}>
+			<TouchableWithoutFeedback onPress={onClose}>
 				<View style={styles.overlay} />
 			</TouchableWithoutFeedback>
 
 			<View style={[styles.headerContainer, { marginTop: top + 10 }]}>
 				{title && <Text style={styles.title}>{title}</Text>}
 
-				<TouchableOpacity onPress={handleModal}>
+				<TouchableOpacity onPress={onClose}>
 					<MaterialCommunityIcons
 						name="close-box-outline"
 						size={30}

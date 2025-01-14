@@ -6,7 +6,7 @@ import { Transaction, useBalanceStore } from '@/store/balanceStore';
 import Table from '@/components/Table';
 import BoxCorners from '@/components/BoxCorners';
 import Colors from '@/constants/Colors';
-import CustomModal from '@/components/CustomModal';
+import CustomModal from '@/components/Modals/CustomModal';
 
 const SeeMoreButton = ({ handleSeeMore }: { handleSeeMore: () => void }) => (
 	<TouchableOpacity onPress={handleSeeMore}>
@@ -87,7 +87,7 @@ const Transactions = () => {
 
 			<CustomModal
 				isModalVisible={isExpanded}
-				handleModal={() => setIsExpanded(false)}
+				onClose={() => setIsExpanded(false)}
 				title="> Transactions"
 			>
 				<Content sortedTransactions={sortedTransactions} tableWithSolidColor />
