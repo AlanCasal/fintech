@@ -4,6 +4,7 @@ import {
 	Alert,
 	TouchableWithoutFeedback,
 	Keyboard,
+	ScrollView,
 } from 'react-native';
 import React, { useRef, useState } from 'react';
 import { defaultStyles } from '@/constants/Styles';
@@ -111,7 +112,7 @@ const SignIn = () => {
 	];
 
 	return (
-		<View style={{ flex: 1 }}>
+		<ScrollView style={styles.scrollView}>
 			<Stack.Screen
 				name="signin"
 				options={{
@@ -167,7 +168,7 @@ const SignIn = () => {
 					<Logo />
 				</View>
 			</TouchableWithoutFeedback>
-		</View>
+		</ScrollView>
 	);
 };
 

@@ -23,7 +23,9 @@ const CyberHeaderTitle = ({
 	return (
 		<View style={styles.container}>
 			<View style={styles.titleContainer}>
-				<Text style={titleStyles}>{title}</Text>
+				<Text style={titleStyles} numberOfLines={1} adjustsFontSizeToFit>
+					{title}
+				</Text>
 
 				<BoxCorners cornerBottomRight cornerTopLeft />
 			</View>
