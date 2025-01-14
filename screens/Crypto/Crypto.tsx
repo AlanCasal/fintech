@@ -38,7 +38,10 @@ const Crypto = () => {
 	return (
 		<ScrollView
 			style={styles.container}
-			contentContainerStyle={{ paddingTop: headerHeight }}
+			contentContainerStyle={{
+				paddingTop: headerHeight,
+				paddingBottom: tabBarHeight + 20,
+			}}
 		>
 			<Text style={defaultStyles.sectionHeader}>Latest</Text>
 
