@@ -1,10 +1,8 @@
 /* eslint-disable no-console */
 import React, { useEffect } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { StatusBar } from 'expo-status-bar';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useFonts } from 'expo-font';
-import { Stack, useRouter, useSegments } from 'expo-router';
+import { useRouter, useSegments } from 'expo-router';
 import { ClerkProvider, useAuth } from '@clerk/clerk-expo';
 import { TokenCache } from '@clerk/clerk-expo/dist/cache';
 import * as SplashScreen from 'expo-splash-screen';
@@ -13,14 +11,13 @@ import 'react-native-reanimated';
 import { CLERK_PUBLISHABLE_KEY, isIos } from '@/constants/Utils';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { UserInactivityProvider } from '@/context/UserInactivity';
-import BackButton from '@/components/Buttons/BackButton';
-import Colors from '@/constants/Colors';
 import { Aldrich_400Regular } from '@expo-google-fonts/aldrich';
 import {
 	Oxanium_400Regular,
 	Oxanium_600SemiBold,
 } from '@expo-google-fonts/oxanium';
 import LoadingBackground from '@/components/LoadingBackground';
+import StackScreens from './components';
 
 const createTokenCache = (): TokenCache => {
 	return {
@@ -56,11 +53,9 @@ SplashScreen.preventAutoHideAsync();
 
 const RootLayout = () => {
 	const [loaded, error] = useFonts({
-		SpaceMono: require('@/assets/fonts/SpaceMono-Regular.ttf'),
 		Aldrich_400Regular,
 		Oxanium_400Regular,
 		Oxanium_600SemiBold,
-		...FontAwesome.font,
 	});
 	const { isLoaded: isAuthLoaded, isSignedIn } = useAuth();
 	const segments = useSegments();
@@ -90,54 +85,7 @@ const RootLayout = () => {
 	if (!loaded || !isAuthLoaded || !CLERK_PUBLISHABLE_KEY)
 		return <LoadingBackground />;
 
-	return (
-		<Stack>
-			<StatusBar style="light" />
-			<Stack.Screen
-				name="help"
-				options={{
-					title: 'Help',
-					presentation: 'modal',
-					animation: 'slide_from_bottom',
-					headerTransparent: true,
-					headerRight: () => (
-						<BackButton icon="close-box-outline" color={Colors.lightGray} />
-					),
-				}}
-			/>
-			<Stack.Screen
-				name="(authenticated)/(tabs)"
-				options={{ headerShown: false }}
-			/>
-			<Stack.Screen
-				name="(authenticated)/(modals)/account"
-				options={{
-					presentation: 'transparentModal',
-					animation: 'slide_from_bottom',
-					title: '',
-					headerTransparent: true,
-					headerRight: () => (
-						<BackButton icon="close-box-outline" color={Colors.lightGray} />
-					),
-				}}
-			/>
-			<Stack.Screen
-				name="(authenticated)/(modals)/lock"
-				options={{
-					headerShown: false,
-					animation: 'fade',
-				}}
-			/>
-			<Stack.Screen
-				name="(authenticated)/crypto/[id]"
-				options={{
-					headerStyle: { backgroundColor: Colors.darkBackground },
-					headerShadowVisible: false,
-					headerLeft: () => <BackButton />,
-				}}
-			/>
-		</Stack>
-	);
+	return <StackScreens />;
 };
 
 /*************************************************************************************/
