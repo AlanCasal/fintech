@@ -44,7 +44,7 @@ const DropdownModal = ({
 			onRequestClose={onClose}
 		>
 			{isIos && (
-				<BlurView intensity={20} style={StyleSheet.absoluteFill} tint="dark" />
+				<BlurView intensity={40} style={StyleSheet.absoluteFill} tint="dark" />
 			)}
 
 			<TouchableWithoutFeedback onPress={onClose}>

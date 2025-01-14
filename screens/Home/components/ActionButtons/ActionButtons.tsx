@@ -103,7 +103,7 @@ const ActionButtons = () => {
 						<MaterialCommunityIcons
 							name={'cash-plus'}
 							size={30}
-							color={Colors.primaryMuted}
+							color={Colors.primaryMuted2}
 						/>
 					}
 				/>

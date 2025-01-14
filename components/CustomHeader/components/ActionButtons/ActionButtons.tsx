@@ -1,22 +1,35 @@
 import React from 'react';
-import { Ionicons } from '@expo/vector-icons';
+import { View, Text } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import CyberButtonSquare from '@/components/Buttons/CyberButtonSquare';
 import Colors from '@/constants/Colors';
+import { styles } from './styles';
 
 const ActionButtons = () => {
 	return (
-		<>
+		<View style={styles.container}>
+			<Text style={styles.notifications}>16</Text>
 			<CyberButtonSquare
 				steepPosition="top-left"
 				icon={
-					<Ionicons name="stats-chart" size={15} color={Colors.primaryMuted} />
+					<MaterialCommunityIcons
+						name="message"
+						size={16}
+						color={Colors.primaryMuted}
+					/>
 				}
 			/>
 			<CyberButtonSquare
 				steepPosition="bottom-right"
-				icon={<Ionicons name="card" size={15} color={Colors.primaryMuted} />}
+				icon={
+					<MaterialCommunityIcons
+						name="headset"
+						size={16}
+						color={Colors.primaryMuted}
+					/>
+				}
 			/>
-		</>
+		</View>
 	);
 };
 
