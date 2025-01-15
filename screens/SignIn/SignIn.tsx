@@ -103,7 +103,6 @@ const SignIn = () => {
 
 	const containerStyles = [
 		defaultStyles.container,
-		defaultStyles.darkBackground,
 		styles.container,
 		{
 			paddingTop: headerHeight + 10,
@@ -112,63 +111,64 @@ const SignIn = () => {
 	];
 
 	return (
-		<ScrollView style={styles.scrollView}>
-			<Stack.Screen
-				name="signin"
-				options={{
-					title: '',
-					headerBackTitle: '',
-					headerShadowVisible: false,
-					headerTransparent: true,
-					headerLeft: () => <BackButton />,
-					headerRight: () => (
-						<Link href="/help" asChild>
-							<TouchableOpacity>
-								<MaterialCommunityIcons
-									name="help-circle"
-									size={24}
-									color={Colors.white}
-								/>
-							</TouchableOpacity>
-						</Link>
-					),
-				}}
-			/>
+		<TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+			<ScrollView
+				style={styles.scrollViewContainer}
+				contentContainerStyle={containerStyles}
+			>
+				<Stack.Screen
+					name="signin"
+					options={{
+						title: '',
+						headerBackTitle: '',
+						headerShadowVisible: false,
+						headerTransparent: true,
+						headerLeft: () => <BackButton />,
+						headerRight: () => (
+							<Link href="/help" asChild>
+								<TouchableOpacity>
+									<MaterialCommunityIcons
+										name="help-circle"
+										size={24}
+										color={Colors.white}
+									/>
+								</TouchableOpacity>
+							</Link>
+						),
+					}}
+				/>
 
-			<TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-				<View style={containerStyles}>
-					<CyberDots position="top" height="35%" />
-					<CyberDots position="bottom" height="30%" />
+				<CyberDots position="top" height="35%" />
+				<CyberDots position="bottom" height="30%" />
 
-					<CyberHeaderTitle
-						title="> Welcome Back !"
-						subtitle="Enter the phone number associated with your account"
+				<CyberHeaderTitle
+					title="> Welcome Back !"
+					subtitle="Enter the phone number associated with your account"
+				/>
+
+				<View style={styles.gap20}>
+					<GlobalPhoneInputs
+						callingCode={countryCode.callingCode}
+						countryCode={countryCode.countryCode}
+						handleCountryCodeChange={handleCountryCodeChange}
+						handleMobileNumberChange={handleMobileNumberChange}
 					/>
 
-					<View style={styles.gap20}>
-						<GlobalPhoneInputs
-							callingCode={countryCode.callingCode}
-							countryCode={countryCode.countryCode}
-							handleCountryCodeChange={handleCountryCodeChange}
-							handleMobileNumberChange={handleMobileNumberChange}
-						/>
-
-						<CyberButtonLarge
-							handleOnPress={() => handleSignIn(SignInType.PHONE)}
-							buttonText="Continue"
-							buttonTextColor={Colors.darkBackground}
-							steepPosition="top-left"
-						/>
-					</View>
-
-					<Divider centerText="or" marginVertical={10} />
-
-					<SignInButtons handleSignIn={handleSignIn} />
-
-					<Logo />
+					<CyberButtonLarge
+						handleOnPress={() => handleSignIn(SignInType.PHONE)}
+						buttonText="Continue"
+						buttonTextColor={Colors.darkBackground}
+						steepPosition="top-left"
+					/>
 				</View>
-			</TouchableWithoutFeedback>
-		</ScrollView>
+
+				<Divider centerText="or" marginVertical={10} />
+
+				<SignInButtons handleSignIn={handleSignIn} />
+
+				<Logo />
+			</ScrollView>
+		</TouchableWithoutFeedback>
 	);
 };
 

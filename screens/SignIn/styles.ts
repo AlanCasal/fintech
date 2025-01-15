@@ -2,11 +2,11 @@ import { StyleSheet } from 'react-native';
 import Colors from '@/constants/Colors';
 
 export const styles = StyleSheet.create({
-	scrollView: {
-		flex: 1,
+	scrollViewContainer: {
 		backgroundColor: Colors.darkBackground,
 	},
 	container: {
+		backgroundColor: Colors.darkBackground,
 		justifyContent: 'space-between',
 	},
 	gap20: {
