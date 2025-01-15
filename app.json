@@ -5,7 +5,7 @@
 		"version": "1.0.0",
 		"orientation": "portrait",
 		"icon": "./assets/images/icons/icon.png",
-		"scheme": "myapp",
+		"scheme": "fintech",
 		"userInterfaceStyle": "automatic",
 		"newArchEnabled": true,
 		"splash": {
