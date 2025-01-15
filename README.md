@@ -2,6 +2,9 @@
 
 
 <p align="center">
+  <img src="./assets/images/mobile app mockup x5.png">
+</p>
+<p align="center">
   <img src="./assets/videos/demo/1. intro.gif" width=30%>
   <img src="./assets/videos/demo/2. signin.gif" width=30%>
   <img src="./assets/videos/demo/5. lock.gif" width=30%>
