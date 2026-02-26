@@ -16,9 +16,6 @@
 
 > A cyberpunk-inspired fintech and crypto mobile app built with Expo + React Native, focused on immersive UI, secure auth flows, and modular architecture.
 
-> [!WARNING]
-> This project is currently **WIP (Work in Progress)**. Several flows and screens are still being expanded.
-
 [![Last Commit](https://img.shields.io/github/last-commit/AlanCasal/fintech?style=for-the-badge&logo=github)](https://github.com/AlanCasal/fintech/commits/main)
 
 ### Core Stack
