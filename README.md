@@ -145,17 +145,6 @@ Crypto endpoints currently return local mocked datasets from API routes:
 
 Live fetch implementations for CoinMarketCap/CoinPaprika are present in those files but commented out. This keeps the app runnable without paid API limits while preserving the production-fetch structure.
 
-## Demo Gallery
-
-Current captures available in:
-
-- 🎥 [Intro](./assets/videos/demo/1.%20intro.gif)
-- 🎥 [Sign In](./assets/videos/demo/2.%20signin.gif)
-- 🎥 [Home](./assets/videos/demo/3.%20home.gif)
-- 🎥 [Account](./assets/videos/demo/4.%20account.gif)
-- 🎥 [Lock](./assets/videos/demo/5.%20lock.gif)
-- 🎥 [Crypto](./assets/videos/demo/6.%20crypto.gif)
-
 ## Credits
 
 - Inspired by product patterns from [Revolut](https://www.revolut.com/) and [Binance](https://www.binance.com/en).
